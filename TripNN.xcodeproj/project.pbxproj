@@ -13,6 +13,8 @@
 		E9C73BC52B6973F700E531AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C73BC32B6973F700E531AB /* Main.storyboard */; };
 		E9C73BC72B6973F900E531AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9C73BC62B6973F900E531AB /* Assets.xcassets */; };
 		E9C73BCA2B6973F900E531AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C73BC82B6973F900E531AB /* LaunchScreen.storyboard */; };
+		E9C73BD42B6977FA00E531AB /* RacingSansOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9C73BD22B6977FA00E531AB /* RacingSansOne-Regular.ttf */; };
+		E9C73BD52B6977FA00E531AB /* Montserrat-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9C73BD32B6977FA00E531AB /* Montserrat-VariableFont_wght.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		E9C73BC62B6973F900E531AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9C73BC92B6973F900E531AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9C73BCB2B6973F900E531AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9C73BD22B6977FA00E531AB /* RacingSansOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RacingSansOne-Regular.ttf"; sourceTree = "<group>"; };
+		E9C73BD32B6977FA00E531AB /* Montserrat-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,11 +64,29 @@
 				E9C73BBF2B6973F700E531AB /* SceneDelegate.swift */,
 				E9C73BC12B6973F700E531AB /* ViewController.swift */,
 				E9C73BC32B6973F700E531AB /* Main.storyboard */,
+				E9C73BD12B69750C00E531AB /* Resourses */,
+			);
+			path = TripNN;
+			sourceTree = "<group>";
+		};
+		E9C73BD12B69750C00E531AB /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				E9C73BD62B69780100E531AB /* Fonts */,
 				E9C73BC62B6973F900E531AB /* Assets.xcassets */,
 				E9C73BC82B6973F900E531AB /* LaunchScreen.storyboard */,
 				E9C73BCB2B6973F900E531AB /* Info.plist */,
 			);
-			path = TripNN;
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		E9C73BD62B69780100E531AB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E9C73BD32B6977FA00E531AB /* Montserrat-VariableFont_wght.ttf */,
+				E9C73BD22B6977FA00E531AB /* RacingSansOne-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +150,8 @@
 				E9C73BCA2B6973F900E531AB /* LaunchScreen.storyboard in Resources */,
 				E9C73BC72B6973F900E531AB /* Assets.xcassets in Resources */,
 				E9C73BC52B6973F700E531AB /* Main.storyboard in Resources */,
+				E9C73BD42B6977FA00E531AB /* RacingSansOne-Regular.ttf in Resources */,
+				E9C73BD52B6977FA00E531AB /* Montserrat-VariableFont_wght.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,7 +318,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZYGWB3DRUK;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TripNN/Info.plist;
+				INFOPLIST_FILE = TripNN/Resourses/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -323,7 +347,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZYGWB3DRUK;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TripNN/Info.plist;
+				INFOPLIST_FILE = TripNN/Resourses/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
