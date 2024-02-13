@@ -10,11 +10,11 @@
 		E9C73BBE2B6973F700E531AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BBD2B6973F700E531AB /* AppDelegate.swift */; };
 		E9C73BC02B6973F700E531AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BBF2B6973F700E531AB /* SceneDelegate.swift */; };
 		E9C73BC22B6973F700E531AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BC12B6973F700E531AB /* ViewController.swift */; };
-		E9C73BC52B6973F700E531AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C73BC32B6973F700E531AB /* Main.storyboard */; };
 		E9C73BC72B6973F900E531AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9C73BC62B6973F900E531AB /* Assets.xcassets */; };
 		E9C73BCA2B6973F900E531AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C73BC82B6973F900E531AB /* LaunchScreen.storyboard */; };
 		E9C73BD42B6977FA00E531AB /* RacingSansOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9C73BD22B6977FA00E531AB /* RacingSansOne-Regular.ttf */; };
-		E9C73BD52B6977FA00E531AB /* Montserrat-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9C73BD32B6977FA00E531AB /* Montserrat-VariableFont_wght.ttf */; };
+		E9C73BD52B6977FA00E531AB /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9C73BD32B6977FA00E531AB /* Montserrat.ttf */; };
+		E9C73BD82B69802F00E531AB /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BD72B69802E00E531AB /* UIColor+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,12 +22,12 @@
 		E9C73BBD2B6973F700E531AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9C73BBF2B6973F700E531AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E9C73BC12B6973F700E531AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E9C73BC42B6973F700E531AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E9C73BC62B6973F900E531AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9C73BC92B6973F900E531AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9C73BCB2B6973F900E531AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9C73BD22B6977FA00E531AB /* RacingSansOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RacingSansOne-Regular.ttf"; sourceTree = "<group>"; };
-		E9C73BD32B6977FA00E531AB /* Montserrat-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		E9C73BD32B6977FA00E531AB /* Montserrat.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Montserrat.ttf; sourceTree = "<group>"; };
+		E9C73BD72B69802E00E531AB /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +63,7 @@
 				E9C73BBD2B6973F700E531AB /* AppDelegate.swift */,
 				E9C73BBF2B6973F700E531AB /* SceneDelegate.swift */,
 				E9C73BC12B6973F700E531AB /* ViewController.swift */,
-				E9C73BC32B6973F700E531AB /* Main.storyboard */,
+				E9C73BD92B69803900E531AB /* Helpers */,
 				E9C73BD12B69750C00E531AB /* Resourses */,
 			);
 			path = TripNN;
@@ -83,10 +83,18 @@
 		E9C73BD62B69780100E531AB /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				E9C73BD32B6977FA00E531AB /* Montserrat-VariableFont_wght.ttf */,
+				E9C73BD32B6977FA00E531AB /* Montserrat.ttf */,
 				E9C73BD22B6977FA00E531AB /* RacingSansOne-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E9C73BD92B69803900E531AB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E9C73BD72B69802E00E531AB /* UIColor+Extensions.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,9 +157,8 @@
 			files = (
 				E9C73BCA2B6973F900E531AB /* LaunchScreen.storyboard in Resources */,
 				E9C73BC72B6973F900E531AB /* Assets.xcassets in Resources */,
-				E9C73BC52B6973F700E531AB /* Main.storyboard in Resources */,
 				E9C73BD42B6977FA00E531AB /* RacingSansOne-Regular.ttf in Resources */,
-				E9C73BD52B6977FA00E531AB /* Montserrat-VariableFont_wght.ttf in Resources */,
+				E9C73BD52B6977FA00E531AB /* Montserrat.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,20 +172,13 @@
 				E9C73BC22B6973F700E531AB /* ViewController.swift in Sources */,
 				E9C73BBE2B6973F700E531AB /* AppDelegate.swift in Sources */,
 				E9C73BC02B6973F700E531AB /* SceneDelegate.swift in Sources */,
+				E9C73BD82B69802F00E531AB /* UIColor+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E9C73BC32B6973F700E531AB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E9C73BC42B6973F700E531AB /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E9C73BC82B6973F900E531AB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -321,7 +321,6 @@
 				INFOPLIST_FILE = TripNN/Resourses/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -350,7 +349,6 @@
 				INFOPLIST_FILE = TripNN/Resourses/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

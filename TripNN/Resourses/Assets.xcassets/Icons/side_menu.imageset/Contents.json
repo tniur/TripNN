@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "TripNN.svg",
+      "filename" : "menu.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "TripNN@2x.png",
+      "filename" : "menu@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "TripNN@3x.png",
+      "filename" : "menu@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
