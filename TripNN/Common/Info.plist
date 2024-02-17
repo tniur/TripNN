@@ -4,7 +4,9 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Montserrat.ttf</string>
+		<string>Montserrat-Regular.ttf</string>
+        <string>Montserrat-Medium.ttf</string>
+        <string>Montserrat-Black.ttf</string>
 		<string>RacingSansOne-Regular.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
