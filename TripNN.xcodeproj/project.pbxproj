@@ -20,6 +20,7 @@
 		E96949402B80AA3800622949 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E969493A2B80AA3800622949 /* Montserrat-Bold.ttf */; };
 		E96949412B80AA3800622949 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E969493B2B80AA3800622949 /* Montserrat-ExtraBold.ttf */; };
 		E96949422B80AA3800622949 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E969493C2B80AA3800622949 /* Montserrat-SemiBold.ttf */; };
+		E96949442B812F2200622949 /* ItemCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96949432B812F2200622949 /* ItemCardModel.swift */; };
 		E9C73BBE2B6973F700E531AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BBD2B6973F700E531AB /* AppDelegate.swift */; };
 		E9C73BC02B6973F700E531AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BBF2B6973F700E531AB /* SceneDelegate.swift */; };
 		E9C73BC22B6973F700E531AB /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BC12B6973F700E531AB /* HomeScreenViewController.swift */; };
@@ -43,6 +44,7 @@
 		E969493A2B80AA3800622949 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		E969493B2B80AA3800622949 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
 		E969493C2B80AA3800622949 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		E96949432B812F2200622949 /* ItemCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardModel.swift; sourceTree = "<group>"; };
 		E9C73BBA2B6973F700E531AB /* TripNN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripNN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9C73BBD2B6973F700E531AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9C73BBF2B6973F700E531AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 		E96949202B7D2F2700622949 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E96949432B812F2200622949 /* ItemCardModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				E969492E2B7EABAF00622949 /* View.swift in Sources */,
 				E96949272B7E0D8600622949 /* Button.swift in Sources */,
 				E9C73BC22B6973F700E531AB /* HomeScreenViewController.swift in Sources */,
+				E96949442B812F2200622949 /* ItemCardModel.swift in Sources */,
 				E9C73BBE2B6973F700E531AB /* AppDelegate.swift in Sources */,
 				E969492B2B7EAAFE00622949 /* ItemCard.swift in Sources */,
 				E96949292B7EA71400622949 /* HomeScreenView.swift in Sources */,

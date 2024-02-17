@@ -11,17 +11,17 @@ final class HomeScreenView: UIView {
     
     // MARK: - Closures
     
-    var onSideMenuAction: (() -> Void)?
+    var onOpeningSideMenuButtonAction: (() -> Void)?
     
     // MARK: - Views
     
-    let topPartView: UIView = {
+    let infoPartView: UIView = {
         let view = UIView()
         view.backgroundColor = .tripnnYellow
         return view
     }()
     
-    let bottomPartView: UIView = {
+    let tripPartView: UIView = {
         let view = UIView()
         view.backgroundColor = .tripnnWhite
         return view
@@ -32,31 +32,24 @@ final class HomeScreenView: UIView {
         return image
     }()
     
-    let sideMenuButton: UIButton = {
+    let openingSideMenuButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "side-menu-icon"), for: .normal)
         return button
     }()
     
-    let allPlaceButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "all-place-icon"), for: .normal)
-        button.setTitle("Все места Нижнего Новгорода", for: .normal)
-        button.titleLabel?.font =  UIFont(name: "Montserrat-Regular", size: 14)
-        button.layer.masksToBounds = false
-        button.layer.cornerRadius = 6
-        button.setTitleColor(.tripnnDark, for: .normal)
-        button.backgroundColor = .tripnnWhite
-        button.addViewShadow()
-        button.setInsets(forContentPadding: UIEdgeInsets(top: 0, left: 13, bottom: 0, right: 13), imageTitlePadding: 13)
-        
-        return button
-    }()
-    
-    let topPartStack: UIStackView = {
+    let infoPartStack: UIStackView = {
         let stack = UIStackView()
         stack.spacing = 22
         stack.axis = .vertical
+        stack.alignment = .center
+        return stack
+    }()
+    
+    let recommendationsHeaderStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.distribution = .fillProportionally
         stack.alignment = .center
         
         return stack
@@ -78,13 +71,23 @@ final class HomeScreenView: UIView {
         return button
     }()
     
-    let recommendationsHeaderStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.distribution = .fillProportionally
-        stack.alignment = .center
-        
-        return stack
+    let itemCardView: ItemCard = {
+        let card = ItemCard()
+        return card
+    }()
+    
+    let allPlaceButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "all-place-icon"), for: .normal)
+        button.setTitle("Все места Нижнего Новгорода", for: .normal)
+        button.titleLabel?.font =  UIFont(name: "Montserrat-Regular", size: 14)
+        button.layer.masksToBounds = false
+        button.layer.cornerRadius = 6
+        button.setTitleColor(.tripnnDark, for: .normal)
+        button.backgroundColor = .tripnnWhite
+        button.addViewShadow()
+        button.setInsets(forContentPadding: UIEdgeInsets(top: 0, left: 13, bottom: 0, right: 13), imageTitlePadding: 13)
+        return button
     }()
     
     let newTripView: UIView = {
@@ -92,7 +95,7 @@ final class HomeScreenView: UIView {
         return view
     }()
     
-    let newTripCircleView: UIView = {
+    let newTripBackgroundCircleView: UIView = {
         let view = UIView()
         view.backgroundColor = .tripNNYellow
         view.addViewShadow()
@@ -100,22 +103,6 @@ final class HomeScreenView: UIView {
         return view
     }()
     
-    let newTripTopLabelPartView: UILabel = {
-        let label = UILabel()
-        label.text = "НОВЫЙ"
-        label.font =  UIFont(name: "Montserrat-Black", size: 40)
-        label.textColor = .tripnnDark
-        return label
-    }()
-    
-    let newTripBottomLabelPartView: UILabel = {
-        let label = UILabel()
-        label.text = "МАРШРУТ"
-        label.font =  UIFont(name: "Montserrat-Black", size: 40)
-        label.textColor = .tripnnDark
-        return label
-    }()
-
     let newTripLabelStack: UIStackView = {
        let stack = UIStackView()
         stack.axis = .vertical
@@ -124,17 +111,28 @@ final class HomeScreenView: UIView {
         return stack
     }()
     
+    let newTripFirstLineLabelPartView: UILabel = {
+        let label = UILabel()
+        label.text = "НОВЫЙ"
+        label.font =  UIFont(name: "Montserrat-Black", size: 40)
+        label.textColor = .tripnnDark
+        return label
+    }()
+    
+    let newTripSecondLineLabelPartView: UILabel = {
+        let label = UILabel()
+        label.text = "МАРШРУТ"
+        label.font =  UIFont(name: "Montserrat-Black", size: 40)
+        label.textColor = .tripnnDark
+        return label
+    }()
+    
     let newTripSublabelView: UILabel = {
         let label = UILabel()
         label.text = "создать"
         label.font =  UIFont(name: "Montserrat-Regular", size: 12)
         label.textColor = .tripnnDark
         return label
-    }()
-    
-    let placeCardView: ItemCard = {
-        let card = ItemCard()
-        return card
     }()
     
     // MARK: - Init
@@ -161,14 +159,15 @@ final class HomeScreenView: UIView {
     // MARK: - View Hierarchy
     
     private func setupViews() {
-        self.addSubview(topPartView)
-        self.addSubview(bottomPartView)
-        topPartView.addSubview(logoImage)
-        topPartView.addSubview(sideMenuButton)
-        topPartView.addSubview(topPartStack)
+        self.addSubview(infoPartView)
+        self.addSubview(tripPartView)
         
-        bottomPartView.addSubview(newTripView)
-        newTripView.addSubview(newTripCircleView)
+        infoPartView.addSubview(logoImage)
+        infoPartView.addSubview(openingSideMenuButton)
+        infoPartView.addSubview(infoPartStack)
+        
+        tripPartView.addSubview(newTripView)
+        newTripView.addSubview(newTripBackgroundCircleView)
         
         newTripView.addSubview(newTripLabelStack)
         newTripView.addSubview(newTripSublabelView)
@@ -177,55 +176,65 @@ final class HomeScreenView: UIView {
     }
     
     private func setupViewContent() {
-        placeCardView.configure(image: UIImage(named: "place_1")!, type: "Маршруты", title: "Историческая часть города", costInfo: "0 – 500₽")
+        itemCardView.configure(cardModel: ItemCardModel(image: UIImage(named: "place_1")!, type: .route, title: "Историческая часть города", costInfo: "0 – 500₽"))
     }
     
     private func setupStacks() {
-        topPartStack.addArrangedSubview(recommendationsHeaderStack)
-        topPartStack.addArrangedSubview(placeCardView)
-        topPartStack.addArrangedSubview(allPlaceButton)
+        infoPartStack.addArrangedSubview(recommendationsHeaderStack)
+        infoPartStack.addArrangedSubview(itemCardView)
+        infoPartStack.addArrangedSubview(allPlaceButton)
         
         recommendationsHeaderStack.addArrangedSubview(recommendationsLabel)
         recommendationsHeaderStack.addArrangedSubview(allRecommendationsButton)
         
-        newTripLabelStack.addArrangedSubview(newTripTopLabelPartView)
-        newTripLabelStack.addArrangedSubview(newTripBottomLabelPartView)
+        newTripLabelStack.addArrangedSubview(newTripFirstLineLabelPartView)
+        newTripLabelStack.addArrangedSubview(newTripSecondLineLabelPartView)
+    }
+    
+    // MARK: - Actions
+    
+    private func addActions() {
+        openingSideMenuButton.addTarget(self, action: #selector(openSideMenu), for: .touchUpInside)
+    }
+
+    @objc private func openSideMenu() {
+        onOpeningSideMenuButtonAction?()
     }
     
     // MARK: - Constraints
     
     private func setupConstrains() {
-        setupTopPartViewConstraints()
-        setupBottomPartViewConstraints()
+        setupInfoPartViewConstraints()
+        setupTripPartViewConstraints()
         setupLogoImageConstraints()
-        setupSideMenuButtonConstraints()
-        setupTopPartStackConstraints()
+        setupOpeningSideMenuButtonConstraints()
+        setupInfoPartStackConstraints()
         setupAllPlaceButtonConstraints()
         setupRecommendationsHeaderStackConstraints()
         setupNewTripViewConstraints()
-        setupNewTripCircleViewConstraints()
+        setupNewTripBackgroundCircleViewConstraints()
         setupNewTripLabelStackConstraints()
         setupNewTripSublabelViewConstraints()
-        setupPlaceCardViewConstraints()
+        setupItemCardViewConstraints()
     }
     
-    private func setupTopPartViewConstraints() {
-        topPartView.translatesAutoresizingMaskIntoConstraints = false
+    private func setupInfoPartViewConstraints() {
+        infoPartView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
-            topPartView.topAnchor.constraint(equalTo: self.topAnchor),
-            topPartView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            topPartView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            topPartView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -self.frame.height / 2)
+            infoPartView.topAnchor.constraint(equalTo: self.topAnchor),
+            infoPartView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            infoPartView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            infoPartView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -self.frame.height / 2)
         ])
     }
     
-    private func setupBottomPartViewConstraints() {
-        bottomPartView.translatesAutoresizingMaskIntoConstraints = false
+    private func setupTripPartViewConstraints() {
+        tripPartView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
-            bottomPartView.topAnchor.constraint(equalTo: topPartView.bottomAnchor),
-            bottomPartView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            bottomPartView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            bottomPartView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            tripPartView.topAnchor.constraint(equalTo: infoPartView.bottomAnchor),
+            tripPartView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            tripPartView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            tripPartView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
     
@@ -237,39 +246,39 @@ final class HomeScreenView: UIView {
         ])
     }
     
-    private func setupSideMenuButtonConstraints() {
-        sideMenuButton.translatesAutoresizingMaskIntoConstraints = false
+    private func setupOpeningSideMenuButtonConstraints() {
+        openingSideMenuButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
-            sideMenuButton.centerYAnchor.constraint(equalTo: logoImage.centerYAnchor),
-            sideMenuButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 14),
-            sideMenuButton.widthAnchor.constraint(equalToConstant: 44),
-            sideMenuButton.heightAnchor.constraint(equalToConstant: 44)
+            openingSideMenuButton.centerYAnchor.constraint(equalTo: logoImage.centerYAnchor),
+            openingSideMenuButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 14),
+            openingSideMenuButton.widthAnchor.constraint(equalToConstant: 44),
+            openingSideMenuButton.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
     
-    private func setupTopPartStackConstraints() {
-        topPartStack.translatesAutoresizingMaskIntoConstraints = false
+    private func setupInfoPartStackConstraints() {
+        infoPartStack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
-            topPartStack.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 25),
-            topPartStack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            topPartStack.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+            infoPartStack.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 25),
+            infoPartStack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            infoPartStack.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])
     }
     
     private func setupRecommendationsHeaderStackConstraints() {
         recommendationsHeaderStack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
-            recommendationsHeaderStack.topAnchor.constraint(equalTo: topPartStack.topAnchor, constant: 0),
-            recommendationsHeaderStack.leadingAnchor.constraint(equalTo: topPartStack.leadingAnchor, constant: 16),
-            recommendationsHeaderStack.trailingAnchor.constraint(equalTo: topPartStack.trailingAnchor, constant: -16),
+            recommendationsHeaderStack.topAnchor.constraint(equalTo: infoPartStack.topAnchor, constant: 0),
+            recommendationsHeaderStack.leadingAnchor.constraint(equalTo: infoPartStack.leadingAnchor, constant: 16),
+            recommendationsHeaderStack.trailingAnchor.constraint(equalTo: infoPartStack.trailingAnchor, constant: -16),
         ])
     }
     
     private func setupAllPlaceButtonConstraints() {
         allPlaceButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
-            allPlaceButton.leadingAnchor.constraint(equalTo: topPartStack.leadingAnchor, constant: 16),
-            allPlaceButton.trailingAnchor.constraint(equalTo: topPartStack.trailingAnchor, constant: -16),
+            allPlaceButton.leadingAnchor.constraint(equalTo: infoPartStack.leadingAnchor, constant: 16),
+            allPlaceButton.trailingAnchor.constraint(equalTo: infoPartStack.trailingAnchor, constant: -16),
             allPlaceButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
@@ -277,22 +286,22 @@ final class HomeScreenView: UIView {
     private func setupNewTripViewConstraints() {
         newTripView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
-            newTripView.centerXAnchor.constraint(equalTo: bottomPartView.centerXAnchor),
-            newTripView.centerYAnchor.constraint(equalTo: bottomPartView.centerYAnchor),
+            newTripView.centerXAnchor.constraint(equalTo: tripPartView.centerXAnchor),
+            newTripView.centerYAnchor.constraint(equalTo: tripPartView.centerYAnchor),
             newTripView.widthAnchor.constraint(equalToConstant: self.bounds.width/2.5),
             newTripView.heightAnchor.constraint(equalToConstant: self.bounds.width/2.5)
         ])
     }
     
-    private func setupNewTripCircleViewConstraints() {
-        newTripCircleView.translatesAutoresizingMaskIntoConstraints = false
+    private func setupNewTripBackgroundCircleViewConstraints() {
+        newTripBackgroundCircleView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
-            newTripCircleView.centerXAnchor.constraint(equalTo: newTripView.centerXAnchor),
-            newTripCircleView.centerYAnchor.constraint(equalTo: newTripView.centerYAnchor),
-            newTripCircleView.widthAnchor.constraint(equalToConstant: self.bounds.width/2.5),
-            newTripCircleView.heightAnchor.constraint(equalToConstant: self.bounds.width/2.5)
+            newTripBackgroundCircleView.centerXAnchor.constraint(equalTo: newTripView.centerXAnchor),
+            newTripBackgroundCircleView.centerYAnchor.constraint(equalTo: newTripView.centerYAnchor),
+            newTripBackgroundCircleView.widthAnchor.constraint(equalToConstant: self.bounds.width/2.5),
+            newTripBackgroundCircleView.heightAnchor.constraint(equalToConstant: self.bounds.width/2.5)
         ])
-        newTripCircleView.layer.cornerRadius = self.bounds.width/5
+        newTripBackgroundCircleView.layer.cornerRadius = self.bounds.width/5
     }
     
     private func setupNewTripLabelStackConstraints() {
@@ -308,29 +317,17 @@ final class HomeScreenView: UIView {
     private func setupNewTripSublabelViewConstraints() {
         newTripSublabelView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
-            newTripSublabelView.centerXAnchor.constraint(equalTo: bottomPartView.centerXAnchor),
-            newTripSublabelView.topAnchor.constraint(equalTo: newTripBottomLabelPartView.topAnchor, constant: self.bounds.width/5),
+            newTripSublabelView.centerXAnchor.constraint(equalTo: tripPartView.centerXAnchor),
+            newTripSublabelView.topAnchor.constraint(equalTo: newTripSecondLineLabelPartView.topAnchor, constant: self.bounds.width/5),
         ])
     }
     
-    private func setupPlaceCardViewConstraints() {
-        placeCardView.translatesAutoresizingMaskIntoConstraints = false
+    private func setupItemCardViewConstraints() {
+        itemCardView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
-            placeCardView.widthAnchor.constraint(equalToConstant: self.bounds.width - 56),
-            placeCardView.heightAnchor.constraint(equalToConstant: 132)
+            itemCardView.widthAnchor.constraint(equalToConstant: self.bounds.width - 56),
+            itemCardView.heightAnchor.constraint(equalToConstant: 132)
         ])
-    }
-    
-    // MARK: - Actions
-    
-    private func addActions() {
-        sideMenuButton.addTarget(self, action: #selector(sideMenuAction), for: .touchUpInside)
-        // allRecommendationsButton.addTarget(self, action: #selector(allRecommendationsAction), for: .touchUpInside)
-        // allPlaceButton.addTarget(self, action: #selector(allPlaceAction), for: .touchUpInside)
-    }
-
-    @objc private func sideMenuAction() {
-        onSideMenuAction?()
     }
     
 }

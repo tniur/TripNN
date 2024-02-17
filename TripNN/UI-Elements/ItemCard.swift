@@ -89,11 +89,17 @@ final class ItemCard: UIView {
     
     // MARK: - Configure
     
-    func configure(image: UIImage, type: String, title: String, costInfo: String) {
-        titleLabel.text = title
-        typeLabel.text = type
-        cardImage.image = image
-        costLabel.text = costInfo
+    func configure(cardModel: ItemCardModel) {
+        titleLabel.text = cardModel.title
+        cardImage.image = cardModel.image
+        costLabel.text = cardModel.costInfo
+        
+        switch cardModel.type {
+        case .route:
+            typeLabel.text = "Маршрут"
+        case .place:
+            typeLabel.text = "Место"
+        }
     }
     
     // MARK: - Setup
@@ -101,6 +107,7 @@ final class ItemCard: UIView {
     private func setup() {
         setupViews()
         setupConstrains()
+        addViewShadow()
     }
     
     private func setupViews() {

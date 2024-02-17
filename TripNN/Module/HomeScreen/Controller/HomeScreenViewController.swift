@@ -20,7 +20,7 @@ final class HomeScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        homeScreenView?.onSideMenuAction = { [weak self] in self?.sideMenuAction() }
+        homeScreenView?.onOpeningSideMenuButtonAction = { [weak self] in self?.sideMenuAction() }
     }
     
     override func loadView() {
