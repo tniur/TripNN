@@ -20,7 +20,7 @@ class HSCycleGalleryViewLayout: UICollectionViewFlowLayout {
         self.scrollDirection = .horizontal
         // 下面 layoutAttributesForElements 中将item scale变换后，自然有空隙了
         self.minimumInteritemSpacing = 0
-        self.minimumLineSpacing = 0
+        self.minimumLineSpacing = -15
         
         // 为了让第一张图片与最后一张图片出现在最中央
         let left = (self.collectionView!.bounds.width - itemWidth) / 2

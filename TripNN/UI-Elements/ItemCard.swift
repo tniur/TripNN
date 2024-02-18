@@ -1,5 +1,5 @@
 //
-//  ItemCard.swift
+//  ItemCardCell.swift
 //  TripNN
 //
 //  Created by Pavel on 15.02.2024.
@@ -16,18 +16,25 @@ final class ItemCardCell: UICollectionViewCell {
         stack.backgroundColor = .tripnnWhite
         stack.layer.masksToBounds = false
         stack.layer.cornerRadius = 6
-        stack.spacing = 20
         stack.axis = .horizontal
         stack.alignment = .center
-        stack.distribution = .fillEqually
+        stack.distribution = .equalSpacing
         return stack
+    }()
+    
+    let cardImageContainer: UIView = {
+        let view = UIView()
+        view.layer.masksToBounds = false
+        view.backgroundColor = .black
+        view.layer.cornerRadius = 6
+        return view
     }()
     
     let cardImage: UIImageView = {
         let image = UIImageView()
         image.layer.masksToBounds = false
         image.layer.cornerRadius = 6
-        image.contentMode = .scaleAspectFill
+        image.contentMode = .scaleToFill
         return image
     }()
     
@@ -100,6 +107,7 @@ final class ItemCardCell: UICollectionViewCell {
         case .place:
             typeLabel.text = "Место"
         }
+        
     }
     
     // MARK: - Setup
@@ -112,11 +120,12 @@ final class ItemCardCell: UICollectionViewCell {
     
     private func setupViews() {
         addSubview(cardStack)
+        cardImageContainer.addSubview(cardImage)
         setupStacks()
     }
     
     private func setupStacks() {
-        cardStack.addArrangedSubview(cardImage)
+        cardStack.addArrangedSubview(cardImageContainer)
         cardStack.addArrangedSubview(infoStack)
         infoStack.addArrangedSubview(typeLabel)
         infoStack.addArrangedSubview(titleLabel)
@@ -129,6 +138,8 @@ final class ItemCardCell: UICollectionViewCell {
     
     private func setupConstrains() {
         setupCardStackConstrains()
+        setupCardImageContainerConstrains()
+        setupCardImageConstrains()
         setupInfoStackConstrains()
     }
     
@@ -140,11 +151,28 @@ final class ItemCardCell: UICollectionViewCell {
         ])
     }
     
+    private func setupCardImageConstrains() {
+        cardImage.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            cardImage.heightAnchor.constraint(equalTo: heightAnchor),
+            cardImage.widthAnchor.constraint(equalToConstant: self.bounds.width/2),
+        ])
+    }
+    
+    private func setupCardImageContainerConstrains() {
+        cardImageContainer.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            cardImageContainer.heightAnchor.constraint(equalTo: heightAnchor),
+            cardImageContainer.widthAnchor.constraint(equalToConstant: self.bounds.width/2),
+        ])
+    }
+    
     private func setupInfoStackConstrains() {
         infoStack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             infoStack.topAnchor.constraint(equalTo: cardStack.topAnchor, constant: 9),
             infoStack.bottomAnchor.constraint(equalTo: cardStack.bottomAnchor, constant: -9),
+            infoStack.widthAnchor.constraint(equalToConstant: self.bounds.width/2-10),
         ])
     }
     

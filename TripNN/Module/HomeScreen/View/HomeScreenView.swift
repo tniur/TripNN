@@ -40,9 +40,9 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     
     let infoPartStack: UIStackView = {
         let stack = UIStackView()
-        stack.spacing = 22
         stack.axis = .vertical
         stack.alignment = .center
+        stack.distribution = .equalSpacing
         return stack
     }()
     
@@ -76,10 +76,10 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         return view
     }()
     
-    let pager: HSCycleGalleryView = {
-        let pager = HSCycleGalleryView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 155))
-        pager.contentBackgroundColor = .tripnnYellow
-        return pager
+    let recommendationsCarouselCycleGallery: HSCycleGalleryView = {
+        let gallery = HSCycleGalleryView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 155))
+        gallery.contentBackgroundColor = .tripnnYellow
+        return gallery
     }()
     
     let allPlaceButton: UIButton = {
@@ -159,11 +159,6 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         setupViews()
         setupConstrains()
         addActions()
-        
-        pager.register(cellClass: ItemCardCell.self, forCellReuseIdentifier: "cell")
-        pager.delegate = self
-        recommendationsCarouselView.addSubview(pager)
-        pager.reloadData()
     }
     
     // MARK: - View Hierarchy
@@ -183,6 +178,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         newTripView.addSubview(newTripSublabelView)
         
         setupStacks()
+        setupCycleGalleryView()
     }
     
     private func setupStacks() {
@@ -195,6 +191,13 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         
         newTripLabelStack.addArrangedSubview(newTripFirstLineLabelPartView)
         newTripLabelStack.addArrangedSubview(newTripSecondLineLabelPartView)
+    }
+    
+    private func setupCycleGalleryView() {
+        recommendationsCarouselCycleGallery.register(cellClass: ItemCardCell.self, forCellReuseIdentifier: "cell")
+        recommendationsCarouselCycleGallery.delegate = self
+        recommendationsCarouselView.addSubview(recommendationsCarouselCycleGallery)
+        recommendationsCarouselCycleGallery.reloadData()
     }
     
     // MARK: - Actions
@@ -249,7 +252,8 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         logoImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
             logoImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            logoImage.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20)
+            logoImage.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
+            logoImage.heightAnchor.constraint(equalToConstant: 28.6)
         ])
     }
     
@@ -267,6 +271,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         infoPartStack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
             infoPartStack.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 25),
+            infoPartStack.bottomAnchor.constraint(equalTo: infoPartView.bottomAnchor, constant: -25),
             infoPartStack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             infoPartStack.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])
@@ -347,6 +352,8 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     
 }
 
+// MARK: - Extensions
+
 extension HomeScreenView {
     
     func numberOfItemInCycleGalleryView(_ cycleGalleryView: HSCycleGalleryView) -> Int {
@@ -363,11 +370,9 @@ extension HomeScreenView {
         configCell(for: cell)
         return cell
     }
-
-}
-
-extension HomeScreenView {
+    
     func configCell(for cell: ItemCardCell) {
         cell.configure(cardModel: ItemCardModel(image: UIImage(named: "place_1")!, type: .route, title: "Историческая часть города", costInfo: "0 – 500₽"))
     }
+
 }
