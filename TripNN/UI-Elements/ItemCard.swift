@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ItemCard: UIView {
+final class ItemCardCell: UICollectionViewCell {
     
     // MARK: - Views
     
@@ -16,7 +16,7 @@ final class ItemCard: UIView {
         stack.backgroundColor = .tripnnWhite
         stack.layer.masksToBounds = false
         stack.layer.cornerRadius = 6
-        stack.spacing = 12
+        stack.spacing = 20
         stack.axis = .horizontal
         stack.alignment = .center
         stack.distribution = .fillEqually

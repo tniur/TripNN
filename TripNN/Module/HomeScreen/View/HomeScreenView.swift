@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HomeScreenView: UIView {
+final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     
     // MARK: - Closures
     
@@ -71,9 +71,15 @@ final class HomeScreenView: UIView {
         return button
     }()
     
-    let itemCardView: ItemCard = {
-        let card = ItemCard()
-        return card
+    let recommendationsCarouselView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    let pager: HSCycleGalleryView = {
+        let pager = HSCycleGalleryView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 155))
+        pager.contentBackgroundColor = .tripnnYellow
+        return pager
     }()
     
     let allPlaceButton: UIButton = {
@@ -104,7 +110,7 @@ final class HomeScreenView: UIView {
     }()
     
     let newTripLabelStack: UIStackView = {
-       let stack = UIStackView()
+        let stack = UIStackView()
         stack.axis = .vertical
         stack.alignment = .center
         stack.distribution = .fillEqually
@@ -152,8 +158,12 @@ final class HomeScreenView: UIView {
     private func setup() {
         setupViews()
         setupConstrains()
-        setupViewContent()
         addActions()
+        
+        pager.register(cellClass: ItemCardCell.self, forCellReuseIdentifier: "cell")
+        pager.delegate = self
+        recommendationsCarouselView.addSubview(pager)
+        pager.reloadData()
     }
     
     // MARK: - View Hierarchy
@@ -175,13 +185,9 @@ final class HomeScreenView: UIView {
         setupStacks()
     }
     
-    private func setupViewContent() {
-        itemCardView.configure(cardModel: ItemCardModel(image: UIImage(named: "place_1")!, type: .route, title: "Историческая часть города", costInfo: "0 – 500₽"))
-    }
-    
     private func setupStacks() {
         infoPartStack.addArrangedSubview(recommendationsHeaderStack)
-        infoPartStack.addArrangedSubview(itemCardView)
+        infoPartStack.addArrangedSubview(recommendationsCarouselView)
         infoPartStack.addArrangedSubview(allPlaceButton)
         
         recommendationsHeaderStack.addArrangedSubview(recommendationsLabel)
@@ -196,7 +202,7 @@ final class HomeScreenView: UIView {
     private func addActions() {
         openingSideMenuButton.addTarget(self, action: #selector(openSideMenu), for: .touchUpInside)
     }
-
+    
     @objc private func openSideMenu() {
         onOpeningSideMenuButtonAction?()
     }
@@ -215,7 +221,8 @@ final class HomeScreenView: UIView {
         setupNewTripBackgroundCircleViewConstraints()
         setupNewTripLabelStackConstraints()
         setupNewTripSublabelViewConstraints()
-        setupItemCardViewConstraints()
+        setupRecommendationsCarouselViewConstraints()
+        setupAllRecommendationsButtonConstraints()
     }
     
     private func setupInfoPartViewConstraints() {
@@ -274,6 +281,13 @@ final class HomeScreenView: UIView {
         ])
     }
     
+    private func setupAllRecommendationsButtonConstraints() {
+        allRecommendationsButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate ([
+            allRecommendationsButton.heightAnchor.constraint(equalTo: recommendationsLabel.heightAnchor)
+        ])
+    }
+    
     private func setupAllPlaceButtonConstraints() {
         allPlaceButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
@@ -322,12 +336,38 @@ final class HomeScreenView: UIView {
         ])
     }
     
-    private func setupItemCardViewConstraints() {
-        itemCardView.translatesAutoresizingMaskIntoConstraints = false
+    private func setupRecommendationsCarouselViewConstraints() {
+        recommendationsCarouselView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
-            itemCardView.widthAnchor.constraint(equalToConstant: self.bounds.width - 56),
-            itemCardView.heightAnchor.constraint(equalToConstant: 132)
+            recommendationsCarouselView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            recommendationsCarouselView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            recommendationsCarouselView.heightAnchor.constraint(equalToConstant: 155),
         ])
     }
     
+}
+
+extension HomeScreenView {
+    
+    func numberOfItemInCycleGalleryView(_ cycleGalleryView: HSCycleGalleryView) -> Int {
+        return 3
+    }
+    
+    func cycleGalleryView(_ cycleGalleryView: HSCycleGalleryView, cellForItemAtIndex index: Int) -> UICollectionViewCell {
+        let cell = cycleGalleryView.dequeueReusableCell(withIdentifier: "cell", for: IndexPath(item: index, section: 0))
+        
+        guard let cell = cell as? ItemCardCell else {
+            return UICollectionViewCell()
+        }
+        
+        configCell(for: cell)
+        return cell
+    }
+
+}
+
+extension HomeScreenView {
+    func configCell(for cell: ItemCardCell) {
+        cell.configure(cardModel: ItemCardModel(image: UIImage(named: "place_1")!, type: .route, title: "Историческая часть города", costInfo: "0 – 500₽"))
+    }
 }
