@@ -12,6 +12,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     // MARK: - Closures
     
     var onOpeningSideMenuButtonAction: (() -> Void)?
+    var onNewTripButtonAction: (() -> Void)?
     
     // MARK: - Views
     
@@ -58,6 +59,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     let recommendationsLabel: UILabel = {
         let label = UILabel()
         label.text = "Рекомендованные маршруты"
+        label.textColor = .tripnnDark
         label.font =  UIFont(name: "Montserrat-Medium", size: 16)
         return label
     }()
@@ -141,6 +143,11 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         return label
     }()
     
+    let newTripButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
+    
     // MARK: - Init
     
     override init(frame: CGRect) {
@@ -177,6 +184,8 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         newTripView.addSubview(newTripLabelStack)
         newTripView.addSubview(newTripSublabelView)
         
+        newTripView.addSubview(newTripButton)
+        
         setupStacks()
         setupCycleGalleryView()
     }
@@ -204,10 +213,15 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     
     private func addActions() {
         openingSideMenuButton.addTarget(self, action: #selector(openSideMenu), for: .touchUpInside)
+        newTripButton.addTarget(self, action: #selector(createNewTrip), for: .touchUpInside)
     }
     
     @objc private func openSideMenu() {
         onOpeningSideMenuButtonAction?()
+    }
+    
+    @objc private func createNewTrip() {
+        onNewTripButtonAction?()
     }
     
     // MARK: - Constraints
@@ -226,6 +240,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         setupNewTripSublabelViewConstraints()
         setupRecommendationsCarouselViewConstraints()
         setupAllRecommendationsButtonConstraints()
+        setupNewTripButtonConstraints()
     }
     
     private func setupInfoPartViewConstraints() {
@@ -341,6 +356,16 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         ])
     }
     
+    private func setupNewTripButtonConstraints() {
+        newTripButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate ([
+            newTripButton.centerXAnchor.constraint(equalTo: tripPartView.centerXAnchor),
+            newTripButton.centerYAnchor.constraint(equalTo: tripPartView.centerYAnchor),
+            newTripButton.widthAnchor.constraint(equalToConstant: self.bounds.width/2.5+100),
+            newTripButton.heightAnchor.constraint(equalToConstant: self.bounds.width/2.5)
+        ])
+    }
+    
     private func setupRecommendationsCarouselViewConstraints() {
         recommendationsCarouselView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
@@ -352,7 +377,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     
 }
 
-// MARK: - Extensions
+// MARK: - Cycle Gallery Extensions
 
 extension HomeScreenView {
     

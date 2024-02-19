@@ -25,7 +25,6 @@ final class ItemCardCell: UICollectionViewCell {
     let cardImageContainer: UIView = {
         let view = UIView()
         view.layer.masksToBounds = false
-        view.backgroundColor = .black
         view.layer.cornerRadius = 6
         return view
     }()

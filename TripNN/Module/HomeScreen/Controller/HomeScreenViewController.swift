@@ -20,18 +20,32 @@ final class HomeScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        homeScreenView?.onOpeningSideMenuButtonAction = { [weak self] in self?.sideMenuAction() }
+        setActions()
     }
     
     override func loadView() {
         self.view = HomeScreenView(frame: UIScreen.main.bounds)
     }
     
-    // MARK: - Actions
+    // MARK: - Styles
     
-    @objc
-    private func sideMenuAction() {
-        print("Open Side Menu!")
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
     }
     
+    // MARK: - Actions
+    
+    private func setActions() {
+        homeScreenView?.onOpeningSideMenuButtonAction = { [weak self] in self?.sideMenuAction() }
+        homeScreenView?.onNewTripButtonAction = { [weak self] in self?.createNewTrip() }
+    }
+    
+    @objc private func sideMenuAction() {
+        print("HELLO")
+    }
+    
+    @objc private func createNewTrip() {
+        print("HELLO")
+    }
+ 
 }
