@@ -20,7 +20,9 @@ final class HomeScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setActions()
+        setupActions()
+        setupNavigationBarStyle()
+        
     }
     
     override func loadView() {
@@ -33,19 +35,27 @@ final class HomeScreenViewController: UIViewController {
         return .darkContent
     }
     
+    private func setupNavigationBarStyle() {
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     // MARK: - Actions
     
-    private func setActions() {
+    private func setupActions() {
         homeScreenView?.onOpeningSideMenuButtonAction = { [weak self] in self?.sideMenuAction() }
         homeScreenView?.onNewTripButtonAction = { [weak self] in self?.createNewTrip() }
     }
     
     @objc private func sideMenuAction() {
-        print("HELLO")
+        let controller = SideMenuViewController()
+        navigationController?.pushViewController(controller, animated: true)
+        navigationController?.navigationBar.tintColor = .black
     }
     
     @objc private func createNewTrip() {
-        print("HELLO")
+        let controller = NewTripSettingsViewController()
+        navigationController?.pushViewController(controller, animated: true)
+        navigationController?.navigationBar.tintColor = .black
     }
  
 }

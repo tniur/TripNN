@@ -30,6 +30,10 @@
 		E9C73BCA2B6973F900E531AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C73BC82B6973F900E531AB /* LaunchScreen.storyboard */; };
 		E9C73BD42B6977FA00E531AB /* RacingSansOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9C73BD22B6977FA00E531AB /* RacingSansOne-Regular.ttf */; };
 		E9C73BD82B69802F00E531AB /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BD72B69802E00E531AB /* UIColor+Extensions.swift */; };
+		E9ED79CE2B83DF5200F4D4EE /* NewTripSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ED79CD2B83DF5200F4D4EE /* NewTripSettingsViewController.swift */; };
+		E9ED79D02B83E28D00F4D4EE /* NavigationBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ED79CF2B83E28D00F4D4EE /* NavigationBackButton.swift */; };
+		E9ED79D42B83E49C00F4D4EE /* NewTripSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ED79D32B83E49C00F4D4EE /* NewTripSettingsView.swift */; };
+		E9ED79D62B841C9000F4D4EE /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ED79D52B841C9000F4D4EE /* SideMenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +62,10 @@
 		E9C73BCB2B6973F900E531AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9C73BD22B6977FA00E531AB /* RacingSansOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RacingSansOne-Regular.ttf"; sourceTree = "<group>"; };
 		E9C73BD72B69802E00E531AB /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		E9ED79CD2B83DF5200F4D4EE /* NewTripSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripSettingsViewController.swift; sourceTree = "<group>"; };
+		E9ED79CF2B83E28D00F4D4EE /* NavigationBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBackButton.swift; sourceTree = "<group>"; };
+		E9ED79D32B83E49C00F4D4EE /* NewTripSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripSettingsView.swift; sourceTree = "<group>"; };
+		E9ED79D52B841C9000F4D4EE /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,16 +88,6 @@
 			path = HSCycleGalleryView;
 			sourceTree = "<group>";
 		};
-		E969491F2B7D2EF800622949 /* HomeScreen */ = {
-			isa = PBXGroup;
-			children = (
-				E96949202B7D2F2700622949 /* Model */,
-				E96949212B7D2F2C00622949 /* View */,
-				E96949222B7D2F3100622949 /* Controller */,
-			);
-			path = HomeScreen;
-			sourceTree = "<group>";
-		};
 		E96949202B7D2F2700622949 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				E96949282B7EA71400622949 /* HomeScreenView.swift */,
+				E9ED79D32B83E49C00F4D4EE /* NewTripSettingsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -110,16 +109,20 @@
 			isa = PBXGroup;
 			children = (
 				E9C73BC12B6973F700E531AB /* HomeScreenViewController.swift */,
+				E9ED79CD2B83DF5200F4D4EE /* NewTripSettingsViewController.swift */,
+				E9ED79D52B841C9000F4D4EE /* SideMenuViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		E96949232B7D582A00622949 /* Module */ = {
+		E96949232B7D582A00622949 /* MVC */ = {
 			isa = PBXGroup;
 			children = (
-				E969491F2B7D2EF800622949 /* HomeScreen */,
+				E96949202B7D2F2700622949 /* Model */,
+				E96949212B7D2F2C00622949 /* View */,
+				E96949222B7D2F3100622949 /* Controller */,
 			);
-			path = Module;
+			path = MVC;
 			sourceTree = "<group>";
 		};
 		E96949242B7D5B0500622949 /* Common */ = {
@@ -147,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				E969492A2B7EAAFE00622949 /* ItemCard.swift */,
+				E9ED79CF2B83E28D00F4D4EE /* NavigationBackButton.swift */,
 			);
 			path = "UI-Elements";
 			sourceTree = "<group>";
@@ -174,7 +178,7 @@
 				E9C73BD92B69803900E531AB /* Helpers */,
 				E96949242B7D5B0500622949 /* Common */,
 				E969492C2B7EAB2D00622949 /* UI-Elements */,
-				E96949232B7D582A00622949 /* Module */,
+				E96949232B7D582A00622949 /* MVC */,
 				E9C73BD12B69750C00E531AB /* Resourses */,
 			);
 			path = TripNN;
@@ -295,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E969492E2B7EABAF00622949 /* View.swift in Sources */,
+				E9ED79D02B83E28D00F4D4EE /* NavigationBackButton.swift in Sources */,
 				E96949272B7E0D8600622949 /* Button.swift in Sources */,
 				E9C73BC22B6973F700E531AB /* HomeScreenViewController.swift in Sources */,
 				E96949442B812F2200622949 /* ItemCardModel.swift in Sources */,
@@ -304,6 +309,9 @@
 				E96949292B7EA71400622949 /* HomeScreenView.swift in Sources */,
 				E9C73BC02B6973F700E531AB /* SceneDelegate.swift in Sources */,
 				E9C73BD82B69802F00E531AB /* UIColor+Extensions.swift in Sources */,
+				E9ED79CE2B83DF5200F4D4EE /* NewTripSettingsViewController.swift in Sources */,
+				E9ED79D42B83E49C00F4D4EE /* NewTripSettingsView.swift in Sources */,
+				E9ED79D62B841C9000F4D4EE /* SideMenuViewController.swift in Sources */,
 				E9055A302B817F2E006CF2BE /* HSCycleGalleryViewLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
