@@ -1,5 +1,5 @@
 //
-//  ItemCardCell.swift
+//  ItemCardTableViewCell.swift
 //  TripNN
 //
 //  Created by Pavel on 15.02.2024.

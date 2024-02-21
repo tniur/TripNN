@@ -156,7 +156,6 @@
 		E96949252B7E0D6A00622949 /* Extantions */ = {
 			isa = PBXGroup;
 			children = (
-				E9055A2C2B817F2E006CF2BE /* HSCycleGalleryView */,
 				E96949262B7E0D8600622949 /* Button.swift */,
 				E969492D2B7EABAF00622949 /* View.swift */,
 			);
@@ -166,6 +165,7 @@
 		E969492C2B7EAB2D00622949 /* UI-Elements */ = {
 			isa = PBXGroup;
 			children = (
+				E9055A2C2B817F2E006CF2BE /* HSCycleGalleryView */,
 				E93A329A2B85EE2B00C1BBB7 /* ItemCard */,
 				E9ED79CF2B83E28D00F4D4EE /* NavigationBackButton.swift */,
 				E93A32942B84B1FF00C1BBB7 /* ScreenTitleLabel.swift */,

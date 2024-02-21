@@ -1,5 +1,5 @@
 //
-//  ItemCardCell.swift
+//  ItemCard.swift
 //  TripNN
 //
 //  Created by Pavel on 15.02.2024.
@@ -178,5 +178,4 @@ final class ItemCard: UIView {
             infoStack.bottomAnchor.constraint(equalTo: cardStack.bottomAnchor, constant: -9),
         ])
     }
-    
 }
