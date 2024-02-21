@@ -15,11 +15,29 @@ class AllRecommendationsViewController: UIViewController {
         return self.view as? AllRecommendationsView
     }
     
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .tripnnDark
+        label.font =  UIFont(name: "Montserrat-SemiBold", size: 12)
+        label.lineBreakMode = .byTruncatingTail
+        label.numberOfLines = 2
+        label.text = "Рекомендованные маршруты"
+        return label
+    }()
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAction()
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.searchController = allRecommendationsView?.searchController
+        
+        navigationController?.navigationBar.tintColor = .tripnnDark
+        
+        navigationItem.title = "Рекомендованные"
+        navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Montserrat-SemiBold", size: 10)!, NSAttributedString.Key.foregroundColor: UIColor.green]
     }
     
     override func loadView() {

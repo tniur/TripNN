@@ -21,13 +21,21 @@ final class HomeScreenViewController: UIViewController {
         super.viewDidLoad()
         
         setupActions()
-        setupNavigationBarStyle()
-        
     }
     
     override func loadView() {
         self.view = HomeScreenView(frame: UIScreen.main.bounds)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setupNavigationBarStyle(isHidden: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        setupNavigationBarStyle(isHidden: false)
+    }
+    
+    
     
     // MARK: - Styles
     
@@ -35,8 +43,8 @@ final class HomeScreenViewController: UIViewController {
         return .darkContent
     }
     
-    private func setupNavigationBarStyle() {
-        navigationController?.navigationBar.isHidden = true
+    private func setupNavigationBarStyle(isHidden: Bool) {
+        navigationController?.navigationBar.isHidden = isHidden
     }
     
     // MARK: - Actions

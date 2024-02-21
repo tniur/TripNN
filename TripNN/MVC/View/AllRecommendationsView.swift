@@ -9,6 +9,15 @@ import UIKit
 
 final class AllRecommendationsView: UIView {
     
+    private var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+    
+    private var isFiltered: Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
+    
     // MARK: - Closures
     
     var onNavigationBackButtonAction: (() -> Void)?
@@ -20,16 +29,9 @@ final class AllRecommendationsView: UIView {
         return button
     }()
     
-    private let screenTitleLabel: ScreenTitleLabel = {
-        let label = ScreenTitleLabel()
-        label.configure(title: "Рекомендованные маршруты")
-        return label
-    }()
-    
-    private let searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.searchBarStyle = .minimal
-        return searchBar
+    let searchController: UISearchController = {
+        let controller = UISearchController(searchResultsController: nil)
+        return controller
     }()
     
     private let tableViewContent: [ItemCardModel] = [
@@ -38,6 +40,8 @@ final class AllRecommendationsView: UIView {
         ItemCardModel(image: UIImage(named: "place_3")!, type: .route, title: "Улица Рождественская", costInfo: "0₽"),
         ItemCardModel(image: UIImage(named: "place_4")!, type: .route, title: "Верхняя часть города", costInfo: "0₽")
     ]
+    
+    private var tableViewFilteredContent: [ItemCardModel] = []
     
     private let tableView: UITableView = .init()
     
@@ -67,13 +71,11 @@ final class AllRecommendationsView: UIView {
         setupConstraints()
         setupAction()
         setupTableView()
+        setupSearchController()
     }
     
     private func setupView() {
-        self.addSubview(navigationBackButton)
-        self.addSubview(screenTitleLabel)
         self.addSubview(tableView)
-        self.addSubview(searchBar)
     }
     
     private func setupTableView() {
@@ -83,11 +85,14 @@ final class AllRecommendationsView: UIView {
         tableView.separatorStyle = .none
     }
     
+    private func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.searchBarStyle = .minimal
+    }
+    
     private func setupConstraints() {
-        setupNavigationBackButtonConstraints()
-        setupScreenTitleLabelConstraints()
         setupTableViewConstraints()
-        setupSearchBarConstraints()
     }
     
     private func setupAction() {
@@ -96,38 +101,10 @@ final class AllRecommendationsView: UIView {
     
     // MARK: - Constraints
     
-    private func setupNavigationBackButtonConstraints() {
-        navigationBackButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            navigationBackButton.widthAnchor.constraint(equalToConstant: 44),
-            navigationBackButton.heightAnchor.constraint(equalToConstant: 44),
-            navigationBackButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
-            navigationBackButton.leadingAnchor.constraint(equalTo: self.leadingAnchor)
-        ])
-    }
-    
-    private func setupScreenTitleLabelConstraints() {
-        screenTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            screenTitleLabel.topAnchor.constraint(equalTo: navigationBackButton.bottomAnchor),
-            screenTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            screenTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-        ])
-    }
-    
-    private func setupSearchBarConstraints() {
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            searchBar.topAnchor.constraint(equalTo: screenTitleLabel.bottomAnchor),
-            searchBar.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 7),
-            searchBar.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -7),
-        ])
-    }
-    
     private func setupTableViewConstraints() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 5),
+            tableView.topAnchor.constraint(equalTo: self.topAnchor),
             tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
@@ -135,20 +112,90 @@ final class AllRecommendationsView: UIView {
     }
 }
 
-extension AllRecommendationsView: UITableViewDataSource {
+extension AllRecommendationsView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableViewContent.count
+        
+        if isFiltered {
+            tableViewFilteredContent.count
+        } else {
+            tableViewContent.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCardCell", for: indexPath) as? ItemCardTableViewCell else { fatalError() }
         
-        cell.configure(cardModel: tableViewContent[indexPath.row])
+        var content: ItemCardModel
+        
+        if isFiltered {
+            content = tableViewFilteredContent[indexPath.row]
+        } else {
+            content = tableViewContent[indexPath.row]
+        }
+        
+        cell.configure(cardModel: content)
         
         return cell
     }
+    
+    public func tableView(
+            _ tableView: UITableView,
+            trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+        ) -> UISwipeActionsConfiguration?
+    {
+            let deleteAction = UIContextualAction(
+                style: .normal,
+                title:  nil,
+                handler: { [weak self] (_, _, success: (Bool) -> Void) in
+                    success(true)
+                    print("Your action in here")
+                }
+            )
+            
+            deleteAction.image = UISwipeActionsConfiguration.makeTitledImage(
+                image: UIImage(named: "delete-favourites"),
+                title: "Удалить из избранных")
+        
+            deleteAction.backgroundColor = .tripnnWhite
+            return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let askAction = UIContextualAction(style: .normal, title: nil) { action, view, complete in
+//          print("Ask!")
+//          complete(true)
+//        }
+//
+//        // here set your image and background color
+//        askAction.image = UIImage(named: "delete-favourites")
+//        askAction.backgroundColor = .tripnnWhite
+//
+//        let blockAction = UIContextualAction(style: .destructive, title: "Block") { action, view, complete in
+//          print("Block")
+//          complete(true)
+//        }
+//
+//        return UISwipeActionsConfiguration(actions: [blockAction, askAction])
+//      }
+//
+//      func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        cell.textLabel?.text = "row: \(indexPath.row)"
+//      }
+    
 }
 
-extension AllRecommendationsView: UITableViewDelegate {
+extension AllRecommendationsView: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
     
+    private func filterContentForSearchText(_ searchText: String) {
+        tableViewFilteredContent = tableViewContent.filter({ (content: ItemCardModel) -> Bool in
+            return content.title.lowercased().contains(searchText.lowercased())
+        })
+        
+        tableView.reloadData()
+    }
+
 }

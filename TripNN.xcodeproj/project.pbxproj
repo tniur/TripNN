@@ -33,10 +33,11 @@
 		E9C73BC22B6973F700E531AB /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BC12B6973F700E531AB /* HomeScreenViewController.swift */; };
 		E9C73BC72B6973F900E531AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9C73BC62B6973F900E531AB /* Assets.xcassets */; };
 		E9C73BCA2B6973F900E531AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C73BC82B6973F900E531AB /* LaunchScreen.storyboard */; };
-		E9C73BD82B69802F00E531AB /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BD72B69802E00E531AB /* UIColor+Extensions.swift */; };
+		E9C73BD82B69802F00E531AB /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BD72B69802E00E531AB /* UIColor.swift */; };
 		E9ED79CE2B83DF5200F4D4EE /* NewTripSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ED79CD2B83DF5200F4D4EE /* NewTripSettingsViewController.swift */; };
 		E9ED79D02B83E28D00F4D4EE /* NavigationBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ED79CF2B83E28D00F4D4EE /* NavigationBackButton.swift */; };
 		E9ED79D42B83E49C00F4D4EE /* NewTripSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ED79D32B83E49C00F4D4EE /* NewTripSettingsView.swift */; };
+		E9FE95CB2B86BB8A009694EC /* UISwipeActionsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FE95CA2B86BB8A009694EC /* UISwipeActionsConfiguration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,10 +69,11 @@
 		E9C73BC62B6973F900E531AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9C73BC92B6973F900E531AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9C73BCB2B6973F900E531AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E9C73BD72B69802E00E531AB /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		E9C73BD72B69802E00E531AB /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		E9ED79CD2B83DF5200F4D4EE /* NewTripSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripSettingsViewController.swift; sourceTree = "<group>"; };
 		E9ED79CF2B83E28D00F4D4EE /* NavigationBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBackButton.swift; sourceTree = "<group>"; };
 		E9ED79D32B83E49C00F4D4EE /* NewTripSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripSettingsView.swift; sourceTree = "<group>"; };
+		E9FE95CA2B86BB8A009694EC /* UISwipeActionsConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISwipeActionsConfiguration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,8 @@
 			children = (
 				E96949262B7E0D8600622949 /* Button.swift */,
 				E969492D2B7EABAF00622949 /* View.swift */,
+				E9FE95CA2B86BB8A009694EC /* UISwipeActionsConfiguration.swift */,
+				E9C73BD72B69802E00E531AB /* UIColor.swift */,
 			);
 			path = Extantions;
 			sourceTree = "<group>";
@@ -193,7 +197,6 @@
 			isa = PBXGroup;
 			children = (
 				E96949252B7E0D6A00622949 /* Extantions */,
-				E9C73BD92B69803900E531AB /* Helpers */,
 				E96949242B7D5B0500622949 /* Common */,
 				E969492C2B7EAB2D00622949 /* UI-Elements */,
 				E96949232B7D582A00622949 /* MVC */,
@@ -225,14 +228,6 @@
 				E96949312B7ED25F00622949 /* Montserrat-Medium.ttf */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		E9C73BD92B69803900E531AB /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				E9C73BD72B69802E00E531AB /* UIColor+Extensions.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,8 +322,9 @@
 				E969492B2B7EAAFE00622949 /* ItemCardCollectionViewCell.swift in Sources */,
 				E96949292B7EA71400622949 /* HomeScreenView.swift in Sources */,
 				E9C73BC02B6973F700E531AB /* SceneDelegate.swift in Sources */,
+				E9FE95CB2B86BB8A009694EC /* UISwipeActionsConfiguration.swift in Sources */,
 				E93A32952B84B1FF00C1BBB7 /* ScreenTitleLabel.swift in Sources */,
-				E9C73BD82B69802F00E531AB /* UIColor+Extensions.swift in Sources */,
+				E9C73BD82B69802F00E531AB /* UIColor.swift in Sources */,
 				E9ED79CE2B83DF5200F4D4EE /* NewTripSettingsViewController.swift in Sources */,
 				E9ED79D42B83E49C00F4D4EE /* NewTripSettingsView.swift in Sources */,
 				E9055A302B817F2E006CF2BE /* HSCycleGalleryViewLayout.swift in Sources */,
