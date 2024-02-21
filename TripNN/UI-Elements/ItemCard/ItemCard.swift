@@ -7,31 +7,31 @@
 
 import UIKit
 
-final class ItemCardCell: UICollectionViewCell {
+final class ItemCard: UIView {
     
-    // MARK: - Views
+    // MARK: - View
     
-    let cardStack: UIStackView = {
-        let stack = UIStackView()
-        stack.backgroundColor = .tripnnWhite
-        stack.layer.masksToBounds = false
-        stack.layer.cornerRadius = 6
-        stack.axis = .horizontal
-        stack.alignment = .center
-        stack.distribution = .equalSpacing
-        return stack
-    }()
-    
-    let cardImageContainer: UIView = {
+    private let containerView: UIView = {
         let view = UIView()
+        view.backgroundColor = .tripnnWhite
+        view.addViewShadow()
         view.layer.masksToBounds = false
         view.layer.cornerRadius = 6
         return view
     }()
     
-    let cardImage: UIImageView = {
+    let cardStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.alignment = .center
+        stack.distribution = .fillEqually
+        stack.spacing = 8
+        return stack
+    }()
+    
+    private let cardImage: UIImageView = {
         let image = UIImageView()
-        image.layer.masksToBounds = false
+        image.clipsToBounds = true
         image.layer.cornerRadius = 6
         image.contentMode = .scaleToFill
         return image
@@ -56,7 +56,7 @@ final class ItemCardCell: UICollectionViewCell {
         let label = UILabel()
         label.font =  UIFont(name: "Montserrat-Regular", size: 16)
         label.lineBreakMode = .byTruncatingTail
-        label.numberOfLines = 2
+        label.numberOfLines = 3
         label.textColor = .tripnnDark
         return label
     }()
@@ -112,19 +112,14 @@ final class ItemCardCell: UICollectionViewCell {
     // MARK: - Setup
     
     private func setup() {
-        setupViews()
-        setupConstrains()
-        addViewShadow()
+        setupView()
+        setupConstraints()
     }
     
-    private func setupViews() {
-        addSubview(cardStack)
-        cardImageContainer.addSubview(cardImage)
-        setupStacks()
-    }
-    
-    private func setupStacks() {
-        cardStack.addArrangedSubview(cardImageContainer)
+    private func setupView() {
+        addSubview(containerView)
+        containerView.addSubview(cardStack)
+        cardStack.addArrangedSubview(cardImage)
         cardStack.addArrangedSubview(infoStack)
         infoStack.addArrangedSubview(typeLabel)
         infoStack.addArrangedSubview(titleLabel)
@@ -133,36 +128,46 @@ final class ItemCardCell: UICollectionViewCell {
         costStack.addArrangedSubview(costLabel)
     }
     
-    // MARK: - Constrains
-    
-    private func setupConstrains() {
-        setupCardStackConstrains()
-        setupCardImageContainerConstrains()
-        setupCardImageConstrains()
+    private func setupConstraints() {
+        setupContainerViewConstraints()
+        setupCardStackConstraints()
+        setupCardImageConstraints()
         setupInfoStackConstrains()
     }
     
-    private func setupCardStackConstrains() {
+    // MARK: - Constraints
+    
+    private func setupContainerViewConstraints() {
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let heightConstraint = containerView.heightAnchor.constraint(equalToConstant: 132)
+        heightConstraint.priority = UILayoutPriority(999)
+        NSLayoutConstraint.activate([
+            containerView.topAnchor.constraint(equalTo: topAnchor),
+            containerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            containerView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            heightConstraint,
+            containerView.widthAnchor.constraint(equalTo: widthAnchor)
+        ])
+    }
+    
+    private func setupCardStackConstraints() {
         cardStack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            cardStack.heightAnchor.constraint(equalTo: heightAnchor),
-            cardStack.widthAnchor.constraint(equalTo: widthAnchor)
+            cardStack.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            cardStack.topAnchor.constraint(equalTo: containerView.topAnchor),
+            cardStack.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            cardStack.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
         ])
     }
     
-    private func setupCardImageConstrains() {
+    private func setupCardImageConstraints() {
         cardImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            cardImage.heightAnchor.constraint(equalTo: heightAnchor),
-            cardImage.widthAnchor.constraint(equalToConstant: self.bounds.width/2),
-        ])
-    }
-    
-    private func setupCardImageContainerConstrains() {
-        cardImageContainer.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            cardImageContainer.heightAnchor.constraint(equalTo: heightAnchor),
-            cardImageContainer.widthAnchor.constraint(equalToConstant: self.bounds.width/2),
+            cardImage.bottomAnchor.constraint(equalTo: cardStack.bottomAnchor),
+            cardImage.topAnchor.constraint(equalTo: cardStack.topAnchor),
+            cardImage.leadingAnchor.constraint(equalTo: cardStack.leadingAnchor),
         ])
     }
     
@@ -171,7 +176,6 @@ final class ItemCardCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             infoStack.topAnchor.constraint(equalTo: cardStack.topAnchor, constant: 9),
             infoStack.bottomAnchor.constraint(equalTo: cardStack.bottomAnchor, constant: -9),
-            infoStack.widthAnchor.constraint(equalToConstant: self.bounds.width/2-10),
         ])
     }
     

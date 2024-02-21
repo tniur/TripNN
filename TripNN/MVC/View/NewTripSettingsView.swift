@@ -9,11 +9,13 @@ import UIKit
 
 class NewTripSettingsView: UIView {
     
+    // MARK: - Closures
+    
     var onNavigationBackButtonAction: (() -> Void)?
     
     // MARK: - View
     
-    let navigationBackButton: NavigationBackButton = {
+    private let navigationBackButton: NavigationBackButton = {
         let button = NavigationBackButton()
         return button
     }()
@@ -29,6 +31,14 @@ class NewTripSettingsView: UIView {
         super.init(coder: coder)
         setup()
     }
+    
+    // MARK: - Action
+    
+    @objc private func navigationBackButtonAction() {
+        onNavigationBackButtonAction?()
+    }
+    
+    // MARK: - Setup
     
     private func setup() {
         self.backgroundColor = .white
@@ -47,10 +57,6 @@ class NewTripSettingsView: UIView {
     
     private func setupAction() {
         navigationBackButton.setupAction(target: self, buttonAction: #selector(navigationBackButtonAction))
-    }
-    
-    @objc private func navigationBackButtonAction() {
-        onNavigationBackButtonAction?()
     }
     
     private func setupNavigationBackButtonConstraints() {

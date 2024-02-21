@@ -13,6 +13,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     
     var onOpeningSideMenuButtonAction: (() -> Void)?
     var onNewTripButtonAction: (() -> Void)?
+    var onAllRecommendationsButtonAction: (() -> Void)?
     
     // MARK: - Views
     
@@ -72,6 +73,12 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         button.setTitleColor(.tripnnDark, for: .normal)
         return button
     }()
+    
+    private let cycleGalleryViewContent: [ItemCardModel] = [
+        ItemCardModel(image: UIImage(named: "place_1")!, type: .route, title: "Историческая часть города", costInfo: "0 – 500₽"),
+        ItemCardModel(image: UIImage(named: "place_2")!, type: .route, title: "Большая Покровская улица", costInfo: "0₽"),
+        ItemCardModel(image: UIImage(named: "place_3")!, type: .route, title: "Улица Рождественская", costInfo: "0₽")
+    ]
     
     let recommendationsCarouselView: UIView = {
         let view = UIView()
@@ -203,7 +210,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     }
     
     private func setupCycleGalleryView() {
-        recommendationsCarouselCycleGallery.register(cellClass: ItemCardCell.self, forCellReuseIdentifier: "cell")
+        recommendationsCarouselCycleGallery.register(cellClass: ItemCardCollectionViewCell.self, forCellReuseIdentifier: "cell")
         recommendationsCarouselCycleGallery.delegate = self
         recommendationsCarouselView.addSubview(recommendationsCarouselCycleGallery)
         recommendationsCarouselCycleGallery.reloadData()
@@ -214,6 +221,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     private func addActions() {
         openingSideMenuButton.addTarget(self, action: #selector(openSideMenu), for: .touchUpInside)
         newTripButton.addTarget(self, action: #selector(createNewTrip), for: .touchUpInside)
+        allRecommendationsButton.addTarget(self, action: #selector(openAllRecommendations), for: .touchUpInside)
     }
     
     @objc private func openSideMenu() {
@@ -222,6 +230,10 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     
     @objc private func createNewTrip() {
         onNewTripButtonAction?()
+    }
+    
+    @objc private func openAllRecommendations() {
+        onAllRecommendationsButtonAction?()
     }
     
     // MARK: - Constraints
@@ -388,16 +400,16 @@ extension HomeScreenView {
     func cycleGalleryView(_ cycleGalleryView: HSCycleGalleryView, cellForItemAtIndex index: Int) -> UICollectionViewCell {
         let cell = cycleGalleryView.dequeueReusableCell(withIdentifier: "cell", for: IndexPath(item: index, section: 0))
         
-        guard let cell = cell as? ItemCardCell else {
+        guard let cell = cell as? ItemCardCollectionViewCell else {
             return UICollectionViewCell()
         }
         
-        configCell(for: cell)
+        configCell(for: cell, withIndex: index)
         return cell
     }
     
-    func configCell(for cell: ItemCardCell) {
-        cell.configure(cardModel: ItemCardModel(image: UIImage(named: "place_1")!, type: .route, title: "Историческая часть города", costInfo: "0 – 500₽"))
+    func configCell(for cell: ItemCardCollectionViewCell, withIndex index: Int) {
+        cell.configure(cardModel: cycleGalleryViewContent[index])
     }
 
 }

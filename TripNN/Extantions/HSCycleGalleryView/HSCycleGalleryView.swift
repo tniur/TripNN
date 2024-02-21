@@ -22,7 +22,7 @@ public class HSCycleGalleryView: UIView {
     public weak var delegate: HSCycleGalleryViewDelegate?
     
     /// if set to 0, the gallery view will not auto scroll
-    public var autoScrollInterval: Double = 0
+    public var autoScrollInterval: Double = 5
     
     public var contentBackgroundColor = UIColor.white {
         didSet {

@@ -7,7 +7,7 @@
 		<string>Montserrat-Regular.ttf</string>
         <string>Montserrat-Medium.ttf</string>
         <string>Montserrat-Black.ttf</string>
-		<string>RacingSansOne-Regular.ttf</string>
+        <string>Montserrat-SemiBold.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
