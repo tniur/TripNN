@@ -15,10 +15,10 @@ extension UINavigationBarAppearance {
         appearance.backgroundEffect = nil
         appearance.shadowImage = nil
         appearance.shadowColor = nil
-        if let titleFont = UIFont(name: "Montserrat-SemiBold", size: 16) {
+        if let titleFont = UIFont(name: SCREEN_TITLE_FONT, size: SCREEN_TITLE_SIZE) {
             appearance.titleTextAttributes = [NSAttributedString.Key.font: titleFont, NSAttributedString.Key.foregroundColor: UIColor.tripnnDark]
         }
-        if let largeTitleFont = UIFont(name: "Montserrat-SemiBold", size: 30) {
+        if let largeTitleFont = UIFont(name: SCREEN_TITLE_FONT, size: SCREEN_LARGE_TITLE_SIZE) {
             appearance.largeTitleTextAttributes = [NSAttributedString.Key.font: largeTitleFont, NSAttributedString.Key.foregroundColor: UIColor.tripnnDark]
         }
         return appearance

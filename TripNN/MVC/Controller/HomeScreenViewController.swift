@@ -55,7 +55,7 @@ final class HomeScreenViewController: UIViewController {
     }
     
     @objc private func sideMenuAction() {
-
+        
     }
     
     @objc private func createNewTrip() {
@@ -69,5 +69,4 @@ final class HomeScreenViewController: UIViewController {
         navigationController?.pushViewController(controller, animated: true)
         navigationController?.navigationBar.tintColor = .black
     }
- 
 }

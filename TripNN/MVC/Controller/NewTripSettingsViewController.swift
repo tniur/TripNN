@@ -19,21 +19,10 @@ final class NewTripSettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupAction()
     }
     
     override func loadView() {
         self.view = NewTripSettingsView(frame: UIScreen.main.bounds)
-    }
-    
-    // MARK: - Action
-    
-    private func setupAction() {
-        newTripSettingsView?.onNavigationBackButtonAction = { [weak self] in self?.navigationBackButtonAction() }
-    }
-    
-    @objc private func navigationBackButtonAction() {
-        navigationController?.popViewController(animated: true)
     }
 
 }

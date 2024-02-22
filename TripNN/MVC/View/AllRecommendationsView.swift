@@ -11,6 +11,10 @@ final class AllRecommendationsView: UIView {
     
     private var tableViewFilteredContent: [ItemCardModel] = []
     
+    // MARK: - Closures
+    
+    var onSelectTableCellAction: (() -> Void)?
+    
     // MARK: - Search Controller
     
     private var searchBarIsEmpty: Bool {
@@ -95,6 +99,7 @@ final class AllRecommendationsView: UIView {
 }
 
 extension AllRecommendationsView: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if isFiltered {
@@ -116,8 +121,13 @@ extension AllRecommendationsView: UITableViewDataSource, UITableViewDelegate {
         }
         
         cell.configure(cardModel: content)
+        cell.selectionStyle = .none
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        onSelectTableCellAction?()
     }
     
 //    public func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

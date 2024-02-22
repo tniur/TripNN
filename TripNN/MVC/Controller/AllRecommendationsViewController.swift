@@ -19,25 +19,39 @@ class AllRecommendationsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationController()
+        setup()
     }
     
     override func loadView() {
         self.view = AllRecommendationsView(frame: UIScreen.main.bounds)
     }
-}
-
-extension AllRecommendationsViewController {
+    
+    // MARK: - Setup
+    
+    private func setup() {
+        setupNavigationController()
+        setupActions()
+    }
+    
+    private func setupActions() {
+        allRecommendationsView?.onSelectTableCellAction = { [weak self] in self?.openItemCardBottomSheetAction() }
+    }
+    
     private func setupNavigationController() {
         navigationItem.searchController = allRecommendationsView?.searchController
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.tintColor = .tripnnDark
-        navigationItem.backButtonTitle = ""
-        navigationItem.title = "Готовые маршруты"
-        if #available(iOS 15, *) {
-            navigationController?.navigationBar.standardAppearance = UINavigationBarAppearance().tripNNAppearance()
-        } else {
-            navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Montserrat-SemiBold", size: 16)!, NSAttributedString.Key.foregroundColor: UIColor.tripnnDark]
+        navigationController?.setupNavigationControllerStyles(title: "Готовые маршруты", navigationItem: navigationItem, navigationController: navigationController)
+    }
+    
+    // MARK: Action
+    
+    private func openItemCardBottomSheetAction() {
+        let bottomSheet = ItemCardBottomSheetViewController()
+        if let sheet = bottomSheet.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.prefersGrabberVisible = true
+            sheet.preferredCornerRadius = 20
         }
+        present(bottomSheet, animated: true)
     }
 }
