@@ -11,13 +11,12 @@
 		E9055A312B817F2E006CF2BE /* HSCycleGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9055A2F2B817F2E006CF2BE /* HSCycleGalleryView.swift */; };
 		E93A328F2B84A55400C1BBB7 /* AllRecommendationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A328E2B84A55400C1BBB7 /* AllRecommendationsViewController.swift */; };
 		E93A32932B84A5B800C1BBB7 /* AllRecommendationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A32922B84A5B800C1BBB7 /* AllRecommendationsView.swift */; };
-		E93A32952B84B1FF00C1BBB7 /* ScreenTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A32942B84B1FF00C1BBB7 /* ScreenTitleLabel.swift */; };
 		E93A32992B85EDFA00C1BBB7 /* ItemCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A32982B85EDFA00C1BBB7 /* ItemCardTableViewCell.swift */; };
 		E93A329E2B86703D00C1BBB7 /* ItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A329D2B86703D00C1BBB7 /* ItemCard.swift */; };
-		E96949272B7E0D8600622949 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96949262B7E0D8600622949 /* Button.swift */; };
+		E96949272B7E0D8600622949 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96949262B7E0D8600622949 /* UIButton.swift */; };
 		E96949292B7EA71400622949 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96949282B7EA71400622949 /* HomeScreenView.swift */; };
 		E969492B2B7EAAFE00622949 /* ItemCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E969492A2B7EAAFE00622949 /* ItemCardCollectionViewCell.swift */; };
-		E969492E2B7EABAF00622949 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E969492D2B7EABAF00622949 /* View.swift */; };
+		E969492E2B7EABAF00622949 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E969492D2B7EABAF00622949 /* UIView.swift */; };
 		E96949302B7ED24F00622949 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E969492F2B7ED24F00622949 /* Montserrat-Regular.ttf */; };
 		E96949322B7ED25F00622949 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E96949312B7ED25F00622949 /* Montserrat-Medium.ttf */; };
 		E96949342B7ED27C00622949 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E96949332B7ED27C00622949 /* Montserrat-Black.ttf */; };
@@ -38,6 +37,7 @@
 		E9ED79D02B83E28D00F4D4EE /* NavigationBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ED79CF2B83E28D00F4D4EE /* NavigationBackButton.swift */; };
 		E9ED79D42B83E49C00F4D4EE /* NewTripSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ED79D32B83E49C00F4D4EE /* NewTripSettingsView.swift */; };
 		E9FE95CB2B86BB8A009694EC /* UISwipeActionsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FE95CA2B86BB8A009694EC /* UISwipeActionsConfiguration.swift */; };
+		E9FE95CD2B877CB6009694EC /* UINavigationBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FE95CC2B877CB6009694EC /* UINavigationBarAppearance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,13 +45,12 @@
 		E9055A2F2B817F2E006CF2BE /* HSCycleGalleryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSCycleGalleryView.swift; sourceTree = "<group>"; };
 		E93A328E2B84A55400C1BBB7 /* AllRecommendationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecommendationsViewController.swift; sourceTree = "<group>"; };
 		E93A32922B84A5B800C1BBB7 /* AllRecommendationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecommendationsView.swift; sourceTree = "<group>"; };
-		E93A32942B84B1FF00C1BBB7 /* ScreenTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTitleLabel.swift; sourceTree = "<group>"; };
 		E93A32982B85EDFA00C1BBB7 /* ItemCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardTableViewCell.swift; sourceTree = "<group>"; };
 		E93A329D2B86703D00C1BBB7 /* ItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCard.swift; sourceTree = "<group>"; };
-		E96949262B7E0D8600622949 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		E96949262B7E0D8600622949 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		E96949282B7EA71400622949 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		E969492A2B7EAAFE00622949 /* ItemCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardCollectionViewCell.swift; sourceTree = "<group>"; };
-		E969492D2B7EABAF00622949 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		E969492D2B7EABAF00622949 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		E969492F2B7ED24F00622949 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		E96949312B7ED25F00622949 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		E96949332B7ED27C00622949 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
@@ -74,6 +73,7 @@
 		E9ED79CF2B83E28D00F4D4EE /* NavigationBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBackButton.swift; sourceTree = "<group>"; };
 		E9ED79D32B83E49C00F4D4EE /* NewTripSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripSettingsView.swift; sourceTree = "<group>"; };
 		E9FE95CA2B86BB8A009694EC /* UISwipeActionsConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISwipeActionsConfiguration.swift; sourceTree = "<group>"; };
+		E9FE95CC2B877CB6009694EC /* UINavigationBarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBarAppearance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,10 +158,11 @@
 		E96949252B7E0D6A00622949 /* Extantions */ = {
 			isa = PBXGroup;
 			children = (
-				E96949262B7E0D8600622949 /* Button.swift */,
-				E969492D2B7EABAF00622949 /* View.swift */,
+				E96949262B7E0D8600622949 /* UIButton.swift */,
+				E969492D2B7EABAF00622949 /* UIView.swift */,
 				E9FE95CA2B86BB8A009694EC /* UISwipeActionsConfiguration.swift */,
 				E9C73BD72B69802E00E531AB /* UIColor.swift */,
+				E9FE95CC2B877CB6009694EC /* UINavigationBarAppearance.swift */,
 			);
 			path = Extantions;
 			sourceTree = "<group>";
@@ -172,7 +173,6 @@
 				E9055A2C2B817F2E006CF2BE /* HSCycleGalleryView */,
 				E93A329A2B85EE2B00C1BBB7 /* ItemCard */,
 				E9ED79CF2B83E28D00F4D4EE /* NavigationBackButton.swift */,
-				E93A32942B84B1FF00C1BBB7 /* ScreenTitleLabel.swift */,
 			);
 			path = "UI-Elements";
 			sourceTree = "<group>";
@@ -309,21 +309,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E969492E2B7EABAF00622949 /* View.swift in Sources */,
+				E969492E2B7EABAF00622949 /* UIView.swift in Sources */,
 				E9ED79D02B83E28D00F4D4EE /* NavigationBackButton.swift in Sources */,
-				E96949272B7E0D8600622949 /* Button.swift in Sources */,
+				E96949272B7E0D8600622949 /* UIButton.swift in Sources */,
 				E9C73BC22B6973F700E531AB /* HomeScreenViewController.swift in Sources */,
 				E96949442B812F2200622949 /* ItemCardModel.swift in Sources */,
 				E93A329E2B86703D00C1BBB7 /* ItemCard.swift in Sources */,
 				E9055A312B817F2E006CF2BE /* HSCycleGalleryView.swift in Sources */,
 				E93A32992B85EDFA00C1BBB7 /* ItemCardTableViewCell.swift in Sources */,
 				E9C73BBE2B6973F700E531AB /* AppDelegate.swift in Sources */,
+				E9FE95CD2B877CB6009694EC /* UINavigationBarAppearance.swift in Sources */,
 				E93A32932B84A5B800C1BBB7 /* AllRecommendationsView.swift in Sources */,
 				E969492B2B7EAAFE00622949 /* ItemCardCollectionViewCell.swift in Sources */,
 				E96949292B7EA71400622949 /* HomeScreenView.swift in Sources */,
 				E9C73BC02B6973F700E531AB /* SceneDelegate.swift in Sources */,
 				E9FE95CB2B86BB8A009694EC /* UISwipeActionsConfiguration.swift in Sources */,
-				E93A32952B84B1FF00C1BBB7 /* ScreenTitleLabel.swift in Sources */,
 				E9C73BD82B69802F00E531AB /* UIColor.swift in Sources */,
 				E9ED79CE2B83DF5200F4D4EE /* NewTripSettingsViewController.swift in Sources */,
 				E9ED79D42B83E49C00F4D4EE /* NewTripSettingsView.swift in Sources */,

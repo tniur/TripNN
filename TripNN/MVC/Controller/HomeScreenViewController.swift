@@ -35,8 +35,6 @@ final class HomeScreenViewController: UIViewController {
         setupNavigationBarStyle(isHidden: false)
     }
     
-    
-    
     // MARK: - Styles
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -45,6 +43,7 @@ final class HomeScreenViewController: UIViewController {
     
     private func setupNavigationBarStyle(isHidden: Bool) {
         navigationController?.navigationBar.isHidden = isHidden
+        navigationItem.backButtonTitle = ""
     }
     
     // MARK: - Actions

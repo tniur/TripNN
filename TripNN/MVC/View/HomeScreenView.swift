@@ -59,9 +59,9 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     
     let recommendationsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Рекомендованные маршруты"
+        label.text = "Готовые маршруты"
         label.textColor = .tripnnDark
-        label.font =  UIFont(name: "Montserrat-Medium", size: 16)
+        label.font =  UIFont(name: "Montserrat-SemiBold", size: 18)
         return label
     }()
     

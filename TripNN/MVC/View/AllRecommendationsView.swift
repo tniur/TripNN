@@ -9,6 +9,10 @@ import UIKit
 
 final class AllRecommendationsView: UIView {
     
+    private var tableViewFilteredContent: [ItemCardModel] = []
+    
+    // MARK: - Search Controller
+    
     private var searchBarIsEmpty: Bool {
         guard let text = searchController.searchBar.text else { return false }
         return text.isEmpty
@@ -18,21 +22,12 @@ final class AllRecommendationsView: UIView {
         return searchController.isActive && !searchBarIsEmpty
     }
     
-    // MARK: - Closures
-    
-    var onNavigationBackButtonAction: (() -> Void)?
-    
-    // MARK: - View
-    
-    private let navigationBackButton: NavigationBackButton = {
-        let button = NavigationBackButton()
-        return button
-    }()
-    
     let searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: nil)
         return controller
     }()
+    
+    // MARK: - View
     
     private let tableViewContent: [ItemCardModel] = [
         ItemCardModel(image: UIImage(named: "place_1")!, type: .route, title: "Историческая часть города", costInfo: "0 – 500₽"),
@@ -40,8 +35,6 @@ final class AllRecommendationsView: UIView {
         ItemCardModel(image: UIImage(named: "place_3")!, type: .route, title: "Улица Рождественская", costInfo: "0₽"),
         ItemCardModel(image: UIImage(named: "place_4")!, type: .route, title: "Верхняя часть города", costInfo: "0₽")
     ]
-    
-    private var tableViewFilteredContent: [ItemCardModel] = []
     
     private let tableView: UITableView = .init()
     
@@ -57,19 +50,12 @@ final class AllRecommendationsView: UIView {
         setup()
     }
     
-    // MARK: - Action
-    
-    @objc private func navigationBackButtonAction() {
-        onNavigationBackButtonAction?()
-    }
-    
     // MARK: - Setup
     
     private func setup() {
         self.backgroundColor = .white
         setupView()
         setupConstraints()
-        setupAction()
         setupTableView()
         setupSearchController()
     }
@@ -95,10 +81,6 @@ final class AllRecommendationsView: UIView {
         setupTableViewConstraints()
     }
     
-    private func setupAction() {
-        navigationBackButton.setupAction(target: self, buttonAction: #selector(navigationBackButtonAction))
-    }
-    
     // MARK: - Constraints
     
     private func setupTableViewConstraints() {
@@ -120,7 +102,6 @@ extension AllRecommendationsView: UITableViewDataSource, UITableViewDelegate {
         } else {
             tableViewContent.count
         }
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -139,49 +120,23 @@ extension AllRecommendationsView: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    public func tableView(
-            _ tableView: UITableView,
-            trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
-        ) -> UISwipeActionsConfiguration?
-    {
-            let deleteAction = UIContextualAction(
-                style: .normal,
-                title:  nil,
-                handler: { [weak self] (_, _, success: (Bool) -> Void) in
-                    success(true)
-                    print("Your action in here")
-                }
-            )
-            
-            deleteAction.image = UISwipeActionsConfiguration.makeTitledImage(
-                image: UIImage(named: "delete-favourites"),
-                title: "Удалить из избранных")
-        
-            deleteAction.backgroundColor = .tripnnWhite
-            return UISwipeActionsConfiguration(actions: [deleteAction])
-    }
-    
-//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        let askAction = UIContextualAction(style: .normal, title: nil) { action, view, complete in
-//          print("Ask!")
-//          complete(true)
-//        }
-//
-//        // here set your image and background color
-//        askAction.image = UIImage(named: "delete-favourites")
-//        askAction.backgroundColor = .tripnnWhite
-//
-//        let blockAction = UIContextualAction(style: .destructive, title: "Block") { action, view, complete in
-//          print("Block")
-//          complete(true)
-//        }
-//
-//        return UISwipeActionsConfiguration(actions: [blockAction, askAction])
-//      }
-//
-//      func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        cell.textLabel?.text = "row: \(indexPath.row)"
-//      }
+//    public func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//            let deleteAction = UIContextualAction(
+//                style: .normal,
+//                title:  nil,
+//                handler: { [weak self] (_, _, success: (Bool) -> Void) in
+//                    success(true)
+//                    print("Your action in here")
+//                }
+//            )
+//            
+//            deleteAction.image = UISwipeActionsConfiguration.makeTitledImage(
+//                image: UIImage(named: "delete-favourites"),
+//                title: "Удалить из избранных")
+//        
+//            deleteAction.backgroundColor = .tripnnWhite
+//            return UISwipeActionsConfiguration(actions: [deleteAction])
+//    }
     
 }
 
@@ -197,5 +152,4 @@ extension AllRecommendationsView: UISearchResultsUpdating {
         
         tableView.reloadData()
     }
-
 }

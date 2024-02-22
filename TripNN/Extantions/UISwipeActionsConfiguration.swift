@@ -37,7 +37,7 @@ extension UISwipeActionsConfiguration {
         mergedText.append(text)
         
         /// Create label and append that merged attributed string
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: size.width-50, height: size.height-50))
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height))
         label.textAlignment = .center
         label.lineBreakMode = .byTruncatingTail
         label.numberOfLines = 3
