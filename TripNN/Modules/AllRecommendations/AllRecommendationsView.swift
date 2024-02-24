@@ -1,5 +1,5 @@
 //
-//  AllRecommendationsView.swift
+//  AllPreparedRoutesView.swift
 //  TripNN
 //
 //  Created by Pavel on 20.02.2024.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class AllRecommendationsView: UIView {
+final class AllPreparedRoutesView: UIView {
     
-    private var tableViewFilteredContent: [ItemCardModel] = []
+    private var allPreparedRoutesTableFilteredContent: [ItemCardModel] = []
     
     // MARK: - Closures
     
@@ -33,14 +33,14 @@ final class AllRecommendationsView: UIView {
     
     // MARK: - View
     
-    private let tableViewContent: [ItemCardModel] = [
+    private let allPreparedRoutesTable: [ItemCardModel] = [
         ItemCardModel(image: UIImage(named: "place_1")!, type: .route, title: "Историческая часть города", costInfo: "0 – 500₽"),
         ItemCardModel(image: UIImage(named: "place_2")!, type: .route, title: "Большая Покровская улица", costInfo: "0₽"),
         ItemCardModel(image: UIImage(named: "place_3")!, type: .route, title: "Улица Рождественская", costInfo: "0₽"),
         ItemCardModel(image: UIImage(named: "place_4")!, type: .route, title: "Верхняя часть города", costInfo: "0₽")
     ]
     
-    private let tableView: UITableView = .init()
+    private let allPreparedRoutesTableView: UITableView = .init()
     
     // MARK: - Init
     
@@ -57,22 +57,22 @@ final class AllRecommendationsView: UIView {
     // MARK: - Setup
     
     private func setup() {
-        self.backgroundColor = .white
         setupView()
         setupConstraints()
-        setupTableView()
+        setupAllPreparedRoutesTableView()
         setupSearchController()
     }
     
     private func setupView() {
-        self.addSubview(tableView)
+        self.backgroundColor = .white
+        self.addSubview(allPreparedRoutesTableView)
     }
     
-    private func setupTableView() {
-        tableView.register(ItemCardTableViewCell.self, forCellReuseIdentifier: "ItemCardCell")
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.separatorStyle = .none
+    private func setupAllPreparedRoutesTableView() {
+        allPreparedRoutesTableView.register(ItemCardTableViewCell.self, forCellReuseIdentifier: "ItemCardCell")
+        allPreparedRoutesTableView.dataSource = self
+        allPreparedRoutesTableView.delegate = self
+        allPreparedRoutesTableView.separatorStyle = .none
     }
     
     private func setupSearchController() {
@@ -82,30 +82,30 @@ final class AllRecommendationsView: UIView {
     }
     
     private func setupConstraints() {
-        setupTableViewConstraints()
+        setupAllPreparedRoutesTableViewConstraints()
     }
     
     // MARK: - Constraints
     
-    private func setupTableViewConstraints() {
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+    private func setupAllPreparedRoutesTableViewConstraints() {
+        allPreparedRoutesTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: self.topAnchor),
-            tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            allPreparedRoutesTableView.topAnchor.constraint(equalTo: self.topAnchor),
+            allPreparedRoutesTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            allPreparedRoutesTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            allPreparedRoutesTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
 }
 
-extension AllRecommendationsView: UITableViewDataSource, UITableViewDelegate {
+extension AllPreparedRoutesView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if isFiltered {
-            tableViewFilteredContent.count
+            allPreparedRoutesTableFilteredContent.count
         } else {
-            tableViewContent.count
+            allPreparedRoutesTable.count
         }
     }
     
@@ -115,9 +115,9 @@ extension AllRecommendationsView: UITableViewDataSource, UITableViewDelegate {
         var content: ItemCardModel
         
         if isFiltered {
-            content = tableViewFilteredContent[indexPath.row]
+            content = allPreparedRoutesTableFilteredContent[indexPath.row]
         } else {
-            content = tableViewContent[indexPath.row]
+            content = allPreparedRoutesTable[indexPath.row]
         }
         
         cell.configure(cardModel: content)
@@ -150,16 +150,16 @@ extension AllRecommendationsView: UITableViewDataSource, UITableViewDelegate {
     
 }
 
-extension AllRecommendationsView: UISearchResultsUpdating {
+extension AllPreparedRoutesView: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
     }
     
     private func filterContentForSearchText(_ searchText: String) {
-        tableViewFilteredContent = tableViewContent.filter({ (content: ItemCardModel) -> Bool in
+        allPreparedRoutesTableFilteredContent = allPreparedRoutesTable.filter({ (content: ItemCardModel) -> Bool in
             return content.title.lowercased().contains(searchText.lowercased())
         })
         
-        tableView.reloadData()
+        allPreparedRoutesTableView.reloadData()
     }
 }

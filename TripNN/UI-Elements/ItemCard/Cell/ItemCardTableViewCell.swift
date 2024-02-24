@@ -16,8 +16,8 @@ final class ItemCardTableViewCell: UITableViewCell {
         return view
     }()
     
-    private let itemCardView: ItemCard = {
-        let view = ItemCard()
+    private let itemCardView: ItemCardTemplateView = {
+        let view = ItemCardTemplateView()
         return view
     }()
     

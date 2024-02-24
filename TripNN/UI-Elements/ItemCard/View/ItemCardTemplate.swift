@@ -1,5 +1,5 @@
 //
-//  ItemCard.swift
+//  ItemCardTemplateView.swift
 //  TripNN
 //
 //  Created by Pavel on 15.02.2024.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ItemCard: UIView {
+class ItemCardTemplateView: UIView {
     
     // MARK: - View
     

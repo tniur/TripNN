@@ -11,9 +11,9 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     
     // MARK: - Closures
     
-    var onOpeningSideMenuButtonAction: (() -> Void)?
-    var onNewTripButtonAction: (() -> Void)?
-    var onAllRecommendationsButtonAction: (() -> Void)?
+    var onSideMenuButtonAction: (() -> Void)?
+    var onNewRouteButtonAction: (() -> Void)?
+    var onAllPreparedRoutesButtonAction: (() -> Void)?
     
     // MARK: - Views
     
@@ -23,7 +23,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         return view
     }()
     
-    let tripPartView: UIView = {
+    let routePartView: UIView = {
         let view = UIView()
         view.backgroundColor = .tripnnWhite
         return view
@@ -34,7 +34,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         return image
     }()
     
-    let openingSideMenuButton: UIButton = {
+    let sideMenuButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "side-menu-icon"), for: .normal)
         return button
@@ -48,7 +48,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         return stack
     }()
     
-    let recommendationsHeaderStack: UIStackView = {
+    let preparedRoutesHeaderStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .fillProportionally
@@ -57,7 +57,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         return stack
     }()
     
-    let recommendationsLabel: UILabel = {
+    let preparedRoutesLabel: UILabel = {
         let label = UILabel()
         label.text = "Готовые маршруты"
         label.textColor = .tripnnDark
@@ -65,7 +65,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         return label
     }()
     
-    let allRecommendationsButton: UIButton = {
+    let allPreparedRoutesButton: UIButton = {
         let button = UIButton()
         button.setTitle("Все", for: .normal)
         button.titleLabel?.font =  UIFont(name: "Montserrat-Regular", size: 14)
@@ -80,12 +80,12 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         ItemCardModel(image: UIImage(named: "place_3")!, type: .route, title: "Улица Рождественская", costInfo: "0₽")
     ]
     
-    let recommendationsCarouselView: UIView = {
+    let preparedRoutesCarouselView: UIView = {
         let view = UIView()
         return view
     }()
     
-    let recommendationsCarouselCycleGallery: HSCycleGalleryView = {
+    let preparedRoutesCarouselCycleGallery: HSCycleGalleryView = {
         let gallery = HSCycleGalleryView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 155))
         gallery.contentBackgroundColor = .tripnnYellow
         return gallery
@@ -105,12 +105,12 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         return button
     }()
     
-    let newTripView: UIView = {
+    let newRouteView: UIView = {
         let view = UIView()
         return view
     }()
     
-    let newTripBackgroundCircleView: UIView = {
+    let newRouteBackgroundCircleView: UIView = {
         let view = UIView()
         view.backgroundColor = .tripNNYellow
         view.addViewShadow()
@@ -118,7 +118,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         return view
     }()
     
-    let newTripLabelStack: UIStackView = {
+    let newRouteLabelStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.alignment = .center
@@ -126,23 +126,23 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         return stack
     }()
     
-    let newTripFirstLineLabelPartView: UILabel = {
+    let newRouteFirstRowLabel: UILabel = {
         let label = UILabel()
-        label.text = "НОВЫЙ"
+        label.text = "новый".uppercased()
         label.font =  UIFont(name: "Montserrat-Black", size: 40)
         label.textColor = .tripnnDark
         return label
     }()
     
-    let newTripSecondLineLabelPartView: UILabel = {
+    let newRouteSecondRowLabel: UILabel = {
         let label = UILabel()
-        label.text = "МАРШРУТ"
+        label.text = "маршрут".uppercased()
         label.font =  UIFont(name: "Montserrat-Black", size: 40)
         label.textColor = .tripnnDark
         return label
     }()
     
-    let newTripSublabelView: UILabel = {
+    let newRouteSublabel: UILabel = {
         let label = UILabel()
         label.text = "создать"
         label.font =  UIFont(name: "Montserrat-Regular", size: 12)
@@ -150,7 +150,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         return label
     }()
     
-    let newTripButton: UIButton = {
+    let newRouteButton: UIButton = {
         let button = UIButton()
         return button
     }()
@@ -171,6 +171,8 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     
     private func setup() {
         setupViews()
+        setupStacks()
+        setupCycleGalleryView()
         setupConstrains()
         addActions()
     }
@@ -179,80 +181,77 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     
     private func setupViews() {
         self.addSubview(infoPartView)
-        self.addSubview(tripPartView)
+        self.addSubview(routePartView)
         
         infoPartView.addSubview(logoImage)
-        infoPartView.addSubview(openingSideMenuButton)
+        infoPartView.addSubview(sideMenuButton)
         infoPartView.addSubview(infoPartStack)
         
-        tripPartView.addSubview(newTripView)
-        newTripView.addSubview(newTripBackgroundCircleView)
+        routePartView.addSubview(newRouteView)
+        newRouteView.addSubview(newRouteBackgroundCircleView)
         
-        newTripView.addSubview(newTripLabelStack)
-        newTripView.addSubview(newTripSublabelView)
+        newRouteView.addSubview(newRouteLabelStack)
+        newRouteView.addSubview(newRouteSublabel)
         
-        newTripView.addSubview(newTripButton)
-        
-        setupStacks()
-        setupCycleGalleryView()
+        newRouteView.addSubview(newRouteButton)
     }
     
     private func setupStacks() {
-        infoPartStack.addArrangedSubview(recommendationsHeaderStack)
-        infoPartStack.addArrangedSubview(recommendationsCarouselView)
+        infoPartStack.addArrangedSubview(preparedRoutesHeaderStack)
+        infoPartStack.addArrangedSubview(preparedRoutesCarouselView)
         infoPartStack.addArrangedSubview(allPlaceButton)
         
-        recommendationsHeaderStack.addArrangedSubview(recommendationsLabel)
-        recommendationsHeaderStack.addArrangedSubview(allRecommendationsButton)
+        preparedRoutesHeaderStack.addArrangedSubview(preparedRoutesLabel)
+        preparedRoutesHeaderStack.addArrangedSubview(allPreparedRoutesButton)
         
-        newTripLabelStack.addArrangedSubview(newTripFirstLineLabelPartView)
-        newTripLabelStack.addArrangedSubview(newTripSecondLineLabelPartView)
+        newRouteLabelStack.addArrangedSubview(newRouteFirstRowLabel)
+        newRouteLabelStack.addArrangedSubview(newRouteSecondRowLabel)
     }
     
     private func setupCycleGalleryView() {
-        recommendationsCarouselCycleGallery.register(cellClass: ItemCardCollectionViewCell.self, forCellReuseIdentifier: "cell")
-        recommendationsCarouselCycleGallery.delegate = self
-        recommendationsCarouselView.addSubview(recommendationsCarouselCycleGallery)
-        recommendationsCarouselCycleGallery.reloadData()
+        preparedRoutesCarouselCycleGallery.register(cellClass: ItemCardCollectionViewCell.self, forCellReuseIdentifier: "cell")
+        preparedRoutesCarouselCycleGallery.delegate = self
+        preparedRoutesCarouselView.addSubview(preparedRoutesCarouselCycleGallery)
+        preparedRoutesCarouselCycleGallery.reloadData()
     }
     
     // MARK: - Actions
     
     private func addActions() {
-        openingSideMenuButton.addTarget(self, action: #selector(openSideMenu), for: .touchUpInside)
-        newTripButton.addTarget(self, action: #selector(createNewTrip), for: .touchUpInside)
-        allRecommendationsButton.addTarget(self, action: #selector(openAllRecommendations), for: .touchUpInside)
+        sideMenuButton.addTarget(self, action: #selector(openSideMenu), for: .touchUpInside)
+        newRouteButton.addTarget(self, action: #selector(createNewRoute), for: .touchUpInside)
+        allPreparedRoutesButton.addTarget(self, action: #selector(openAllRecommendations), for: .touchUpInside)
     }
     
     @objc private func openSideMenu() {
-        onOpeningSideMenuButtonAction?()
+        onSideMenuButtonAction?()
     }
     
-    @objc private func createNewTrip() {
-        onNewTripButtonAction?()
+    @objc private func createNewRoute() {
+        onNewRouteButtonAction?()
     }
     
     @objc private func openAllRecommendations() {
-        onAllRecommendationsButtonAction?()
+        onAllPreparedRoutesButtonAction?()
     }
     
     // MARK: - Constraints
     
     private func setupConstrains() {
         setupInfoPartViewConstraints()
-        setupTripPartViewConstraints()
+        setupRoutePartViewConstraints()
         setupLogoImageConstraints()
-        setupOpeningSideMenuButtonConstraints()
+        setupSideMenuButtonConstraints()
         setupInfoPartStackConstraints()
         setupAllPlaceButtonConstraints()
-        setupRecommendationsHeaderStackConstraints()
-        setupNewTripViewConstraints()
-        setupNewTripBackgroundCircleViewConstraints()
-        setupNewTripLabelStackConstraints()
-        setupNewTripSublabelViewConstraints()
-        setupRecommendationsCarouselViewConstraints()
-        setupAllRecommendationsButtonConstraints()
-        setupNewTripButtonConstraints()
+        setupPreparedRoutesHeaderStackConstraints()
+        setupNewRouteViewConstraints()
+        setupNewRouteBackgroundCircleViewConstraints()
+        setupNewRouteLabelStackConstraints()
+        setupNewRouteSublabelViewConstraints()
+        setupPreparedRoutesCarouselViewConstraints()
+        setupAllPreparedRoutesButtonConstraints()
+        setupNewRouteButtonConstraints()
     }
     
     private func setupInfoPartViewConstraints() {
@@ -265,13 +264,13 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         ])
     }
     
-    private func setupTripPartViewConstraints() {
-        tripPartView.translatesAutoresizingMaskIntoConstraints = false
+    private func setupRoutePartViewConstraints() {
+        routePartView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
-            tripPartView.topAnchor.constraint(equalTo: infoPartView.bottomAnchor),
-            tripPartView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            tripPartView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            tripPartView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            routePartView.topAnchor.constraint(equalTo: infoPartView.bottomAnchor),
+            routePartView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            routePartView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            routePartView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
     
@@ -284,13 +283,13 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         ])
     }
     
-    private func setupOpeningSideMenuButtonConstraints() {
-        openingSideMenuButton.translatesAutoresizingMaskIntoConstraints = false
+    private func setupSideMenuButtonConstraints() {
+        sideMenuButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
-            openingSideMenuButton.centerYAnchor.constraint(equalTo: logoImage.centerYAnchor),
-            openingSideMenuButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 14),
-            openingSideMenuButton.widthAnchor.constraint(equalToConstant: 44),
-            openingSideMenuButton.heightAnchor.constraint(equalToConstant: 44)
+            sideMenuButton.centerYAnchor.constraint(equalTo: logoImage.centerYAnchor),
+            sideMenuButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 14),
+            sideMenuButton.widthAnchor.constraint(equalToConstant: 44),
+            sideMenuButton.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
     
@@ -304,19 +303,19 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         ])
     }
     
-    private func setupRecommendationsHeaderStackConstraints() {
-        recommendationsHeaderStack.translatesAutoresizingMaskIntoConstraints = false
+    private func setupPreparedRoutesHeaderStackConstraints() {
+        preparedRoutesHeaderStack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
-            recommendationsHeaderStack.topAnchor.constraint(equalTo: infoPartStack.topAnchor, constant: 0),
-            recommendationsHeaderStack.leadingAnchor.constraint(equalTo: infoPartStack.leadingAnchor, constant: 16),
-            recommendationsHeaderStack.trailingAnchor.constraint(equalTo: infoPartStack.trailingAnchor, constant: -16),
+            preparedRoutesHeaderStack.topAnchor.constraint(equalTo: infoPartStack.topAnchor, constant: 0),
+            preparedRoutesHeaderStack.leadingAnchor.constraint(equalTo: infoPartStack.leadingAnchor, constant: 16),
+            preparedRoutesHeaderStack.trailingAnchor.constraint(equalTo: infoPartStack.trailingAnchor, constant: -16),
         ])
     }
     
-    private func setupAllRecommendationsButtonConstraints() {
-        allRecommendationsButton.translatesAutoresizingMaskIntoConstraints = false
+    private func setupAllPreparedRoutesButtonConstraints() {
+        allPreparedRoutesButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
-            allRecommendationsButton.heightAnchor.constraint(equalTo: recommendationsLabel.heightAnchor)
+            allPreparedRoutesButton.heightAnchor.constraint(equalTo: preparedRoutesLabel.heightAnchor)
         ])
     }
     
@@ -329,61 +328,61 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         ])
     }
     
-    private func setupNewTripViewConstraints() {
-        newTripView.translatesAutoresizingMaskIntoConstraints = false
+    private func setupNewRouteViewConstraints() {
+        newRouteView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
-            newTripView.centerXAnchor.constraint(equalTo: tripPartView.centerXAnchor),
-            newTripView.centerYAnchor.constraint(equalTo: tripPartView.centerYAnchor),
-            newTripView.widthAnchor.constraint(equalToConstant: self.bounds.width/2.5),
-            newTripView.heightAnchor.constraint(equalToConstant: self.bounds.width/2.5)
+            newRouteView.centerXAnchor.constraint(equalTo: routePartView.centerXAnchor),
+            newRouteView.centerYAnchor.constraint(equalTo: routePartView.centerYAnchor),
+            newRouteView.widthAnchor.constraint(equalToConstant: self.bounds.width/2.5),
+            newRouteView.heightAnchor.constraint(equalToConstant: self.bounds.width/2.5)
         ])
     }
     
-    private func setupNewTripBackgroundCircleViewConstraints() {
-        newTripBackgroundCircleView.translatesAutoresizingMaskIntoConstraints = false
+    private func setupNewRouteBackgroundCircleViewConstraints() {
+        newRouteBackgroundCircleView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
-            newTripBackgroundCircleView.centerXAnchor.constraint(equalTo: newTripView.centerXAnchor),
-            newTripBackgroundCircleView.centerYAnchor.constraint(equalTo: newTripView.centerYAnchor),
-            newTripBackgroundCircleView.widthAnchor.constraint(equalToConstant: self.bounds.width/2.5),
-            newTripBackgroundCircleView.heightAnchor.constraint(equalToConstant: self.bounds.width/2.5)
+            newRouteBackgroundCircleView.centerXAnchor.constraint(equalTo: newRouteView.centerXAnchor),
+            newRouteBackgroundCircleView.centerYAnchor.constraint(equalTo: newRouteView.centerYAnchor),
+            newRouteBackgroundCircleView.widthAnchor.constraint(equalToConstant: self.bounds.width/2.5),
+            newRouteBackgroundCircleView.heightAnchor.constraint(equalToConstant: self.bounds.width/2.5)
         ])
-        newTripBackgroundCircleView.layer.cornerRadius = self.bounds.width/5
+        newRouteBackgroundCircleView.layer.cornerRadius = self.bounds.width/5
     }
     
-    private func setupNewTripLabelStackConstraints() {
-        newTripLabelStack.translatesAutoresizingMaskIntoConstraints = false
+    private func setupNewRouteLabelStackConstraints() {
+        newRouteLabelStack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
-            newTripLabelStack.centerXAnchor.constraint(equalTo: newTripView.centerXAnchor),
-            newTripLabelStack.centerYAnchor.constraint(equalTo: newTripView.centerYAnchor),
-            newTripLabelStack.heightAnchor.constraint(equalToConstant: self.bounds.width/2.5)
+            newRouteLabelStack.centerXAnchor.constraint(equalTo: newRouteView.centerXAnchor),
+            newRouteLabelStack.centerYAnchor.constraint(equalTo: newRouteView.centerYAnchor),
+            newRouteLabelStack.heightAnchor.constraint(equalToConstant: self.bounds.width/2.5)
         ])
-        newTripLabelStack.spacing = -self.bounds.width/4.5
+        newRouteLabelStack.spacing = -self.bounds.width/4.5
     }
     
-    private func setupNewTripSublabelViewConstraints() {
-        newTripSublabelView.translatesAutoresizingMaskIntoConstraints = false
+    private func setupNewRouteSublabelViewConstraints() {
+        newRouteSublabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
-            newTripSublabelView.centerXAnchor.constraint(equalTo: tripPartView.centerXAnchor),
-            newTripSublabelView.topAnchor.constraint(equalTo: newTripSecondLineLabelPartView.topAnchor, constant: self.bounds.width/5),
-        ])
-    }
-    
-    private func setupNewTripButtonConstraints() {
-        newTripButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate ([
-            newTripButton.centerXAnchor.constraint(equalTo: tripPartView.centerXAnchor),
-            newTripButton.centerYAnchor.constraint(equalTo: tripPartView.centerYAnchor),
-            newTripButton.widthAnchor.constraint(equalToConstant: self.bounds.width/2.5+100),
-            newTripButton.heightAnchor.constraint(equalToConstant: self.bounds.width/2.5)
+            newRouteSublabel.centerXAnchor.constraint(equalTo: routePartView.centerXAnchor),
+            newRouteSublabel.topAnchor.constraint(equalTo: newRouteSecondRowLabel.topAnchor, constant: self.bounds.width/5),
         ])
     }
     
-    private func setupRecommendationsCarouselViewConstraints() {
-        recommendationsCarouselView.translatesAutoresizingMaskIntoConstraints = false
+    private func setupNewRouteButtonConstraints() {
+        newRouteButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
-            recommendationsCarouselView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            recommendationsCarouselView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            recommendationsCarouselView.heightAnchor.constraint(equalToConstant: 155),
+            newRouteButton.centerXAnchor.constraint(equalTo: routePartView.centerXAnchor),
+            newRouteButton.centerYAnchor.constraint(equalTo: routePartView.centerYAnchor),
+            newRouteButton.widthAnchor.constraint(equalToConstant: self.bounds.width/2.5+100),
+            newRouteButton.heightAnchor.constraint(equalToConstant: self.bounds.width/2.5)
+        ])
+    }
+    
+    private func setupPreparedRoutesCarouselViewConstraints() {
+        preparedRoutesCarouselView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate ([
+            preparedRoutesCarouselView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            preparedRoutesCarouselView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            preparedRoutesCarouselView.heightAnchor.constraint(equalToConstant: 155),
         ])
     }
     

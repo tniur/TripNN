@@ -8,7 +8,7 @@
 import UIKit
 
 extension UINavigationBarAppearance {
-    func tripNNAppearance() -> UINavigationBarAppearance {
+    func tripNNScreenTitleAppearance() -> UINavigationBarAppearance {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .tripnnWhite

@@ -1,5 +1,5 @@
 //
-//  NewTripSettingsView.swift
+//  NewRouteSettingsView.swift
 //  TripNN
 //
 //  Created by Pavel on 19.02.2024.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewTripSettingsView: UIView {
+class NewRouteSettingsView: UIView {
     
     // MARK: - Init
     

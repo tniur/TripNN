@@ -11,8 +11,8 @@ final class ItemCardCollectionViewCell: UICollectionViewCell {
     
     // MARK: - View
     
-    private let itemCardView: ItemCard = {
-        let card = ItemCard()
+    private let itemCardView: ItemCardTemplateView = {
+        let card = ItemCardTemplateView()
         return card
     }()
 

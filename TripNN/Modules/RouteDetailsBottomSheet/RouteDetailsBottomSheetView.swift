@@ -1,5 +1,5 @@
 //
-//  ItemCardBottomSheetView.swift
+//  RouteDetailsBottomSheetView.swift
 //  TripNN
 //
 //  Created by Pavel on 23.02.2024.
@@ -7,23 +7,25 @@
 
 import UIKit
 
-final class ItemCardBottomSheetView: UIView {
+final class RouteDetailsBottomSheetView: UIView {
     
-    private let tableViewContent: [ItemCardModel] = [
+    private let PlacesTableViewContent: [ItemCardModel] = [
         ItemCardModel(image: UIImage(named: "place_1")!, type: .route, title: "Историческая часть города", costInfo: "0 – 500₽"),
-        ItemCardModel(image: UIImage(named: "place_2")!, type: .route, title: "Большая Покровская улица", costInfo: "0₽"),
-        ItemCardModel(image: UIImage(named: "place_3")!, type: .route, title: "Улица Рождественская", costInfo: "0₽"),
-        ItemCardModel(image: UIImage(named: "place_4")!, type: .route, title: "Верхняя часть города", costInfo: "0₽")
+        ItemCardModel(image: UIImage(named: "place_2")!, type: .route, title: "Большая Покровская улица", costInfo: "Бесплатно"),
+        ItemCardModel(image: UIImage(named: "place_3")!, type: .route, title: "Улица Рождественская", costInfo: "Бесплатно"),
+        ItemCardModel(image: UIImage(named: "place_4")!, type: .route, title: "Верхняя часть города", costInfo: "Бесплатно")
     ]
     
     private let tableView: UITableView = .init()
     
     // MARK: - Views
     
-    private let headerView: UIView = {
-        let view = UIView()
-        return view
-    }()
+//    private let headerView: UIView = {
+//        let view = UIView()
+//        return view
+//    }()
+    
+    private let headerView: UIView = .init()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -147,16 +149,16 @@ final class ItemCardBottomSheetView: UIView {
     }
 }
 
-extension ItemCardBottomSheetView: UITableViewDataSource, UITableViewDelegate {
+extension RouteDetailsBottomSheetView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableViewContent.count
+        PlacesTableViewContent.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCardCell", for: indexPath) as? ItemCardTableViewCell else { fatalError() }
         
-        cell.configure(cardModel: tableViewContent[indexPath.row])
+        cell.configure(cardModel: PlacesTableViewContent[indexPath.row])
         cell.selectionStyle = .none
         
         return cell

@@ -1,5 +1,5 @@
 //
-//  AllRecommendationViewController.swift
+//  AllPreparedRoutesViewController.swift
 //  TripNN
 //
 //  Created by Pavel on 20.02.2024.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-class AllRecommendationsViewController: UIViewController {
+class AllPreparedRoutesViewController: UIViewController {
     
     // MARK: - View
     
-    weak var allRecommendationsView: AllRecommendationsView? {
-        return self.view as? AllRecommendationsView
+    weak var allPreparedRoutesView: AllPreparedRoutesView? {
+        return self.view as? AllPreparedRoutesView
     }
     
     // MARK: - Lifecycle
@@ -23,7 +23,7 @@ class AllRecommendationsViewController: UIViewController {
     }
     
     override func loadView() {
-        self.view = AllRecommendationsView(frame: UIScreen.main.bounds)
+        self.view = AllPreparedRoutesView(frame: UIScreen.main.bounds)
     }
     
     // MARK: - Setup
@@ -34,18 +34,18 @@ class AllRecommendationsViewController: UIViewController {
     }
     
     private func setupActions() {
-        allRecommendationsView?.onSelectTableCellAction = { [weak self] in self?.openItemCardBottomSheetAction() }
+        allPreparedRoutesView?.onSelectTableCellAction = { [weak self] in self?.openRouteDetailsBottomSheetAction() }
     }
     
     private func setupNavigationController() {
-        navigationItem.searchController = allRecommendationsView?.searchController
+        navigationItem.searchController = allPreparedRoutesView?.searchController
         navigationController?.setupNavigationControllerStyles(title: "Готовые маршруты", navigationItem: navigationItem, navigationController: navigationController)
     }
-    
+     
     // MARK: Action
     
-    private func openItemCardBottomSheetAction() {
-        let bottomSheet = ItemCardBottomSheetViewController()
+    private func openRouteDetailsBottomSheetAction() {
+        let bottomSheet = RouteDetailsBottomSheetViewController()
         if let sheet = bottomSheet.sheetPresentationController {
             sheet.detents = [.medium(), .large()]
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false

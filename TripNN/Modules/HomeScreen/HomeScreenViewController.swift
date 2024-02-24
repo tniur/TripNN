@@ -49,23 +49,23 @@ final class HomeScreenViewController: UIViewController {
     // MARK: - Actions
     
     private func setupActions() {
-        homeScreenView?.onOpeningSideMenuButtonAction = { [weak self] in self?.sideMenuAction() }
-        homeScreenView?.onNewTripButtonAction = { [weak self] in self?.createNewTrip() }
-        homeScreenView?.onAllRecommendationsButtonAction = { [weak self] in self?.openAllRecommendations() }
+        homeScreenView?.onSideMenuButtonAction = { [weak self] in self?.sideMenuAction() }
+        homeScreenView?.onNewRouteButtonAction = { [weak self] in self?.createNewRoute() }
+        homeScreenView?.onAllPreparedRoutesButtonAction = { [weak self] in self?.openAllPreparedRoutes() }
     }
     
     @objc private func sideMenuAction() {
         
     }
     
-    @objc private func createNewTrip() {
-        let controller = NewTripSettingsViewController()
+    @objc private func createNewRoute() {
+        let controller = NewRouteSettingsViewController()
         navigationController?.pushViewController(controller, animated: true)
         navigationController?.navigationBar.tintColor = .black
     }
     
-    @objc private func openAllRecommendations() {
-        let controller = AllRecommendationsViewController()
+    @objc private func openAllPreparedRoutes() {
+        let controller = AllPreparedRoutesViewController()
         navigationController?.pushViewController(controller, animated: true)
         navigationController?.navigationBar.tintColor = .black
     }

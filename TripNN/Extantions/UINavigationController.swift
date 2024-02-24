@@ -14,7 +14,7 @@ extension UINavigationController {
         navigationItem.backButtonTitle = ""
         navigationItem.title = title
         if #available(iOS 15, *) {
-            navigationController?.navigationBar.standardAppearance = UINavigationBarAppearance().tripNNAppearance()
+            navigationController?.navigationBar.standardAppearance = UINavigationBarAppearance().tripNNScreenTitleAppearance()
         } else {
             navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Montserrat-SemiBold", size: 16)!, NSAttributedString.Key.foregroundColor: UIColor.tripnnDark]
         }
