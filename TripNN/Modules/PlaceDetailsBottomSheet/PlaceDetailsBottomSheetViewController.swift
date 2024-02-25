@@ -8,6 +8,7 @@
 import UIKit
 
 final class PlaceDetailsBottomSheetViewController: UIViewController {
+    
     // MARK: - View
     
     weak var placeDetailsBottomSheetView: PlaceDetailsBottomSheetView? {

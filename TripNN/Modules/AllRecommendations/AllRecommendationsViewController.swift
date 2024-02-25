@@ -47,7 +47,7 @@ class AllPreparedRoutesViewController: UIViewController {
     private func openRouteDetailsBottomSheetAction() {
         let bottomSheet = RouteDetailsBottomSheetViewController()
         if let sheet = bottomSheet.sheetPresentationController {
-            sheet.detents = [.medium(), .large()]
+            sheet.detents = [.large()]
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
             sheet.prefersGrabberVisible = true
             sheet.preferredCornerRadius = 20

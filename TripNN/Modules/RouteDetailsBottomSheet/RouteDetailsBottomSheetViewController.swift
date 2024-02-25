@@ -18,9 +18,33 @@ final class RouteDetailsBottomSheetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
     }
     
     override func loadView() {
         self.view = RouteDetailsBottomSheetView(frame: UIScreen.main.bounds)
+    }
+    
+    // MARK: Setup
+    
+    private func setup() {
+        setupActions()
+    }
+    
+    private func setupActions() {
+        routeDetailsBottomSheetView?.onSelectTableCellAction = { [weak self] in self?.openPlaceDetailsBottomSheetViewController() }
+    }
+    
+    // MARK: Action
+    
+    private func openPlaceDetailsBottomSheetViewController() {
+        let bottomSheet = PlaceDetailsBottomSheetViewController()
+        if let sheet = bottomSheet.sheetPresentationController {
+            sheet.detents = [.medium()]
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.prefersGrabberVisible = true
+            sheet.preferredCornerRadius = 20
+        }
+        present(bottomSheet, animated: true)
     }
 }

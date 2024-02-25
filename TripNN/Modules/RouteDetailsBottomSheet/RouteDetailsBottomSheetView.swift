@@ -9,6 +9,10 @@ import UIKit
 
 final class RouteDetailsBottomSheetView: UIView {
     
+    // MARK: - Closures
+    
+    var onSelectTableCellAction: (() -> Void)?
+    
     private let PlacesTableViewContent: [ItemCardModel] = [
         ItemCardModel(image: UIImage(named: "place_1")!, type: .route, title: "Историческая часть города", costInfo: "0 – 500₽"),
         ItemCardModel(image: UIImage(named: "place_2")!, type: .route, title: "Большая Покровская улица", costInfo: "Бесплатно"),
@@ -162,5 +166,9 @@ extension RouteDetailsBottomSheetView: UITableViewDataSource, UITableViewDelegat
         cell.selectionStyle = .none
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        onSelectTableCellAction?()
     }
 }
