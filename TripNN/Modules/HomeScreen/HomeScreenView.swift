@@ -17,30 +17,30 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     
     // MARK: - Views
     
-    let infoPartView: UIView = {
+    private let infoPartView: UIView = {
         let view = UIView()
         view.backgroundColor = .tripnnYellow
         return view
     }()
     
-    let routePartView: UIView = {
+    private let routePartView: UIView = {
         let view = UIView()
         view.backgroundColor = .tripnnWhite
         return view
     }()
     
-    let logoImage: UIImageView = {
+    private let logoImage: UIImageView = {
         let image = UIImageView(image: UIImage(named: "logo-dark-icon"))
         return image
     }()
     
-    let sideMenuButton: UIButton = {
+    private let sideMenuButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "side-menu-icon"), for: .normal)
         return button
     }()
     
-    let infoPartStack: UIStackView = {
+    private let infoPartStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.alignment = .center
@@ -48,7 +48,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         return stack
     }()
     
-    let preparedRoutesHeaderStack: UIStackView = {
+    private let preparedRoutesHeaderStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .fillProportionally
@@ -57,15 +57,15 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         return stack
     }()
     
-    let preparedRoutesLabel: UILabel = {
+    private let preparedRoutesLabel: UILabel = {
         let label = UILabel()
         label.text = "Готовые маршруты"
         label.textColor = .tripnnDark
-        label.font =  UIFont(name: "Montserrat-SemiBold", size: 18)
+        label.font =  UIFont(name: "Montserrat-Medium", size: 18)
         return label
     }()
     
-    let allPreparedRoutesButton: UIButton = {
+    private let allPreparedRoutesButton: UIButton = {
         let button = UIButton()
         button.setTitle("Все", for: .normal)
         button.titleLabel?.font =  UIFont(name: "Montserrat-Regular", size: 14)
@@ -80,18 +80,18 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         ItemCardModel(image: UIImage(named: "place_3")!, type: .route, title: "Улица Рождественская", costInfo: "0₽")
     ]
     
-    let preparedRoutesCarouselView: UIView = {
+    private let preparedRoutesCarouselView: UIView = {
         let view = UIView()
         return view
     }()
     
-    let preparedRoutesCarouselCycleGallery: HSCycleGalleryView = {
+    private let preparedRoutesCarouselCycleGallery: HSCycleGalleryView = {
         let gallery = HSCycleGalleryView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 155))
         gallery.contentBackgroundColor = .tripnnYellow
         return gallery
     }()
     
-    let allPlaceButton: UIButton = {
+    private let allPlaceButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "all-place-icon"), for: .normal)
         button.setTitle("Все места Нижнего Новгорода", for: .normal)
@@ -105,12 +105,12 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         return button
     }()
     
-    let newRouteView: UIView = {
+    private let newRouteView: UIView = {
         let view = UIView()
         return view
     }()
     
-    let newRouteBackgroundCircleView: UIView = {
+    private let newRouteBackgroundCircleView: UIView = {
         let view = UIView()
         view.backgroundColor = .tripNNYellow
         view.addViewShadow()
@@ -118,7 +118,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         return view
     }()
     
-    let newRouteLabelStack: UIStackView = {
+    private let newRouteLabelStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.alignment = .center
@@ -126,7 +126,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         return stack
     }()
     
-    let newRouteFirstRowLabel: UILabel = {
+    private let newRouteFirstRowLabel: UILabel = {
         let label = UILabel()
         label.text = "новый".uppercased()
         label.font =  UIFont(name: "Montserrat-Black", size: 40)
@@ -134,7 +134,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         return label
     }()
     
-    let newRouteSecondRowLabel: UILabel = {
+    private let newRouteSecondRowLabel: UILabel = {
         let label = UILabel()
         label.text = "маршрут".uppercased()
         label.font =  UIFont(name: "Montserrat-Black", size: 40)
@@ -142,7 +142,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         return label
     }()
     
-    let newRouteSublabel: UILabel = {
+    private let newRouteSublabel: UILabel = {
         let label = UILabel()
         label.text = "создать"
         label.font =  UIFont(name: "Montserrat-Regular", size: 12)
@@ -150,7 +150,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         return label
     }()
     
-    let newRouteButton: UIButton = {
+    private let newRouteButton: UIButton = {
         let button = UIButton()
         return button
     }()
@@ -385,7 +385,6 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
             preparedRoutesCarouselView.heightAnchor.constraint(equalToConstant: 155),
         ])
     }
-    
 }
 
 // MARK: - Cycle Gallery Extensions

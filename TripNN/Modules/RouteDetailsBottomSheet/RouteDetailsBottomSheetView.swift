@@ -20,16 +20,11 @@ final class RouteDetailsBottomSheetView: UIView {
         ItemCardModel(image: UIImage(named: "place_4")!, type: .route, title: "Верхняя часть города", costInfo: "Бесплатно")
     ]
     
-    private let tableView: UITableView = .init()
+    private let tableView = UITableView()
     
     // MARK: - Views
     
-//    private let headerView: UIView = {
-//        let view = UIView()
-//        return view
-//    }()
-    
-    private let headerView: UIView = .init()
+    private let headerView = UIView()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
