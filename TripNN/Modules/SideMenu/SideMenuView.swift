@@ -12,6 +12,7 @@ final class SideMenuView: UIView {
     // MARK: - Closures
     
     var onSideMenuButtonCloseAction: (() -> Void)?
+    var onSideMenuSettingsButtonAction: (() -> Void)?
     
     // MARK: - Constants
     
@@ -25,7 +26,7 @@ final class SideMenuView: UIView {
         return view
     }()
     
-    let sideMenuView: UIView = {
+    let sideMenuСontentView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         return view
@@ -34,6 +35,24 @@ final class SideMenuView: UIView {
     private let sideMenuCloseButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "close-icon"), for: .normal)
+        return button
+    }()
+    
+    private let sideMenuButtonsStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.alignment = .leading
+        stack.spacing = 25
+        return stack
+    }()
+    
+    private let settingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Настройки", for: .normal)
+        button.titleLabel?.font =  UIFont(name: "Montserrat-Regular", size: 18)
+        button.layer.masksToBounds = false
+        button.backgroundColor = .yellow
+        button.setTitleColor(.tripnnDark, for: .normal)
         return button
     }()
     
@@ -55,28 +74,52 @@ final class SideMenuView: UIView {
         setupView()
         setupConstrains()
         addActions()
+        setupStack()
     }
     
     private func setupView() {
         self.addSubview(sideMenuBackgroundView)
-        self.addSubview(sideMenuView)
-        sideMenuView.addSubview(sideMenuCloseButton)
+        self.addSubview(sideMenuСontentView)
+        sideMenuСontentView.addSubview(sideMenuCloseButton)
+        sideMenuСontentView.addSubview(sideMenuButtonsStack)
+    }
+    
+    private func setupStack() {
+        sideMenuButtonsStack.addArrangedSubview(createSideMenuContentButton(title: "Аккаунт"))
+        sideMenuButtonsStack.addArrangedSubview(createSideMenuContentButton(title: "История"))
+        sideMenuButtonsStack.addArrangedSubview(createSideMenuContentButton(title: "Избранные"))
+        sideMenuButtonsStack.addArrangedSubview(settingButton)
     }
     
     private func setupConstrains() {
         setupSideMenuBackgroundViewConstraints()
         setupSideMenuViewConstraints()
         setupSideMenuCloseButtonConstraints()
+        setupSideMenuButtonsStackConstraints()
     }
     
     // MARK: - Actions
     
     private func addActions() {
         sideMenuCloseButton.addTarget(self, action: #selector(closeSideMenu), for: .touchUpInside)
+        settingButton.addTarget(self, action: #selector(openSettingScreen), for: .touchUpInside)
     }
     
     @objc private func closeSideMenu() {
         onSideMenuButtonCloseAction?()
+    }
+    
+    @objc private func openSettingScreen() {
+        onSideMenuSettingsButtonAction?()
+    }
+    
+    private func createSideMenuContentButton(title: String) -> UIButton {
+        let button = UIButton()
+        button.setTitle(title, for: .normal)
+        button.titleLabel?.font =  UIFont(name: "Montserrat-Regular", size: 18)
+        button.layer.masksToBounds = false
+        button.setTitleColor(.tripnnDark, for: .normal)
+        return button
     }
     
     // MARK: - Constrains
@@ -92,12 +135,12 @@ final class SideMenuView: UIView {
     }
     
     private func setupSideMenuViewConstraints() {
-        sideMenuView.translatesAutoresizingMaskIntoConstraints = false
+        sideMenuСontentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            sideMenuView.widthAnchor.constraint(equalToConstant: sideMenuWidth),
-            sideMenuView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            sideMenuView.topAnchor.constraint(equalTo: topAnchor),
-            sideMenuView.leadingAnchor.constraint(equalTo: leadingAnchor)
+            sideMenuСontentView.widthAnchor.constraint(equalToConstant: sideMenuWidth),
+            sideMenuСontentView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            sideMenuСontentView.topAnchor.constraint(equalTo: topAnchor),
+            sideMenuСontentView.leadingAnchor.constraint(equalTo: leadingAnchor)
         ])
     }
     
@@ -108,6 +151,16 @@ final class SideMenuView: UIView {
             sideMenuCloseButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 14),
             sideMenuCloseButton.widthAnchor.constraint(equalToConstant: 44),
             sideMenuCloseButton.heightAnchor.constraint(equalToConstant: 44)
+        ])
+    }
+    
+    private func setupSideMenuButtonsStackConstraints() {
+        sideMenuButtonsStack.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            sideMenuButtonsStack.topAnchor.constraint(equalTo: sideMenuCloseButton.bottomAnchor, constant: 20),
+            sideMenuButtonsStack.leadingAnchor.constraint(equalTo: sideMenuСontentView.leadingAnchor, constant: 26),
+            sideMenuButtonsStack.trailingAnchor.constraint(equalTo: sideMenuСontentView.trailingAnchor, constant: 10),
+            sideMenuButtonsStack.bottomAnchor.constraint(lessThanOrEqualTo: sideMenuСontentView.bottomAnchor, constant: 0)
         ])
     }
 }

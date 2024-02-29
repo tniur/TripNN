@@ -21,7 +21,6 @@ final class HomeScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setup()
     }
     
@@ -30,6 +29,7 @@ final class HomeScreenViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupNavigationBarStyle(isHidden: true)
     }
     
@@ -47,14 +47,14 @@ final class HomeScreenViewController: UIViewController {
         homeScreenView?.onNewRouteButtonAction = { [weak self] in self?.createNewRoute() }
         homeScreenView?.onAllPreparedRoutesButtonAction = { [weak self] in self?.openAllPreparedRoutes() }
     }
-
+    
     private func setupGestures() {
-        let edgePanRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(self.handleSwipeGesture))
+        let edgePanRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(self.handleEdgePanGesture))
         edgePanRecognizer.edges = .left
         view.addGestureRecognizer(edgePanRecognizer)
     }
     
-    @objc private func handleSwipeGesture(sender: UIScreenEdgePanGestureRecognizer) {
+    @objc private func handleEdgePanGesture(sender: UIScreenEdgePanGestureRecognizer) {
         sideMenuOpenAction()
     }
     
@@ -87,5 +87,10 @@ final class HomeScreenViewController: UIViewController {
         let sideMenuViewController = SideMenuViewController()
         sideMenuViewController.modalPresentationStyle = .custom
         present(sideMenuViewController, animated: true, completion: nil)
+        sideMenuViewController.onSideMenuSettingsButtonAction = { [weak self] in
+            sideMenuViewController.sideMenuCloseAction(animated: false)
+            let controller = SettingsViewController()
+            self?.navigationController?.pushViewController(controller, animated: true)
+            self?.navigationController?.navigationBar.tintColor = .black }
     }
 }

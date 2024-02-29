@@ -9,9 +9,12 @@ import UIKit
 
 final class SideMenuViewController: UIViewController {
     
+    var onSideMenuSettingsButtonAction: (() -> Void)?
+    
     // MARK: - Constants
 
     var isSideMenuPresenting: Bool = false
+    let animationDuration = 0.3
     
     // MARK: - View
     
@@ -42,6 +45,20 @@ final class SideMenuViewController: UIViewController {
         self.view = SideMenuView(frame: UIScreen.main.bounds)
     }
     
+    // MARK: - Action
+    
+    @objc func sideMenuCloseAction(animated: Bool) {
+        presentingViewController?.dismiss(animated: animated, completion: nil)
+    }
+    
+    @objc func sideMenuSettingsScreenAction() {
+        onSideMenuSettingsButtonAction?()
+    }
+    
+    @objc private func handleTap(_ sender: UITapGestureRecognizer) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - Setup
     
     private func setup() {
@@ -50,7 +67,8 @@ final class SideMenuViewController: UIViewController {
     }
     
     private func setupActions() {
-        sideMenuView?.onSideMenuButtonCloseAction = { [weak self] in self?.sideMenuCloseAction() }
+        sideMenuView?.onSideMenuButtonCloseAction = { [weak self] in self?.sideMenuCloseAction(animated: true) }
+        sideMenuView?.onSideMenuSettingsButtonAction = { [weak self] in self?.sideMenuSettingsScreenAction() }
     }
 
     private func setupGestures() {
@@ -63,17 +81,7 @@ final class SideMenuViewController: UIViewController {
     }
     
     @objc private func handleSwipeGesture(sender: UISwipeGestureRecognizer) {
-        sideMenuCloseAction()
-    }
-    
-    // MARK: - Action
-    
-    @objc func sideMenuCloseAction() {
-        presentingViewController?.dismiss(animated: true, completion: nil)
-    }
-    
-    @objc private func handleTap(_ sender: UITapGestureRecognizer) {
-        dismiss(animated: true, completion: nil)
+        sideMenuCloseAction(animated: true)
     }
 }
 
@@ -86,7 +94,7 @@ extension SideMenuViewController: UIViewControllerAnimatedTransitioning {
             return
         }
         
-        guard let sideMenu = sideMenuView?.sideMenuView,
+        guard let sideMenu = sideMenuView?.sideMenuСontentView,
               let sideMenuBackground = sideMenuView?.sideMenuBackgroundView,
               let sideMenuWidth = sideMenuView?.sideMenuWidth else {
             return
@@ -100,14 +108,14 @@ extension SideMenuViewController: UIViewControllerAnimatedTransitioning {
             sideMenu.frame.origin.x -= sideMenuWidth
             sideMenuBackground.alpha = 0
             
-            UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
+            UIView.animate(withDuration: animationDuration, delay: 0, options: [.curveEaseOut], animations: {
                 sideMenu.frame.origin.x += sideMenuWidth
                 sideMenuBackground.alpha = 1
             }, completion: { (finished) in
                 transitionContext.completeTransition(true)
             })
         } else {
-            UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
+            UIView.animate(withDuration: animationDuration, delay: 0, options: [.curveEaseOut], animations: {
                 sideMenu.frame.origin.x -= sideMenuWidth
                 sideMenuBackground.alpha = 0
             }, completion: { (finished) in
@@ -117,7 +125,7 @@ extension SideMenuViewController: UIViewControllerAnimatedTransitioning {
     }
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.5
+        return animationDuration
     }
 }
 

@@ -11,6 +11,11 @@ final class PlaceDetailsBottomSheetView: UIView {
     
     // MARK: - View
     
+//    private let placeImageCollection: UICollectionView = {
+//        let collection = UICollectionView()
+//        return collection
+//    }()
+    
     private let placeInfoStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
@@ -153,7 +158,10 @@ final class PlaceDetailsBottomSheetView: UIView {
     private func setupView() {
         self.backgroundColor = .tripnnWhite
         self.addSubview(placeInfoStack)
-        
+        setupStack()
+    }
+    
+    private func setupStack() {
         placeInfoStack.addArrangedSubview(generalInfoStack)
         placeInfoStack.addArrangedSubview(detailsInfoStack)
         
