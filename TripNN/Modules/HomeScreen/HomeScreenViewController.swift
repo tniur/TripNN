@@ -22,7 +22,7 @@ final class HomeScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupActions()
+        setup()
     }
     
     override func loadView() {
@@ -37,6 +37,16 @@ final class HomeScreenViewController: UIViewController {
         setupNavigationBarStyle(isHidden: false)
     }
     
+    private func setup() {
+        setupActions()
+    }
+    
+    private func setupActions() {
+        homeScreenView?.onSideMenuButtonAction = { [weak self] in self?.sideMenuOpenAction() }
+        homeScreenView?.onNewRouteButtonAction = { [weak self] in self?.createNewRoute() }
+        homeScreenView?.onAllPreparedRoutesButtonAction = { [weak self] in self?.openAllPreparedRoutes() }
+    }
+    
     // MARK: - Styles
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -49,12 +59,6 @@ final class HomeScreenViewController: UIViewController {
     }
     
     // MARK: - Actions
-    
-    private func setupActions() {
-        homeScreenView?.onSideMenuButtonAction = { [weak self] in self?.sideMenuOpenAction() }
-        homeScreenView?.onNewRouteButtonAction = { [weak self] in self?.createNewRoute() }
-        homeScreenView?.onAllPreparedRoutesButtonAction = { [weak self] in self?.openAllPreparedRoutes() }
-    }
     
     @objc private func createNewRoute() {
         let controller = CreatingRouteViewController()
@@ -71,17 +75,6 @@ final class HomeScreenViewController: UIViewController {
     @objc private func sideMenuOpenAction() {
         let sideMenuViewController = SideMenuViewController()
         sideMenuViewController.modalPresentationStyle = .custom
-        sideMenuViewController.transitioningDelegate = self
         present(sideMenuViewController, animated: true, completion: nil)
-    }
-}
-
-extension HomeScreenViewController: UIViewControllerTransitioningDelegate {
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return SideMenuTransitionAnimation(isPresent: true)
-    }
-    
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return SideMenuTransitionAnimation(isPresent: false)
     }
 }
