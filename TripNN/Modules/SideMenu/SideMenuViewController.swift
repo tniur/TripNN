@@ -10,19 +10,14 @@ import UIKit
 final class SideMenuViewController: UIViewController {
     
     // MARK: - Constants
-    
-    let menuWidth = UIScreen.main.bounds.width / 2
-    var isPresenting = false
+
+    var isSideMenuPresenting: Bool = false
     
     // MARK: - View
     
-    lazy var backgroundView: UIView = {
-        let bdView = UIView(frame: self.view.bounds)
-        bdView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        return bdView
-    }()
-    
-    let menuView = UIView()
+    weak var sideMenuView: SideMenuView? {
+        return self.view as? SideMenuView
+    }
     
     // MARK: - Init
     
@@ -36,65 +31,51 @@ final class SideMenuViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Life Cycle
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        view.addSubview(backgroundView)
-        view.addSubview(menuView)
-        
-        menuView.backgroundColor = .white
-        
         setup()
+    }
+    
+    override func loadView() {
+        self.view = SideMenuView(frame: UIScreen.main.bounds)
     }
     
     // MARK: - Setup
     
     private func setup() {
-        setupConstraints()
+        setupActions()
         setupGestures()
     }
     
-    private func setupConstraints() {
-        setupSideMenuViewConstraints()
+    private func setupActions() {
+        sideMenuView?.onSideMenuButtonCloseAction = { [weak self] in self?.sideMenuCloseAction() }
     }
-    
+
     private func setupGestures() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SideMenuViewController.handleTap(_:)))
-        backgroundView.addGestureRecognizer(tapGesture)
+        sideMenuView?.sideMenuBackgroundView.addGestureRecognizer(tapGesture)
+        
+        let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipeGesture))
+        swipeRecognizer.direction = .left
+        view.addGestureRecognizer(swipeRecognizer)
+    }
+    
+    @objc private func handleSwipeGesture(sender: UISwipeGestureRecognizer) {
+        sideMenuCloseAction()
     }
     
     // MARK: - Action
     
+    @objc func sideMenuCloseAction() {
+        presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+    
     @objc private func handleTap(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
     }
-    
-    // MARK: - Constraints
-    
-    private func setupSideMenuViewConstraints() {
-        menuView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            menuView.widthAnchor.constraint(equalToConstant: menuWidth),
-            menuView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            menuView.topAnchor.constraint(equalTo: view.topAnchor),
-            menuView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
-        ])
-    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 extension SideMenuViewController: UIViewControllerAnimatedTransitioning {
     
@@ -105,24 +86,30 @@ extension SideMenuViewController: UIViewControllerAnimatedTransitioning {
             return
         }
         
-        isPresenting = !isPresenting
+        guard let sideMenu = sideMenuView?.sideMenuView,
+              let sideMenuBackground = sideMenuView?.sideMenuBackgroundView,
+              let sideMenuWidth = sideMenuView?.sideMenuWidth else {
+            return
+        }
         
-        if isPresenting {
+        isSideMenuPresenting = !isSideMenuPresenting
+        
+        if isSideMenuPresenting {
             transitionContext.containerView.addSubview(toViewController.view)
             
-            menuView.frame.origin.x -= menuWidth
-            backgroundView.alpha = 0
+            sideMenu.frame.origin.x -= sideMenuWidth
+            sideMenuBackground.alpha = 0
             
             UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
-                self.menuView.frame.origin.x += self.menuWidth
-                self.backgroundView.alpha = 1
+                sideMenu.frame.origin.x += sideMenuWidth
+                sideMenuBackground.alpha = 1
             }, completion: { (finished) in
                 transitionContext.completeTransition(true)
             })
         } else {
             UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
-                self.menuView.frame.origin.x -= self.menuWidth
-                self.backgroundView.alpha = 0
+                sideMenu.frame.origin.x -= sideMenuWidth
+                sideMenuBackground.alpha = 0
             }, completion: { (finished) in
                 transitionContext.completeTransition(true)
             })
@@ -143,54 +130,3 @@ extension SideMenuViewController: UIViewControllerTransitioningDelegate {
         return self
     }
 }
-
-
-
-
-
-//final class SideMenuViewController: UIViewController {
-//    
-//    // MARK: - View
-//    
-//    weak var sideMenuView: SideMenuView? {
-//        return self.view as? SideMenuView
-//    }
-//    
-//    // MARK: - Lifecycle
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        setup()
-//    }
-//    
-//    override func loadView() {
-//        self.view = SideMenuView(frame: UIScreen.main.bounds)
-//    }
-//    
-//    // MARK: - Setup
-//    
-//    private func setup() {
-//        setupActions()
-//        setupGesture()
-//    }
-//    
-//    private func setupActions() {
-//        sideMenuView?.onSideMenuButtonCloseAction = { [weak self] in self?.sideMenuCloseAction() }
-//    }
-//    
-//    private func setupGesture() {
-//        let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipeGesture))
-//        swipeRecognizer.direction = .left
-//        view.addGestureRecognizer(swipeRecognizer)
-//    }
-//    
-//    @objc private func handleSwipeGesture(sender: UISwipeGestureRecognizer) {
-//        sideMenuCloseAction()
-//    }
-//    
-//    // MARK: - Action
-//    
-//    @objc func sideMenuCloseAction() {
-//        presentingViewController?.dismiss(animated: true, completion: nil)
-//    }
-//}

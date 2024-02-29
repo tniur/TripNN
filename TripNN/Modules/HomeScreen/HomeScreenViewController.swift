@@ -39,12 +39,23 @@ final class HomeScreenViewController: UIViewController {
     
     private func setup() {
         setupActions()
+        setupGestures()
     }
     
     private func setupActions() {
         homeScreenView?.onSideMenuButtonAction = { [weak self] in self?.sideMenuOpenAction() }
         homeScreenView?.onNewRouteButtonAction = { [weak self] in self?.createNewRoute() }
         homeScreenView?.onAllPreparedRoutesButtonAction = { [weak self] in self?.openAllPreparedRoutes() }
+    }
+
+    private func setupGestures() {
+        let edgePanRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(self.handleSwipeGesture))
+        edgePanRecognizer.edges = .left
+        view.addGestureRecognizer(edgePanRecognizer)
+    }
+    
+    @objc private func handleSwipeGesture(sender: UIScreenEdgePanGestureRecognizer) {
+        sideMenuOpenAction()
     }
     
     // MARK: - Styles

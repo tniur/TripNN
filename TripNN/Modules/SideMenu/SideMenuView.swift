@@ -9,11 +9,27 @@ import UIKit
 
 final class SideMenuView: UIView {
     
+    // MARK: - Closures
+    
     var onSideMenuButtonCloseAction: (() -> Void)?
+    
+    // MARK: - Constants
+    
+    let sideMenuWidth = UIScreen.main.bounds.width / 1.5
     
     // MARK: - View
     
+    let sideMenuBackgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        return view
+    }()
     
+    let sideMenuView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
     
     private let sideMenuCloseButton: UIButton = {
         let button = UIButton()
@@ -42,8 +58,15 @@ final class SideMenuView: UIView {
     }
     
     private func setupView() {
-        
-        // sideMenuView.addSubview(sideMenuCloseButton)
+        self.addSubview(sideMenuBackgroundView)
+        self.addSubview(sideMenuView)
+        sideMenuView.addSubview(sideMenuCloseButton)
+    }
+    
+    private func setupConstrains() {
+        setupSideMenuBackgroundViewConstraints()
+        setupSideMenuViewConstraints()
+        setupSideMenuCloseButtonConstraints()
     }
     
     // MARK: - Actions
@@ -58,12 +81,25 @@ final class SideMenuView: UIView {
     
     // MARK: - Constrains
     
-    private func setupConstrains() {
-
-        setupSideMenuCloseButtonConstraints()
+    private func setupSideMenuBackgroundViewConstraints() {
+        sideMenuBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            sideMenuBackgroundView.topAnchor.constraint(equalTo: topAnchor),
+            sideMenuBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            sideMenuBackgroundView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            sideMenuBackgroundView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
     }
     
-    
+    private func setupSideMenuViewConstraints() {
+        sideMenuView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            sideMenuView.widthAnchor.constraint(equalToConstant: sideMenuWidth),
+            sideMenuView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            sideMenuView.topAnchor.constraint(equalTo: topAnchor),
+            sideMenuView.leadingAnchor.constraint(equalTo: leadingAnchor)
+        ])
+    }
     
     private func setupSideMenuCloseButtonConstraints() {
         sideMenuCloseButton.translatesAutoresizingMaskIntoConstraints = false
