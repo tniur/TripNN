@@ -38,23 +38,7 @@ final class SideMenuView: UIView {
         return button
     }()
     
-    private let sideMenuButtonsStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.alignment = .leading
-        stack.spacing = 25
-        return stack
-    }()
-    
-    private let settingButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Настройки", for: .normal)
-        button.titleLabel?.font =  UIFont(name: "Montserrat-Regular", size: 18)
-        button.layer.masksToBounds = false
-        button.backgroundColor = .yellow
-        button.setTitleColor(.tripnnDark, for: .normal)
-        return button
-    }()
+    private let sideMenuSectionsTableView = UITableView()
     
     // MARK: - Init
     
@@ -74,35 +58,34 @@ final class SideMenuView: UIView {
         setupView()
         setupConstrains()
         addActions()
-        setupStack()
+        setupSideMenuSectionsTableView()
+    }
+    
+    private func setupSideMenuSectionsTableView() {
+        sideMenuSectionsTableView.register(SideMenuSectionTableViewCell.self, forCellReuseIdentifier: "SideMenuSectionCell")
+        sideMenuSectionsTableView.dataSource = self
+        sideMenuSectionsTableView.delegate = self
+        sideMenuSectionsTableView.separatorStyle = .none
     }
     
     private func setupView() {
         self.addSubview(sideMenuBackgroundView)
         self.addSubview(sideMenuСontentView)
         sideMenuСontentView.addSubview(sideMenuCloseButton)
-        sideMenuСontentView.addSubview(sideMenuButtonsStack)
-    }
-    
-    private func setupStack() {
-        sideMenuButtonsStack.addArrangedSubview(createSideMenuContentButton(title: "Аккаунт"))
-        sideMenuButtonsStack.addArrangedSubview(createSideMenuContentButton(title: "История"))
-        sideMenuButtonsStack.addArrangedSubview(createSideMenuContentButton(title: "Избранные"))
-        sideMenuButtonsStack.addArrangedSubview(settingButton)
+        sideMenuСontentView.addSubview(sideMenuSectionsTableView)
     }
     
     private func setupConstrains() {
         setupSideMenuBackgroundViewConstraints()
         setupSideMenuViewConstraints()
         setupSideMenuCloseButtonConstraints()
-        setupSideMenuButtonsStackConstraints()
+        setupSideMenuSectionsTableViewConstraints()
     }
     
     // MARK: - Actions
     
     private func addActions() {
         sideMenuCloseButton.addTarget(self, action: #selector(closeSideMenu), for: .touchUpInside)
-        settingButton.addTarget(self, action: #selector(openSettingScreen), for: .touchUpInside)
     }
     
     @objc private func closeSideMenu() {
@@ -111,15 +94,6 @@ final class SideMenuView: UIView {
     
     @objc private func openSettingScreen() {
         onSideMenuSettingsButtonAction?()
-    }
-    
-    private func createSideMenuContentButton(title: String) -> UIButton {
-        let button = UIButton()
-        button.setTitle(title, for: .normal)
-        button.titleLabel?.font =  UIFont(name: "Montserrat-Regular", size: 18)
-        button.layer.masksToBounds = false
-        button.setTitleColor(.tripnnDark, for: .normal)
-        return button
     }
     
     // MARK: - Constrains
@@ -154,13 +128,59 @@ final class SideMenuView: UIView {
         ])
     }
     
-    private func setupSideMenuButtonsStackConstraints() {
-        sideMenuButtonsStack.translatesAutoresizingMaskIntoConstraints = false
+    private func setupSideMenuSectionsTableViewConstraints() {
+        sideMenuSectionsTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            sideMenuButtonsStack.topAnchor.constraint(equalTo: sideMenuCloseButton.bottomAnchor, constant: 20),
-            sideMenuButtonsStack.leadingAnchor.constraint(equalTo: sideMenuСontentView.leadingAnchor, constant: 26),
-            sideMenuButtonsStack.trailingAnchor.constraint(equalTo: sideMenuСontentView.trailingAnchor, constant: 10),
-            sideMenuButtonsStack.bottomAnchor.constraint(lessThanOrEqualTo: sideMenuСontentView.bottomAnchor, constant: 0)
+            sideMenuSectionsTableView.topAnchor.constraint(equalTo: sideMenuCloseButton.bottomAnchor, constant: 10),
+            sideMenuSectionsTableView.trailingAnchor.constraint(equalTo: sideMenuСontentView.trailingAnchor),
+            sideMenuSectionsTableView.leadingAnchor.constraint(equalTo: sideMenuСontentView.leadingAnchor),
+            sideMenuSectionsTableView.bottomAnchor.constraint(equalTo: sideMenuСontentView.bottomAnchor)
         ])
+    }
+}
+
+enum SideMenuSection: Int {
+    case account
+    case history
+    case favourites
+    case settings
+}
+
+extension SideMenuView: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuSectionCell", for: indexPath) as? SideMenuSectionTableViewCell else { fatalError() }
+        
+        let value: String
+        
+        switch indexPath.row {
+            case SideMenuSection.account.rawValue:
+                value = "Аккаунт"
+            case SideMenuSection.history.rawValue:
+                value = "История"
+            case SideMenuSection.favourites.rawValue:
+                value = "Избранные"
+            case SideMenuSection.settings.rawValue:
+                value = "Настройки"
+            default:
+                value = ""
+        }
+        
+        cell.configure(title: value)
+        cell.selectionStyle = .none
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case SideMenuSection.settings.rawValue:
+            onSideMenuSettingsButtonAction?()
+        default:
+            return
+        }
     }
 }

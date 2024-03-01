@@ -19,7 +19,7 @@
 		E95FA1112B907F1F007E3E51 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FA10E2B907AFB007E3E51 /* SettingsView.swift */; };
 		E95FA1132B90A16B007E3E51 /* SettingSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FA1122B90A16B007E3E51 /* SettingSectionModel.swift */; };
 		E95FA1152B90A358007E3E51 /* SettingSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FA1142B90A358007E3E51 /* SettingSectionTableViewCell.swift */; };
-		E95FA1172B91230D007E3E51 /* SettingSectionTableViewCell copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FA1162B91230D007E3E51 /* SettingSectionTableViewCell copy.swift */; };
+		E95FA1172B91230D007E3E51 /* SideMenuSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FA1162B91230D007E3E51 /* SideMenuSectionTableViewCell.swift */; };
 		E96032CB2B88148800F026B5 /* PlaceDetailsBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96032CA2B88148800F026B5 /* PlaceDetailsBottomSheetView.swift */; };
 		E96032CD2B8815DD00F026B5 /* RouteDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96032CC2B8815DD00F026B5 /* RouteDetailsModel.swift */; };
 		E96032CF2B8815FB00F026B5 /* PlaceDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96032CE2B8815FB00F026B5 /* PlaceDetailsModel.swift */; };
@@ -67,7 +67,7 @@
 		E95FA10F2B907AFC007E3E51 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E95FA1122B90A16B007E3E51 /* SettingSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionModel.swift; sourceTree = "<group>"; };
 		E95FA1142B90A358007E3E51 /* SettingSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionTableViewCell.swift; sourceTree = "<group>"; };
-		E95FA1162B91230D007E3E51 /* SettingSectionTableViewCell copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingSectionTableViewCell copy.swift"; sourceTree = "<group>"; };
+		E95FA1162B91230D007E3E51 /* SideMenuSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuSectionTableViewCell.swift; sourceTree = "<group>"; };
 		E96032CA2B88148800F026B5 /* PlaceDetailsBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailsBottomSheetView.swift; sourceTree = "<group>"; };
 		E96032CC2B8815DD00F026B5 /* RouteDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailsModel.swift; sourceTree = "<group>"; };
 		E96032CE2B8815FB00F026B5 /* PlaceDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailsModel.swift; sourceTree = "<group>"; };
@@ -269,8 +269,8 @@
 		E969492C2B7EAB2D00622949 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				E95FA1162B91230D007E3E51 /* SideMenuSectionTableViewCell.swift */,
 				E95FA1142B90A358007E3E51 /* SettingSectionTableViewCell.swift */,
-				E95FA1162B91230D007E3E51 /* SettingSectionTableViewCell copy.swift */,
 				E9055A2C2B817F2E006CF2BE /* HSCycleGalleryView */,
 				E93A329A2B85EE2B00C1BBB7 /* ItemCard */,
 			);
@@ -430,7 +430,7 @@
 				E96949292B7EA71400622949 /* HomeScreenView.swift in Sources */,
 				E95FA1152B90A358007E3E51 /* SettingSectionTableViewCell.swift in Sources */,
 				E96032CF2B8815FB00F026B5 /* PlaceDetailsModel.swift in Sources */,
-				E95FA1172B91230D007E3E51 /* SettingSectionTableViewCell copy.swift in Sources */,
+				E95FA1172B91230D007E3E51 /* SideMenuSectionTableViewCell.swift in Sources */,
 				E96032D12B8816E300F026B5 /* PlaceDetailsBottomSheetViewController.swift in Sources */,
 				E95FA1132B90A16B007E3E51 /* SettingSectionModel.swift in Sources */,
 				E95FA1102B907EF5007E3E51 /* SettingsViewController.swift in Sources */,

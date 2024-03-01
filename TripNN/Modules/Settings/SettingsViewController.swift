@@ -9,8 +9,6 @@ import UIKit
 
 final class SettingsViewController: UIViewController {
     
-    var sideMenu: SideMenuViewController?
-    
     // MARK: - View
     
     weak var settingsView: SettingsView? {

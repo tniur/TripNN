@@ -13,8 +13,8 @@ final class SideMenuViewController: UIViewController {
     
     // MARK: - Constants
 
-    var isSideMenuPresenting: Bool = false
     let animationDuration = 0.3
+    var isSideMenuPresenting: Bool = false
     
     // MARK: - View
     

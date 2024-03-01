@@ -85,8 +85,12 @@ final class HomeScreenViewController: UIViewController {
     
     @objc private func sideMenuOpenAction() {
         let sideMenuViewController = SideMenuViewController()
+
+
         sideMenuViewController.modalPresentationStyle = .custom
         present(sideMenuViewController, animated: true, completion: nil)
+        
+        
         sideMenuViewController.onSideMenuSettingsButtonAction = { [weak self] in
             sideMenuViewController.sideMenuCloseAction(animated: false)
             let controller = SettingsViewController()

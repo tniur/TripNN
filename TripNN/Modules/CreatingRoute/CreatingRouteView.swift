@@ -20,7 +20,7 @@ class CreatingRouteView: UIView {
         button.layer.cornerRadius = 6
         button.setTitleColor(.tripnnWhite, for: .normal)
         button.backgroundColor = .tripnnOrange
-        button.titleLabel?.textAlignment = .left
+        button.contentHorizontalAlignment = .left
         button.addViewShadow()
         button.setInsets(forContentPadding: UIEdgeInsets(top: 0, left: 13, bottom: 0, right: 13), imageTitlePadding: 13)
         return button
@@ -51,10 +51,10 @@ class CreatingRouteView: UIView {
     }
     
     private func setupConstraints() {
-        setupAllPlaceButtonConstraints()
+        setupAddPlaceButtonConstraints()
     }
     
-    private func setupAllPlaceButtonConstraints() {
+    private func setupAddPlaceButtonConstraints() {
         addPlaceButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
             addPlaceButton.topAnchor.constraint(equalTo: topAnchor, constant: 300),
