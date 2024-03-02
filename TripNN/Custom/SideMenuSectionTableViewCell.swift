@@ -16,7 +16,7 @@ final class SideMenuSectionTableViewCell: UITableViewCell {
         return view
     }()
     
-    private let sectionButton: UILabel = {
+    private let sectionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .tripnnDark
         label.font = UIFont(name: "Montserrat-Regular", size: 16)
@@ -38,7 +38,7 @@ final class SideMenuSectionTableViewCell: UITableViewCell {
     // MARK: - Configure
     
     func configure(title: String) {
-        sectionButton.text = title
+        sectionLabel.text = title
     }
     
     // MARK: - Setup
@@ -50,7 +50,7 @@ final class SideMenuSectionTableViewCell: UITableViewCell {
     
     private func setupView() {
         contentView.addSubview(containerView)
-        containerView.addSubview(sectionButton)
+        containerView.addSubview(sectionLabel)
     }
     
     private func setupConstraints() {
@@ -72,11 +72,11 @@ final class SideMenuSectionTableViewCell: UITableViewCell {
     }
     
     private func setupLabelsContainerViewConstraints() {
-        sectionButton.translatesAutoresizingMaskIntoConstraints = false
+        sectionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            sectionButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            sectionButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -16),
-            sectionButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            sectionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            sectionLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -16),
+            sectionLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
         ])
     }
 }

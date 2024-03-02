@@ -9,11 +9,13 @@ import UIKit
 
 final class SideMenuViewController: UIViewController {
     
+    // MARK: - Closures
+    
     var onSideMenuSettingsButtonAction: (() -> Void)?
     
     // MARK: - Constants
 
-    let animationDuration = 0.3
+    let animationDuration = 0.2
     var isSideMenuPresenting: Bool = false
     
     // MARK: - View
@@ -79,6 +81,8 @@ final class SideMenuViewController: UIViewController {
         swipeRecognizer.direction = .left
         view.addGestureRecognizer(swipeRecognizer)
     }
+    
+    // MARK: - Gestures
     
     @objc private func handleSwipeGesture(sender: UISwipeGestureRecognizer) {
         sideMenuCloseAction(animated: true)

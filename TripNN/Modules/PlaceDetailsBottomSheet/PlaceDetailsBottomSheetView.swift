@@ -11,11 +11,6 @@ final class PlaceDetailsBottomSheetView: UIView {
     
     // MARK: - View
     
-//    private let placeImageCollection: UICollectionView = {
-//        let collection = UICollectionView()
-//        return collection
-//    }()
-    
     private let placeInfoStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal

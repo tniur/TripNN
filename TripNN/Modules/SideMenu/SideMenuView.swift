@@ -32,7 +32,7 @@ final class SideMenuView: UIView {
         return view
     }()
     
-    private let sideMenuCloseButton: UIButton = {
+    let sideMenuCloseButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "close-icon"), for: .normal)
         return button
@@ -139,6 +139,21 @@ final class SideMenuView: UIView {
     }
 }
 
+extension SideMenuView: UITableViewDataSource  {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        SideMenuView.sections.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuSectionCell", for: indexPath) as? SideMenuSectionTableViewCell else { fatalError() }
+        
+        cell.configure(title: SideMenuView.configureCell(withIndex: indexPath.row))
+        cell.selectionStyle = .none
+        
+        return cell
+    }
+}
+
 enum SideMenuSection: Int {
     case account
     case history
@@ -146,41 +161,21 @@ enum SideMenuSection: Int {
     case settings
 }
 
-extension SideMenuView: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        4
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuSectionCell", for: indexPath) as? SideMenuSectionTableViewCell else { fatalError() }
-        
-        let value: String
-        
-        switch indexPath.row {
-            case SideMenuSection.account.rawValue:
-                value = "Аккаунт"
-            case SideMenuSection.history.rawValue:
-                value = "История"
-            case SideMenuSection.favourites.rawValue:
-                value = "Избранные"
-            case SideMenuSection.settings.rawValue:
-                value = "Настройки"
-            default:
-                value = ""
-        }
-        
-        cell.configure(title: value)
-        cell.selectionStyle = .none
-        
-        return cell
-    }
-    
+extension SideMenuView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case SideMenuSection.settings.rawValue:
-            onSideMenuSettingsButtonAction?()
-        default:
-            return
+            case SideMenuSection.settings.rawValue:
+                onSideMenuSettingsButtonAction?()
+            default:
+                return
         }
+    }
+}
+
+extension SideMenuView {
+    static let sections = ["Аккаунт", "История", "Избранные", "Настройки"]
+    
+    static private func configureCell(withIndex cellIndex: Int) -> String {
+        return sections[cellIndex]
     }
 }

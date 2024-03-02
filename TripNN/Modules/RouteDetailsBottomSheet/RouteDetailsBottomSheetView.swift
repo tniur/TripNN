@@ -13,6 +13,8 @@ final class RouteDetailsBottomSheetView: UIView {
     
     var onSelectTableCellAction: (() -> Void)?
     
+    // MARK: - Constants
+    
     private let PlacesTableViewContent: [ItemCardModel] = [
         ItemCardModel(image: UIImage(named: "place_1")!, type: .route, title: "Историческая часть города", costInfo: "0 – 500₽"),
         ItemCardModel(image: UIImage(named: "place_2")!, type: .route, title: "Большая Покровская улица", costInfo: "Бесплатно"),
@@ -20,9 +22,9 @@ final class RouteDetailsBottomSheetView: UIView {
         ItemCardModel(image: UIImage(named: "place_4")!, type: .route, title: "Верхняя часть города", costInfo: "Бесплатно")
     ]
     
-    private let tableView = UITableView()
-    
     // MARK: - Views
+    
+    private let tableView = UITableView()
     
     private let headerView = UIView()
     

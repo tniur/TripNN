@@ -67,7 +67,7 @@ final class SettingsView: UIView {
     }
 }
 
-extension SettingsView: UITableViewDataSource, UITableViewDelegate {
+extension SettingsView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         settingSectionTable.count
     }
@@ -80,5 +80,11 @@ extension SettingsView: UITableViewDataSource, UITableViewDelegate {
         cell.selectionStyle = .none
         
         return cell
+    }
+}
+
+extension SettingsView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
 }
