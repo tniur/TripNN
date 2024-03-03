@@ -1,5 +1,5 @@
 //
-//  SettingsSectionBottomSheetViewController.swift
+//  ThemeSettingsSectionViewController.swift
 //  TripNN
 //
 //  Created by Pavel on 02.03.2024.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-final class SettingsSectionBottomSheetViewController: UIViewController {
+final class ThemeSettingsSectionViewController: UIViewController {
     
     // MARK: - View
     
-    weak var settingsSectionBottomSheetView: SettingsSectionBottomSheetView? {
-        return self.view as? SettingsSectionBottomSheetView
+    weak var themeSettingsSectionView: ThemeSettingsSectionView? {
+        return self.view as? ThemeSettingsSectionView
     }
     
     // MARK: - Lifecycle
@@ -23,7 +23,7 @@ final class SettingsSectionBottomSheetViewController: UIViewController {
     }
     
     override func loadView() {
-        self.view = SettingsSectionBottomSheetView(frame: UIScreen.main.bounds)
+        self.view = ThemeSettingsSectionView(frame: UIScreen.main.bounds)
     }
     
     // MARK: - Setup
@@ -33,7 +33,7 @@ final class SettingsSectionBottomSheetViewController: UIViewController {
     }
     
     private func setupActions() {
-        settingsSectionBottomSheetView?.onCloseButtonAction = { [weak self] in self?.closeBottomSheetViewController() }
+        themeSettingsSectionView?.onDismissAction = { [weak self] in self?.closeBottomSheetViewController() }
     }
     
     // MARK: - Actions

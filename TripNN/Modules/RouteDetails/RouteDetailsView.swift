@@ -1,5 +1,5 @@
 //
-//  RouteDetailsBottomSheetView.swift
+//  RouteDetailsView.swift
 //  TripNN
 //
 //  Created by Pavel on 23.02.2024.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class RouteDetailsBottomSheetView: UIView {
+final class RouteDetailsView: UIView {
     
     // MARK: - Closures
     
@@ -150,7 +150,7 @@ final class RouteDetailsBottomSheetView: UIView {
     }
 }
 
-extension RouteDetailsBottomSheetView: UITableViewDataSource, UITableViewDelegate {
+extension RouteDetailsView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         PlacesTableViewContent.count

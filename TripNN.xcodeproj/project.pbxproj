@@ -16,14 +16,14 @@
 		E95FA1062B8D2272007E3E51 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9681E692B8D192300D4CE07 /* SideMenuView.swift */; };
 		E95FA1082B8E904E007E3E51 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FA1072B8E904E007E3E51 /* SideMenuViewController.swift */; };
 		E95FA1102B907EF5007E3E51 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FA10F2B907AFC007E3E51 /* SettingsViewController.swift */; };
-		E95FA1112B907F1F007E3E51 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FA10E2B907AFB007E3E51 /* SettingsView.swift */; };
+		E95FA1112B907F1F007E3E51 /* SettingsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FA10E2B907AFB007E3E51 /* SettingsScreenView.swift */; };
 		E95FA1132B90A16B007E3E51 /* SettingSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FA1122B90A16B007E3E51 /* SettingSectionModel.swift */; };
 		E95FA1152B90A358007E3E51 /* SettingSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FA1142B90A358007E3E51 /* SettingSectionTableViewCell.swift */; };
 		E95FA1172B91230D007E3E51 /* SideMenuSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FA1162B91230D007E3E51 /* SideMenuSectionTableViewCell.swift */; };
-		E96032CB2B88148800F026B5 /* PlaceDetailsBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96032CA2B88148800F026B5 /* PlaceDetailsBottomSheetView.swift */; };
+		E96032CB2B88148800F026B5 /* PlaceDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96032CA2B88148800F026B5 /* PlaceDetailsView.swift */; };
 		E96032CD2B8815DD00F026B5 /* RouteDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96032CC2B8815DD00F026B5 /* RouteDetailsModel.swift */; };
 		E96032CF2B8815FB00F026B5 /* PlaceDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96032CE2B8815FB00F026B5 /* PlaceDetailsModel.swift */; };
-		E96032D12B8816E300F026B5 /* PlaceDetailsBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96032D02B8816E300F026B5 /* PlaceDetailsBottomSheetViewController.swift */; };
+		E96032D12B8816E300F026B5 /* PlaceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96032D02B8816E300F026B5 /* PlaceDetailsViewController.swift */; };
 		E96032D82B8A2E2500F026B5 /* PreparedRouteCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96032D72B8A2E2500F026B5 /* PreparedRouteCard.swift */; };
 		E96949272B7E0D8600622949 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96949262B7E0D8600622949 /* UIButton.swift */; };
 		E96949292B7EA71400622949 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96949282B7EA71400622949 /* HomeScreenView.swift */; };
@@ -39,8 +39,10 @@
 		E96949412B80AA3800622949 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E969493B2B80AA3800622949 /* Montserrat-ExtraBold.ttf */; };
 		E96949422B80AA3800622949 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E969493C2B80AA3800622949 /* Montserrat-SemiBold.ttf */; };
 		E96949442B812F2200622949 /* ItemCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96949432B812F2200622949 /* ItemCardModel.swift */; };
-		E9B928BB2B936BCF002885F5 /* SettingsSectionBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B928BA2B936BCF002885F5 /* SettingsSectionBottomSheetView.swift */; };
-		E9B928BD2B936BDD002885F5 /* SettingsSectionBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B928BC2B936BDD002885F5 /* SettingsSectionBottomSheetViewController.swift */; };
+		E9B928BB2B936BCF002885F5 /* ThemeSettingsSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B928BA2B936BCF002885F5 /* ThemeSettingsSectionView.swift */; };
+		E9B928BD2B936BDD002885F5 /* ThemeSettingsSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B928BC2B936BDD002885F5 /* ThemeSettingsSectionViewController.swift */; };
+		E9B928C12B947F27002885F5 /* SettingSectionContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B928C02B947F27002885F5 /* SettingSectionContentTableViewCell.swift */; };
+		E9B928C52B94A6B6002885F5 /* ThemeSettingsSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B928C42B94A6B6002885F5 /* ThemeSettingsSectionModel.swift */; };
 		E9C73BBE2B6973F700E531AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BBD2B6973F700E531AB /* AppDelegate.swift */; };
 		E9C73BC02B6973F700E531AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BBF2B6973F700E531AB /* SceneDelegate.swift */; };
 		E9C73BC22B6973F700E531AB /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BC12B6973F700E531AB /* HomeScreenViewController.swift */; };
@@ -53,8 +55,8 @@
 		E9FE95CD2B877CB6009694EC /* UINavigationBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FE95CC2B877CB6009694EC /* UINavigationBarAppearance.swift */; };
 		E9FE95CF2B8782E1009694EC /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FE95CE2B8782E1009694EC /* UINavigationController.swift */; };
 		E9FE95D12B878552009694EC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FE95D02B878552009694EC /* Constants.swift */; };
-		E9FE95D32B87BFC2009694EC /* RouteDetailsBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FE95D22B87BFC2009694EC /* RouteDetailsBottomSheetViewController.swift */; };
-		E9FE95D62B87F08D009694EC /* RouteDetailsBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FE95D52B87F08D009694EC /* RouteDetailsBottomSheetView.swift */; };
+		E9FE95D32B87BFC2009694EC /* RouteDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FE95D22B87BFC2009694EC /* RouteDetailsViewController.swift */; };
+		E9FE95D62B87F08D009694EC /* RouteDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FE95D52B87F08D009694EC /* RouteDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,15 +67,15 @@
 		E93A32982B85EDFA00C1BBB7 /* ItemCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardTableViewCell.swift; sourceTree = "<group>"; };
 		E93A329D2B86703D00C1BBB7 /* ItemCardTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardTemplate.swift; sourceTree = "<group>"; };
 		E95FA1072B8E904E007E3E51 /* SideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
-		E95FA10E2B907AFB007E3E51 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		E95FA10E2B907AFB007E3E51 /* SettingsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenView.swift; sourceTree = "<group>"; };
 		E95FA10F2B907AFC007E3E51 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E95FA1122B90A16B007E3E51 /* SettingSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionModel.swift; sourceTree = "<group>"; };
 		E95FA1142B90A358007E3E51 /* SettingSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionTableViewCell.swift; sourceTree = "<group>"; };
 		E95FA1162B91230D007E3E51 /* SideMenuSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuSectionTableViewCell.swift; sourceTree = "<group>"; };
-		E96032CA2B88148800F026B5 /* PlaceDetailsBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailsBottomSheetView.swift; sourceTree = "<group>"; };
+		E96032CA2B88148800F026B5 /* PlaceDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailsView.swift; sourceTree = "<group>"; };
 		E96032CC2B8815DD00F026B5 /* RouteDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailsModel.swift; sourceTree = "<group>"; };
 		E96032CE2B8815FB00F026B5 /* PlaceDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailsModel.swift; sourceTree = "<group>"; };
-		E96032D02B8816E300F026B5 /* PlaceDetailsBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailsBottomSheetViewController.swift; sourceTree = "<group>"; };
+		E96032D02B8816E300F026B5 /* PlaceDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailsViewController.swift; sourceTree = "<group>"; };
 		E96032D72B8A2E2500F026B5 /* PreparedRouteCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparedRouteCard.swift; sourceTree = "<group>"; };
 		E9681E692B8D192300D4CE07 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		E96949262B7E0D8600622949 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -90,8 +92,10 @@
 		E969493B2B80AA3800622949 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
 		E969493C2B80AA3800622949 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		E96949432B812F2200622949 /* ItemCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardModel.swift; sourceTree = "<group>"; };
-		E9B928BA2B936BCF002885F5 /* SettingsSectionBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionBottomSheetView.swift; sourceTree = "<group>"; };
-		E9B928BC2B936BDD002885F5 /* SettingsSectionBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionBottomSheetViewController.swift; sourceTree = "<group>"; };
+		E9B928BA2B936BCF002885F5 /* ThemeSettingsSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsSectionView.swift; sourceTree = "<group>"; };
+		E9B928BC2B936BDD002885F5 /* ThemeSettingsSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsSectionViewController.swift; sourceTree = "<group>"; };
+		E9B928C02B947F27002885F5 /* SettingSectionContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionContentTableViewCell.swift; sourceTree = "<group>"; };
+		E9B928C42B94A6B6002885F5 /* ThemeSettingsSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsSectionModel.swift; sourceTree = "<group>"; };
 		E9C73BBA2B6973F700E531AB /* TripNN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripNN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9C73BBD2B6973F700E531AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9C73BBF2B6973F700E531AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,8 +110,8 @@
 		E9FE95CC2B877CB6009694EC /* UINavigationBarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBarAppearance.swift; sourceTree = "<group>"; };
 		E9FE95CE2B8782E1009694EC /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		E9FE95D02B878552009694EC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		E9FE95D22B87BFC2009694EC /* RouteDetailsBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailsBottomSheetViewController.swift; sourceTree = "<group>"; };
-		E9FE95D52B87F08D009694EC /* RouteDetailsBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailsBottomSheetView.swift; sourceTree = "<group>"; };
+		E9FE95D22B87BFC2009694EC /* RouteDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailsViewController.swift; sourceTree = "<group>"; };
+		E9FE95D52B87F08D009694EC /* RouteDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,13 +143,13 @@
 			path = ItemCard;
 			sourceTree = "<group>";
 		};
-		E95FA10D2B907A0D007E3E51 /* Settings */ = {
+		E95FA10D2B907A0D007E3E51 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
-				E95FA10E2B907AFB007E3E51 /* SettingsView.swift */,
+				E95FA10E2B907AFB007E3E51 /* SettingsScreenView.swift */,
 				E95FA10F2B907AFC007E3E51 /* SettingsViewController.swift */,
 			);
-			path = Settings;
+			path = MainScreen;
 			sourceTree = "<group>";
 		};
 		E96032D22B8A161B00F026B5 /* HomeScreen */ = {
@@ -175,22 +179,22 @@
 			path = CreatingRoute;
 			sourceTree = "<group>";
 		};
-		E96032D52B8A169600F026B5 /* PlaceDetailsBottomSheet */ = {
+		E96032D52B8A169600F026B5 /* PlaceDetails */ = {
 			isa = PBXGroup;
 			children = (
-				E96032CA2B88148800F026B5 /* PlaceDetailsBottomSheetView.swift */,
-				E96032D02B8816E300F026B5 /* PlaceDetailsBottomSheetViewController.swift */,
+				E96032CA2B88148800F026B5 /* PlaceDetailsView.swift */,
+				E96032D02B8816E300F026B5 /* PlaceDetailsViewController.swift */,
 			);
-			path = PlaceDetailsBottomSheet;
+			path = PlaceDetails;
 			sourceTree = "<group>";
 		};
-		E96032D62B8A16AB00F026B5 /* RouteDetailsBottomSheet */ = {
+		E96032D62B8A16AB00F026B5 /* RouteDetails */ = {
 			isa = PBXGroup;
 			children = (
-				E9FE95D52B87F08D009694EC /* RouteDetailsBottomSheetView.swift */,
-				E9FE95D22B87BFC2009694EC /* RouteDetailsBottomSheetViewController.swift */,
+				E9FE95D52B87F08D009694EC /* RouteDetailsView.swift */,
+				E9FE95D22B87BFC2009694EC /* RouteDetailsViewController.swift */,
 			);
-			path = RouteDetailsBottomSheet;
+			path = RouteDetails;
 			sourceTree = "<group>";
 		};
 		E96032D92B8A2E2D00F026B5 /* View */ = {
@@ -227,6 +231,7 @@
 				E95FA1122B90A16B007E3E51 /* SettingSectionModel.swift */,
 				E96032CC2B8815DD00F026B5 /* RouteDetailsModel.swift */,
 				E96032CE2B8815FB00F026B5 /* PlaceDetailsModel.swift */,
+				E9B928C42B94A6B6002885F5 /* ThemeSettingsSectionModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -238,10 +243,9 @@
 				E9681E682B8D18A200D4CE07 /* SideMenu */,
 				E96032D42B8A167C00F026B5 /* CreatingRoute */,
 				E96032D32B8A163400F026B5 /* AllPreparedRoutes */,
-				E96032D62B8A16AB00F026B5 /* RouteDetailsBottomSheet */,
-				E96032D52B8A169600F026B5 /* PlaceDetailsBottomSheet */,
-				E95FA10D2B907A0D007E3E51 /* Settings */,
-				E9B928B92B936BA9002885F5 /* SettingsSectionBottomSheet */,
+				E96032D62B8A16AB00F026B5 /* RouteDetails */,
+				E96032D52B8A169600F026B5 /* PlaceDetails */,
+				E9B928C22B949697002885F5 /* Settings */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -274,6 +278,7 @@
 		E969492C2B7EAB2D00622949 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				E9B928C02B947F27002885F5 /* SettingSectionContentTableViewCell.swift */,
 				E95FA1162B91230D007E3E51 /* SideMenuSectionTableViewCell.swift */,
 				E95FA1142B90A358007E3E51 /* SettingSectionTableViewCell.swift */,
 				E9055A2C2B817F2E006CF2BE /* HSCycleGalleryView */,
@@ -282,13 +287,30 @@
 			path = Custom;
 			sourceTree = "<group>";
 		};
-		E9B928B92B936BA9002885F5 /* SettingsSectionBottomSheet */ = {
+		E9B928B92B936BA9002885F5 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
-				E9B928BA2B936BCF002885F5 /* SettingsSectionBottomSheetView.swift */,
-				E9B928BC2B936BDD002885F5 /* SettingsSectionBottomSheetViewController.swift */,
+				E9B928C32B94A2B6002885F5 /* Theme */,
 			);
-			path = SettingsSectionBottomSheet;
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		E9B928C22B949697002885F5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E95FA10D2B907A0D007E3E51 /* MainScreen */,
+				E9B928B92B936BA9002885F5 /* Sections */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		E9B928C32B94A2B6002885F5 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				E9B928BA2B936BCF002885F5 /* ThemeSettingsSectionView.swift */,
+				E9B928BC2B936BDD002885F5 /* ThemeSettingsSectionViewController.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		E9C73BB12B6973F700E531AB = {
@@ -434,27 +456,29 @@
 				E9055A312B817F2E006CF2BE /* HSCycleGalleryView.swift in Sources */,
 				E93A32992B85EDFA00C1BBB7 /* ItemCardTableViewCell.swift in Sources */,
 				E9C73BBE2B6973F700E531AB /* AppDelegate.swift in Sources */,
+				E9B928C52B94A6B6002885F5 /* ThemeSettingsSectionModel.swift in Sources */,
 				E9FE95CD2B877CB6009694EC /* UINavigationBarAppearance.swift in Sources */,
 				E95FA1062B8D2272007E3E51 /* SideMenuView.swift in Sources */,
-				E9FE95D32B87BFC2009694EC /* RouteDetailsBottomSheetViewController.swift in Sources */,
+				E9FE95D32B87BFC2009694EC /* RouteDetailsViewController.swift in Sources */,
 				E93A32932B84A5B800C1BBB7 /* AllPreparedRoutesView.swift in Sources */,
-				E9FE95D62B87F08D009694EC /* RouteDetailsBottomSheetView.swift in Sources */,
+				E9FE95D62B87F08D009694EC /* RouteDetailsView.swift in Sources */,
 				E9FE95D12B878552009694EC /* Constants.swift in Sources */,
 				E969492B2B7EAAFE00622949 /* ItemCardCollectionViewCell.swift in Sources */,
 				E96949292B7EA71400622949 /* HomeScreenView.swift in Sources */,
-				E9B928BB2B936BCF002885F5 /* SettingsSectionBottomSheetView.swift in Sources */,
-				E9B928BD2B936BDD002885F5 /* SettingsSectionBottomSheetViewController.swift in Sources */,
+				E9B928BB2B936BCF002885F5 /* ThemeSettingsSectionView.swift in Sources */,
+				E9B928BD2B936BDD002885F5 /* ThemeSettingsSectionViewController.swift in Sources */,
 				E95FA1152B90A358007E3E51 /* SettingSectionTableViewCell.swift in Sources */,
 				E96032CF2B8815FB00F026B5 /* PlaceDetailsModel.swift in Sources */,
 				E95FA1172B91230D007E3E51 /* SideMenuSectionTableViewCell.swift in Sources */,
-				E96032D12B8816E300F026B5 /* PlaceDetailsBottomSheetViewController.swift in Sources */,
+				E96032D12B8816E300F026B5 /* PlaceDetailsViewController.swift in Sources */,
 				E95FA1132B90A16B007E3E51 /* SettingSectionModel.swift in Sources */,
 				E95FA1102B907EF5007E3E51 /* SettingsViewController.swift in Sources */,
 				E9C73BC02B6973F700E531AB /* SceneDelegate.swift in Sources */,
 				E96032CD2B8815DD00F026B5 /* RouteDetailsModel.swift in Sources */,
 				E9FE95CB2B86BB8A009694EC /* UISwipeActionsConfiguration.swift in Sources */,
-				E96032CB2B88148800F026B5 /* PlaceDetailsBottomSheetView.swift in Sources */,
-				E95FA1112B907F1F007E3E51 /* SettingsView.swift in Sources */,
+				E96032CB2B88148800F026B5 /* PlaceDetailsView.swift in Sources */,
+				E9B928C12B947F27002885F5 /* SettingSectionContentTableViewCell.swift in Sources */,
+				E95FA1112B907F1F007E3E51 /* SettingsScreenView.swift in Sources */,
 				E9C73BD82B69802F00E531AB /* UIColor.swift in Sources */,
 				E9ED79CE2B83DF5200F4D4EE /* CreatingRouteViewController.swift in Sources */,
 				E9ED79D42B83E49C00F4D4EE /* CreatingRouteView.swift in Sources */,

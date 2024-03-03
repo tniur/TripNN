@@ -37,6 +37,10 @@ final class SettingSectionTableViewCell: UITableViewCell {
         return label
     }()
     
+    func changeColor() {
+        titleLabel.textColor = .red
+    }
+    
     // MARK: - Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

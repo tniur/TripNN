@@ -1,5 +1,5 @@
 //
-//  SettingsView.swift
+//  SettingsScreenView.swift
 //  TripNN
 //
 //  Created by Pavel on 29.02.2024.
@@ -7,7 +7,13 @@
 
 import UIKit
 
-final class SettingsView: UIView {
+final class SettingsScreenView: UIView {
+    
+    // MARK: - Closures
+    
+    var onSettingsSectionAction: (() -> Void)?
+    
+    // MARK: - Constants
     
     private let settingSectionTable: [SettingSectionModel] = [
         SettingSectionModel(title: "Тема", status: "Системная"),
@@ -67,7 +73,7 @@ final class SettingsView: UIView {
     }
 }
 
-extension SettingsView: UITableViewDataSource {
+extension SettingsScreenView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         settingSectionTable.count
     }
@@ -81,10 +87,15 @@ extension SettingsView: UITableViewDataSource {
         
         return cell
     }
-}
-
-extension SettingsView: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        switch indexPath.row {
+            case 0:
+                onSettingsSectionAction?()
+            default:
+                return
+        }
     }
 }
+
+

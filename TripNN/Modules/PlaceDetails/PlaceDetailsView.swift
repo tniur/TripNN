@@ -1,5 +1,5 @@
 //
-//  PlaceDetailsBottomSheetView.swift
+//  PlaceDetailsView.swift
 //  TripNN
 //
 //  Created by Pavel on 23.02.2024.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PlaceDetailsBottomSheetView: UIView {
+final class PlaceDetailsView: UIView {
     
     // MARK: - View
     

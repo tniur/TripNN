@@ -1,5 +1,5 @@
 //
-//  RouteDetailsBottomSheetViewController.swift
+//  RouteDetailsViewController.swift
 //  TripNN
 //
 //  Created by Pavel on 22.02.2024.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-final class RouteDetailsBottomSheetViewController: UIViewController {
+final class RouteDetailsViewController: UIViewController {
     // MARK: - View
     
-    weak var routeDetailsBottomSheetView: RouteDetailsBottomSheetView? {
-        return self.view as? RouteDetailsBottomSheetView
+    weak var routeDetailsView: RouteDetailsView? {
+        return self.view as? RouteDetailsView
     }
     
     // MARK: - Lifecycle
@@ -22,7 +22,7 @@ final class RouteDetailsBottomSheetViewController: UIViewController {
     }
     
     override func loadView() {
-        self.view = RouteDetailsBottomSheetView(frame: UIScreen.main.bounds)
+        self.view = RouteDetailsView(frame: UIScreen.main.bounds)
     }
     
     // MARK: Setup
@@ -32,13 +32,13 @@ final class RouteDetailsBottomSheetViewController: UIViewController {
     }
     
     private func setupActions() {
-        routeDetailsBottomSheetView?.onSelectTableCellAction = { [weak self] in self?.openPlaceDetailsBottomSheetViewController() }
+        routeDetailsView?.onSelectTableCellAction = { [weak self] in self?.openPlaceDetailsViewController() }
     }
     
     // MARK: Action
     
-    private func openPlaceDetailsBottomSheetViewController() {
-        let bottomSheet = PlaceDetailsBottomSheetViewController()
+    private func openPlaceDetailsViewController() {
+        let bottomSheet = PlaceDetailsViewController()
         if let sheet = bottomSheet.sheetPresentationController {
             sheet.detents = [.medium()]
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false

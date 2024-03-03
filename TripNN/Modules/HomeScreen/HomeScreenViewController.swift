@@ -72,20 +72,9 @@ final class HomeScreenViewController: UIViewController {
     // MARK: - Actions
     
     @objc private func createNewRoute() {
-//        let controller = CreatingRouteViewController()
-//        navigationController?.pushViewController(controller, animated: true)
-//        navigationController?.navigationBar.tintColor = .black
-        
-        
-        let bottomSheet = SettingsSectionBottomSheetViewController()
-        if let sheet = bottomSheet.sheetPresentationController {
-            sheet.detents = [.medium()]
-            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-            // sheet.prefersGrabberVisible = true
-            sheet.preferredCornerRadius = 20
-        }
-        present(bottomSheet, animated: true)
-        
+        let controller = CreatingRouteViewController()
+        navigationController?.pushViewController(controller, animated: true)
+        navigationController?.navigationBar.tintColor = .black
     }
     
     @objc private func openAllPreparedRoutes() {
@@ -100,7 +89,7 @@ final class HomeScreenViewController: UIViewController {
         present(sideMenuViewController, animated: true, completion: nil)
         sideMenuViewController.onSideMenuSettingsButtonAction = { [weak self] in
             sideMenuViewController.sideMenuCloseAction(animated: true)
-            let controller = SettingsViewController()
+            let controller = SettingsScreenViewController()
             self?.navigationController?.pushViewController(controller, animated: true)
             self?.navigationController?.navigationBar.tintColor = .black }
     }
