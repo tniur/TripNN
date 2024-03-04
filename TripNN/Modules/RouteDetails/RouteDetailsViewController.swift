@@ -8,6 +8,7 @@
 import UIKit
 
 final class RouteDetailsViewController: UIViewController {
+    
     // MARK: - View
     
     weak var routeDetailsView: RouteDetailsView? {
@@ -40,10 +41,14 @@ final class RouteDetailsViewController: UIViewController {
     private func openPlaceDetailsViewController() {
         let bottomSheet = PlaceDetailsViewController()
         if let sheet = bottomSheet.sheetPresentationController {
-            sheet.detents = [.medium()]
+            if #available(iOS 16.0, *) {
+                sheet.detents = [.custom(resolver: {context in 0.43 * context.maximumDetentValue}), .medium(), .large()]
+            } else {
+                sheet.detents = [.medium(), .large()]
+            }
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-            sheet.prefersGrabberVisible = true
             sheet.preferredCornerRadius = 20
+            sheet.prefersGrabberVisible = true
         }
         present(bottomSheet, animated: true)
     }

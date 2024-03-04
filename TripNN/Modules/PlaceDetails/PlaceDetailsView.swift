@@ -9,13 +9,54 @@ import UIKit
 
 final class PlaceDetailsView: UIView {
     
+    // MARK: - Closures
+    
+    var onDismissAction: (() -> Void)?
+    
+    // MARK: - Constants
+    
+    let placeImages = [UIImage(named: "place_1"), UIImage(named: "place_2"), UIImage(named: "place_3"), UIImage(named: "place_4"), UIImage(named: "place_5")]
+    
     // MARK: - View
+    
+    private let placeImagesCollection: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 195, height: 135)
+        
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.showsHorizontalScrollIndicator = false
+        
+        return collection
+    }()
+    
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Вспышка"
+        label.font = UIFont(name: "Montserrat-SemiBold", size: 24)
+        label.textColor = .tripNNDark
+        return label
+    }()
+    
+    private let favouriteButton: UIButton = {
+        let button = UIButton()
+        let buttonImage = UIImage(named: "add-favorites-icon")
+        button.setImage(buttonImage, for: .normal)
+        return button
+    }()
     
     private let placeInfoStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .fillEqually
-        
+        return stack
+    }()
+    
+    private let mapLinkStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.alignment = .center
+        stack.spacing = 4
         return stack
     }()
     
@@ -44,19 +85,51 @@ final class PlaceDetailsView: UIView {
         return stack
     }()
     
+    private let mapLinkAndRatingInfoStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.alignment = .leading
+        stack.spacing = 8
+        return stack
+    }()
+    
     private let ratingInfoStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
+        stack.spacing = 8
         stack.distribution = .fillProportionally
         return stack
     }()
     
-    private let titleLabel: UILabel = {
+    private let addressStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.spacing = 8
+        stack.alignment = .center
+        stack.distribution = .fillProportionally
+        return stack
+    }()
+    
+    private let addressCopyButton: UIButton = {
+        let button = UIButton()
+        let buttonImage = UIImage(named: "copy-icon")
+        button.setImage(buttonImage, for: .normal)
+        return button
+    }()
+    
+    private let mapLinkLabel: UILabel = {
         let label = UILabel()
-        label.text = "Вспышка"
-        label.font = UIFont(name: "Montserrat-SemiBold", size: 24)
-        label.textColor = .tripNNDark
+        label.text = "2GIS"
+        label.font = UIFont(name: "Montserrat-Regular", size: 13)
+        label.textColor = .tripnnDark
         return label
+    }()
+    
+    private let mapLinkButton: UIButton = {
+        let button = UIButton()
+        let buttonImage = UIImage(named: "link-icon")
+        button.setImage(buttonImage, for: .normal)
+        return button
     }()
     
     private let typeLabel: UILabel = {
@@ -148,12 +221,17 @@ final class PlaceDetailsView: UIView {
     private func setup() {
         setupView()
         setupConstrains()
+        setupStack()
+        setupCollectionView()
+        setupActions()
     }
     
     private func setupView() {
         self.backgroundColor = .tripnnWhite
         self.addSubview(placeInfoStack)
-        setupStack()
+        self.addSubview(placeImagesCollection)
+        self.addSubview(titleLabel)
+        self.addSubview(favouriteButton)
     }
     
     private func setupStack() {
@@ -161,31 +239,112 @@ final class PlaceDetailsView: UIView {
         placeInfoStack.addArrangedSubview(detailsInfoStack)
         
         generalInfoStack.addArrangedSubview(titleAndTypeInfoStack)
-        generalInfoStack.addArrangedSubview(ratingInfoStack)
+        generalInfoStack.addArrangedSubview(mapLinkAndRatingInfoStack)
         
-        titleAndTypeInfoStack.addArrangedSubview(titleLabel)
         titleAndTypeInfoStack.addArrangedSubview(typeLabel)
+        
+        mapLinkAndRatingInfoStack.addArrangedSubview(mapLinkStack)
+        mapLinkAndRatingInfoStack.addArrangedSubview(ratingInfoStack)
+        
+        mapLinkStack.addArrangedSubview(mapLinkLabel)
+        mapLinkStack.addArrangedSubview(mapLinkButton)
         
         ratingInfoStack.addArrangedSubview(ratingValueLabel)
         ratingInfoStack.addArrangedSubview(numberOfRatingsLabel)
         
+        detailsInfoStack.addArrangedSubview(addressStack)
         detailsInfoStack.addArrangedSubview(addressLabel)
         detailsInfoStack.addArrangedSubview(workingHoursLabel)
         detailsInfoStack.addArrangedSubview(contactsLabel)
         detailsInfoStack.addArrangedSubview(averageCheckLabel)
+        
+        addressStack.addArrangedSubview(addressLabel)
+        addressStack.addArrangedSubview(addressCopyButton)
     }
     
     private func setupConstrains() {
-        setupPlaceInfoStack()
+        setupPlaceInfoStackConstrains()
+        setupTitleLabelConstrains()
+        setupPlaceImagesCollectionConstrains()
+        setupFavouriteButtonConstrains()
     }
     
-    private func setupPlaceInfoStack() {
+    private func setupCollectionView() {
+        placeImagesCollection.register(PlaceDetailsCollectionViewCell.self, forCellWithReuseIdentifier: "PlaceDetailsCell")
+        placeImagesCollection.dataSource = self
+        placeImagesCollection.delegate = self
+    }
+    
+    private func setupActions() {
+        addressCopyButton.addTarget(self, action: #selector(copyButtonAction), for: .touchUpInside)
+        mapLinkButton.addTarget(self, action: #selector(mapLinkAction), for: .touchUpInside)
+    }
+    
+    // MARK: - Actions
+    
+    @objc private func copyButtonAction() {
+        UIPasteboard.general.string = addressLabel.text
+    }
+    
+    @objc private func mapLinkAction() {
+        if let url = URL(string: "https://www.youtube.com/") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    // MARK: - Constrains
+    
+    private func setupPlaceImagesCollectionConstrains() {
+        placeImagesCollection.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            placeImagesCollection.topAnchor.constraint(equalTo: topAnchor, constant: 20),
+            placeImagesCollection.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            placeImagesCollection.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            placeImagesCollection.heightAnchor.constraint(equalToConstant: 135)
+        ])
+    }
+    
+    private func setupTitleLabelConstrains() {
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: placeImagesCollection.bottomAnchor, constant: 17),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8)
+        ])
+    }
+    
+    private func setupFavouriteButtonConstrains() {
+        favouriteButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            favouriteButton.heightAnchor.constraint(equalToConstant: 30),
+            favouriteButton.widthAnchor.constraint(equalToConstant: 30),
+            favouriteButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+            favouriteButton.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 10)
+        ])
+    }
+    
+    private func setupPlaceInfoStackConstrains() {
         placeInfoStack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            placeInfoStack.topAnchor.constraint(equalTo: topAnchor),
+            placeInfoStack.topAnchor.constraint(equalTo: favouriteButton.bottomAnchor, constant: 10),
             placeInfoStack.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor),
-            placeInfoStack.leadingAnchor.constraint(equalTo: leadingAnchor),
-            placeInfoStack.trailingAnchor.constraint(equalTo: trailingAnchor)
+            placeInfoStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            placeInfoStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
         ])
+    }
+}
+
+extension PlaceDetailsView: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        placeImages.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlaceDetailsCell", for: indexPath) as? PlaceDetailsCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        cell.configure(image: placeImages[indexPath.row]!)
+        
+        return cell
     }
 }

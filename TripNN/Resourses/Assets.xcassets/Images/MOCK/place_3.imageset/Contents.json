@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "Place image.png",
+      "filename" : "Снимок экрана 2024-03-03 в 18.53.15.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Place image@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Place image@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

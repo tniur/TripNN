@@ -75,9 +75,9 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     }()
     
     private let cycleGalleryViewContent: [ItemCardModel] = [
-        ItemCardModel(image: UIImage(named: "place_1")!, type: .route, title: "Историческая часть города", costInfo: "0 – 500₽"),
-        ItemCardModel(image: UIImage(named: "place_2")!, type: .route, title: "Большая Покровская улица", costInfo: "0₽"),
-        ItemCardModel(image: UIImage(named: "place_3")!, type: .route, title: "Улица Рождественская", costInfo: "0₽")
+        ItemCardModel(image: UIImage(named: "route_1")!, type: .route, title: "Историческая часть города", costInfo: "0 – 500₽"),
+        ItemCardModel(image: UIImage(named: "route_2")!, type: .route, title: "Большая Покровская улица", costInfo: "0₽"),
+        ItemCardModel(image: UIImage(named: "route_3")!, type: .route, title: "Улица Рождественская", costInfo: "0₽")
     ]
     
     private let preparedRoutesCarouselView: UIView = {

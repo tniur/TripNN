@@ -16,10 +16,10 @@ final class RouteDetailsView: UIView {
     // MARK: - Constants
     
     private let PlacesTableViewContent: [ItemCardModel] = [
-        ItemCardModel(image: UIImage(named: "place_1")!, type: .route, title: "Историческая часть города", costInfo: "0 – 500₽"),
-        ItemCardModel(image: UIImage(named: "place_2")!, type: .route, title: "Большая Покровская улица", costInfo: "Бесплатно"),
-        ItemCardModel(image: UIImage(named: "place_3")!, type: .route, title: "Улица Рождественская", costInfo: "Бесплатно"),
-        ItemCardModel(image: UIImage(named: "place_4")!, type: .route, title: "Верхняя часть города", costInfo: "Бесплатно")
+        ItemCardModel(image: UIImage(named: "route_1")!, type: .route, title: "Историческая часть города", costInfo: "0 – 500₽"),
+        ItemCardModel(image: UIImage(named: "route_2")!, type: .route, title: "Большая Покровская улица", costInfo: "Бесплатно"),
+        ItemCardModel(image: UIImage(named: "route_3")!, type: .route, title: "Улица Рождественская", costInfo: "Бесплатно"),
+        ItemCardModel(image: UIImage(named: "route_4")!, type: .route, title: "Верхняя часть города", costInfo: "Бесплатно")
     ]
     
     // MARK: - Views

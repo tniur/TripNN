@@ -72,9 +72,21 @@ final class HomeScreenViewController: UIViewController {
     // MARK: - Actions
     
     @objc private func createNewRoute() {
-        let controller = CreatingRouteViewController()
-        navigationController?.pushViewController(controller, animated: true)
-        navigationController?.navigationBar.tintColor = .black
+//        let controller = CreatingRouteViewController()
+//        navigationController?.pushViewController(controller, animated: true)
+//        navigationController?.navigationBar.tintColor = .black
+        let bottomSheet = PlaceDetailsViewController()
+        if let sheet = bottomSheet.sheetPresentationController {
+            if #available(iOS 16.0, *) {
+                sheet.detents = [.custom(resolver: {context in 0.43 * context.maximumDetentValue}), .medium(), .large()]
+            } else {
+                sheet.detents = [.medium(), .large()]
+            }
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.preferredCornerRadius = 20
+            sheet.prefersGrabberVisible = true
+        }
+        present(bottomSheet, animated: true)
     }
     
     @objc private func openAllPreparedRoutes() {
