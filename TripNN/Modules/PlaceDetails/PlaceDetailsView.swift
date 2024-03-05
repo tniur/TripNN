@@ -12,6 +12,7 @@ final class PlaceDetailsView: UIView {
     // MARK: - Closures
     
     var onDismissAction: (() -> Void)?
+    var onOpenFullScreenImageAction: (() -> Void)?
     
     // MARK: - Constants
     
@@ -204,6 +205,11 @@ final class PlaceDetailsView: UIView {
         return label
     }()
     
+    private let  clipboardSavingNotification: ClipboardSavingNotification = {
+        let notification = ClipboardSavingNotification()
+        return notification
+    }()
+    
     // MARK: - Init
     
     override init(frame: CGRect) {
@@ -215,6 +221,9 @@ final class PlaceDetailsView: UIView {
         super.init(coder: coder)
         setup()
     }
+    
+    // MARK: - Action
+
     
     // MARK: - Setup
     
@@ -232,6 +241,9 @@ final class PlaceDetailsView: UIView {
         self.addSubview(placeImagesCollection)
         self.addSubview(titleLabel)
         self.addSubview(favouriteButton)
+        self.addSubview(clipboardSavingNotification)
+        
+        clipboardSavingNotification.isHidden = true
     }
     
     private func setupStack() {
@@ -267,6 +279,7 @@ final class PlaceDetailsView: UIView {
         setupTitleLabelConstrains()
         setupPlaceImagesCollectionConstrains()
         setupFavouriteButtonConstrains()
+        setupClipboardSavingNotificationConstrains()
     }
     
     private func setupCollectionView() {
@@ -284,12 +297,26 @@ final class PlaceDetailsView: UIView {
     
     @objc private func copyButtonAction() {
         UIPasteboard.general.string = addressLabel.text
+        showClipboardSavingNotification()
     }
     
     @objc private func mapLinkAction() {
         if let url = URL(string: "https://www.youtube.com/") {
             UIApplication.shared.open(url)
         }
+    }
+    
+    private func showClipboardSavingNotification() {
+        addressCopyButton.isEnabled = false
+        clipboardSavingNotification.alpha = 1
+        clipboardSavingNotification.isHidden = false
+        
+        UIView.animate(withDuration: 1, delay: 1, options: UIView.AnimationOptions.transitionFlipFromTop, animations: {
+            self.clipboardSavingNotification.alpha = 0
+        }, completion: { finished in
+            self.clipboardSavingNotification.isHidden = true
+            self.addressCopyButton.isEnabled = true
+        })
     }
     
     // MARK: - Constrains
@@ -331,6 +358,15 @@ final class PlaceDetailsView: UIView {
             placeInfoStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
         ])
     }
+    
+    private func setupClipboardSavingNotificationConstrains() {
+        clipboardSavingNotification.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            clipboardSavingNotification.bottomAnchor.constraint(equalTo: placeInfoStack.bottomAnchor),
+            clipboardSavingNotification.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            clipboardSavingNotification.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+        ])
+    }
 }
 
 extension PlaceDetailsView: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -342,9 +378,11 @@ extension PlaceDetailsView: UICollectionViewDelegate, UICollectionViewDataSource
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlaceDetailsCell", for: indexPath) as? PlaceDetailsCollectionViewCell else {
             return UICollectionViewCell()
         }
-        
         cell.configure(image: placeImages[indexPath.row]!)
-        
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        onOpenFullScreenImageAction?()
     }
 }

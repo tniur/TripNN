@@ -70,16 +70,8 @@ final class SideMenuViewController: UIViewController {
     
     private func setupActions() {
         sideMenuView?.onSideMenuButtonCloseAction = { [weak self] in self?.sideMenuCloseAction(animated: true) }
-        sideMenuView?.onSideMenuSettingsButtonAction = { [weak self] in self?.fff() }
+        sideMenuView?.onSideMenuSettingsButtonAction = { [weak self] in self?.onSideMenuSettingsButtonAction?() }
     }
-    
-    @objc private func fff() {
-        let sideMenuViewController = SettingsScreenViewController()
-        sideMenuViewController.modalPresentationStyle = .overCurrentContext
-        present(sideMenuViewController, animated: true, completion: nil)
-    }
-    
-    
 
     private func setupGestures() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SideMenuViewController.handleTap(_:)))

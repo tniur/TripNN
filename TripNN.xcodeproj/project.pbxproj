@@ -24,7 +24,6 @@
 		E96032CD2B8815DD00F026B5 /* RouteDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96032CC2B8815DD00F026B5 /* RouteDetailsModel.swift */; };
 		E96032CF2B8815FB00F026B5 /* PlaceDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96032CE2B8815FB00F026B5 /* PlaceDetailsModel.swift */; };
 		E96032D12B8816E300F026B5 /* PlaceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96032D02B8816E300F026B5 /* PlaceDetailsViewController.swift */; };
-		E96032D82B8A2E2500F026B5 /* PreparedRouteCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96032D72B8A2E2500F026B5 /* PreparedRouteCard.swift */; };
 		E96949272B7E0D8600622949 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96949262B7E0D8600622949 /* UIButton.swift */; };
 		E96949292B7EA71400622949 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96949282B7EA71400622949 /* HomeScreenView.swift */; };
 		E969492B2B7EAAFE00622949 /* ItemCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E969492A2B7EAAFE00622949 /* ItemCardCollectionViewCell.swift */; };
@@ -44,6 +43,9 @@
 		E9B928C12B947F27002885F5 /* SettingSectionContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B928C02B947F27002885F5 /* SettingSectionContentTableViewCell.swift */; };
 		E9B928C52B94A6B6002885F5 /* ThemeSettingsSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B928C42B94A6B6002885F5 /* ThemeSettingsSectionModel.swift */; };
 		E9B928C72B95576D002885F5 /* PlaceDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B928C62B95576D002885F5 /* PlaceDetailsCollectionViewCell.swift */; };
+		E9B928CA2B9625F8002885F5 /* FullScreenImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B928C92B9625F8002885F5 /* FullScreenImageView.swift */; };
+		E9B928CC2B962600002885F5 /* FullScreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B928CB2B962600002885F5 /* FullScreenImageViewController.swift */; };
+		E9B928CE2B972005002885F5 /* ClipboardSavingNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B928CD2B972005002885F5 /* ClipboardSavingNotification.swift */; };
 		E9C73BBE2B6973F700E531AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BBD2B6973F700E531AB /* AppDelegate.swift */; };
 		E9C73BC02B6973F700E531AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BBF2B6973F700E531AB /* SceneDelegate.swift */; };
 		E9C73BC22B6973F700E531AB /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BC12B6973F700E531AB /* HomeScreenViewController.swift */; };
@@ -77,7 +79,6 @@
 		E96032CC2B8815DD00F026B5 /* RouteDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailsModel.swift; sourceTree = "<group>"; };
 		E96032CE2B8815FB00F026B5 /* PlaceDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailsModel.swift; sourceTree = "<group>"; };
 		E96032D02B8816E300F026B5 /* PlaceDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailsViewController.swift; sourceTree = "<group>"; };
-		E96032D72B8A2E2500F026B5 /* PreparedRouteCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparedRouteCard.swift; sourceTree = "<group>"; };
 		E9681E692B8D192300D4CE07 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		E96949262B7E0D8600622949 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		E96949282B7EA71400622949 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
@@ -98,6 +99,9 @@
 		E9B928C02B947F27002885F5 /* SettingSectionContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionContentTableViewCell.swift; sourceTree = "<group>"; };
 		E9B928C42B94A6B6002885F5 /* ThemeSettingsSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsSectionModel.swift; sourceTree = "<group>"; };
 		E9B928C62B95576D002885F5 /* PlaceDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
+		E9B928C92B9625F8002885F5 /* FullScreenImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageView.swift; sourceTree = "<group>"; };
+		E9B928CB2B962600002885F5 /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
+		E9B928CD2B972005002885F5 /* ClipboardSavingNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardSavingNotification.swift; sourceTree = "<group>"; };
 		E9C73BBA2B6973F700E531AB /* TripNN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripNN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9C73BBD2B6973F700E531AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9C73BBF2B6973F700E531AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -203,7 +207,6 @@
 			isa = PBXGroup;
 			children = (
 				E93A329D2B86703D00C1BBB7 /* ItemCardTemplate.swift */,
-				E96032D72B8A2E2500F026B5 /* PreparedRouteCard.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				E96032D32B8A163400F026B5 /* AllPreparedRoutes */,
 				E96032D62B8A16AB00F026B5 /* RouteDetails */,
 				E96032D52B8A169600F026B5 /* PlaceDetails */,
+				E9B928C82B9625D3002885F5 /* FullScreenImage */,
 				E9B928C22B949697002885F5 /* Settings */,
 			);
 			path = Modules;
@@ -280,6 +284,7 @@
 		E969492C2B7EAB2D00622949 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				E9B928CD2B972005002885F5 /* ClipboardSavingNotification.swift */,
 				E9B928C62B95576D002885F5 /* PlaceDetailsCollectionViewCell.swift */,
 				E9B928C02B947F27002885F5 /* SettingSectionContentTableViewCell.swift */,
 				E95FA1162B91230D007E3E51 /* SideMenuSectionTableViewCell.swift */,
@@ -314,6 +319,15 @@
 				E9B928BC2B936BDD002885F5 /* ThemeSettingsSectionViewController.swift */,
 			);
 			path = Theme;
+			sourceTree = "<group>";
+		};
+		E9B928C82B9625D3002885F5 /* FullScreenImage */ = {
+			isa = PBXGroup;
+			children = (
+				E9B928C92B9625F8002885F5 /* FullScreenImageView.swift */,
+				E9B928CB2B962600002885F5 /* FullScreenImageViewController.swift */,
+			);
+			path = FullScreenImage;
 			sourceTree = "<group>";
 		};
 		E9C73BB12B6973F700E531AB = {
@@ -455,11 +469,12 @@
 				E9C73BC22B6973F700E531AB /* HomeScreenViewController.swift in Sources */,
 				E96949442B812F2200622949 /* ItemCardModel.swift in Sources */,
 				E93A329E2B86703D00C1BBB7 /* ItemCardTemplate.swift in Sources */,
-				E96032D82B8A2E2500F026B5 /* PreparedRouteCard.swift in Sources */,
 				E9055A312B817F2E006CF2BE /* HSCycleGalleryView.swift in Sources */,
 				E93A32992B85EDFA00C1BBB7 /* ItemCardTableViewCell.swift in Sources */,
 				E9C73BBE2B6973F700E531AB /* AppDelegate.swift in Sources */,
 				E9B928C52B94A6B6002885F5 /* ThemeSettingsSectionModel.swift in Sources */,
+				E9B928CC2B962600002885F5 /* FullScreenImageViewController.swift in Sources */,
+				E9B928CA2B9625F8002885F5 /* FullScreenImageView.swift in Sources */,
 				E9FE95CD2B877CB6009694EC /* UINavigationBarAppearance.swift in Sources */,
 				E95FA1062B8D2272007E3E51 /* SideMenuView.swift in Sources */,
 				E9FE95D32B87BFC2009694EC /* RouteDetailsViewController.swift in Sources */,
@@ -473,6 +488,7 @@
 				E95FA1152B90A358007E3E51 /* SettingSectionTableViewCell.swift in Sources */,
 				E96032CF2B8815FB00F026B5 /* PlaceDetailsModel.swift in Sources */,
 				E95FA1172B91230D007E3E51 /* SideMenuSectionTableViewCell.swift in Sources */,
+				E9B928CE2B972005002885F5 /* ClipboardSavingNotification.swift in Sources */,
 				E96032D12B8816E300F026B5 /* PlaceDetailsViewController.swift in Sources */,
 				E9B928C72B95576D002885F5 /* PlaceDetailsCollectionViewCell.swift in Sources */,
 				E95FA1132B90A16B007E3E51 /* SettingSectionModel.swift in Sources */,
