@@ -18,6 +18,8 @@ final class PlaceDetailsView: UIView {
     
     let placeImages = [UIImage(named: "place_1"), UIImage(named: "place_2"), UIImage(named: "place_3"), UIImage(named: "place_4"), UIImage(named: "place_5")]
     
+    var currentImageIndex: Int = 0
+    
     // MARK: - View
     
     private let placeImagesCollection: UICollectionView = {
@@ -27,6 +29,7 @@ final class PlaceDetailsView: UIView {
         
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.showsHorizontalScrollIndicator = false
+        collection.backgroundColor = .tripnnWhite
         
         return collection
     }()
@@ -383,6 +386,7 @@ extension PlaceDetailsView: UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        currentImageIndex = indexPath.row
         onOpenFullScreenImageAction?()
     }
 }

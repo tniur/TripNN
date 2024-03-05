@@ -9,10 +9,23 @@ import UIKit
 
 final class FullScreenImageViewController: UIViewController {
     
+    var imageIndex: Int?
+    
     // MARK: - View
     
     weak var fullScreenImageView: FullScreenImageView? {
         return self.view as? FullScreenImageView
+    }
+    
+    init(imageIndex: Int) {
+        super.init(nibName: nil, bundle: nil)
+        self.imageIndex = imageIndex
+        
+        fullScreenImageView?.configure(index: imageIndex)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Lifecycle

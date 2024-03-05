@@ -21,7 +21,7 @@ final class ClipboardSavingNotification: UIView {
     private let notificationLabel: UILabel = {
         let label = UILabel()
         label.text = "Адрес скопирован"
-        label.font = UIFont(name: "Montserrat-Medium", size: 12)
+        label.font = UIFont(name: "Montserrat-Medium", size: 14)
         label.textColor = .tripnnWhite
         return label
     }()

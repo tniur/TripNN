@@ -39,7 +39,8 @@ final class PlaceDetailsViewController: UIViewController {
     // MARK: - Action
     
     @objc private func openFullScreenImage() {
-        let fullScreenImageViewController = FullScreenImageViewController()
+        let imageIndex = placeDetailsView?.currentImageIndex
+        let fullScreenImageViewController = FullScreenImageViewController(imageIndex: imageIndex ?? 0)
         fullScreenImageViewController.modalPresentationStyle = .overFullScreen
         present(fullScreenImageViewController, animated: true, completion: nil)
     }
