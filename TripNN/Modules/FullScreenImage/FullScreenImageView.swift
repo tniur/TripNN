@@ -9,8 +9,9 @@ import UIKit
 
 final class FullScreenImageView: UIView {
     
-    var currentImageIndex: Int = 0
+    // MARK: - Constants
     
+    var currentImageIndex: Int = 0
     let placeImages = [UIImage(named: "place_1"), UIImage(named: "place_2"), UIImage(named: "place_3"), UIImage(named: "place_4"), UIImage(named: "place_5")]
     
     // MARK: - Closures
@@ -58,6 +59,38 @@ final class FullScreenImageView: UIView {
         return image
     }()
     
+    // MARK: - Gesture
+    
+    let downSwipeGesture: UISwipeGestureRecognizer = {
+        let gesture = UISwipeGestureRecognizer()
+        gesture.direction = .down
+        return gesture
+    }()
+    
+    let leftSwipeGesture: UISwipeGestureRecognizer = {
+        let gesture = UISwipeGestureRecognizer()
+        gesture.direction = .left
+        return gesture
+    }()
+    
+    let rightSwipeGesture: UISwipeGestureRecognizer = {
+        let gesture = UISwipeGestureRecognizer()
+        gesture.direction = .right
+        return gesture
+    }()
+    
+    let singleTapGesture: UITapGestureRecognizer = {
+        let gesture = UITapGestureRecognizer()
+        gesture.numberOfTapsRequired = 1
+        return gesture
+    }()
+    
+    let doubleTapGesture: UITapGestureRecognizer = {
+        let gesture = UITapGestureRecognizer()
+        gesture.numberOfTapsRequired = 2
+        return gesture
+    }()
+    
     // MARK: - Init
     
     override init(frame: CGRect) {
@@ -87,6 +120,7 @@ final class FullScreenImageView: UIView {
         setupAction()
         setupScrollView()
         setupGesture()
+        setupGestureRecognizer()
     }
     
     private func setupView() {
@@ -96,6 +130,10 @@ final class FullScreenImageView: UIView {
         self.addSubview(headerView)
         self.addSubview(closeButton)
         self.addSubview(imageCounterLabel)
+    }
+    
+    private func setupScrollView() {
+        imageScrollView.delegate = self
     }
     
     private func setupConstraints() {
@@ -113,31 +151,21 @@ final class FullScreenImageView: UIView {
         closeButton.addTarget(self, action: #selector(closeButtonAction), for: .touchUpInside)
     }
     
-    private func setupScrollView() {
-        imageScrollView.delegate = self
+    private func setupGesture() {
+        doubleTapGesture.addTarget(self, action: #selector(handleDoubleTapOnScrollView))
+        singleTapGesture.addTarget(self, action: #selector(handleSingleTapOnScrollView))
+        downSwipeGesture.addTarget(self, action: #selector(handleSwipeFrom))
+        leftSwipeGesture.addTarget(self, action: #selector(handleSwipeFrom))
+        rightSwipeGesture.addTarget(self, action: #selector(handleSwipeFrom))
     }
     
-    private func setupGesture() {
-        let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSingleTapOnScrollView(recognizer:)))
-        singleTapGesture.numberOfTapsRequired = 1
+    private func setupGestureRecognizer() {
         imageScrollView.addGestureRecognizer(singleTapGesture)
-        
-        let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTapOnScrollView(recognizer:)))
-        doubleTapGesture.numberOfTapsRequired = 2
         imageScrollView.addGestureRecognizer(doubleTapGesture)
-        
-        singleTapGesture.require(toFail: doubleTapGesture)
-        
-        let rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeFrom(recognizer:)))
-        
-        rightSwipeGesture.direction = .right
-        
-        let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeFrom(recognizer:)))
-        
-        leftSwipeGesture.direction = .left
-        
         imageScrollView.addGestureRecognizer(rightSwipeGesture)
         imageScrollView.addGestureRecognizer(leftSwipeGesture)
+        self.addGestureRecognizer(downSwipeGesture)
+        singleTapGesture.require(toFail: doubleTapGesture)
     }
     
     // MARK: - Action
@@ -151,21 +179,18 @@ final class FullScreenImageView: UIView {
         let direction: UISwipeGestureRecognizer.Direction = recognizer.direction
         
         switch direction {
-        case UISwipeGestureRecognizer.Direction.right:
-            
-            if (currentImageIndex - 1 >= 0) {
-                self.configure(index: currentImageIndex - 1)
-            }
-            
-            
-        case UISwipeGestureRecognizer.Direction.left:
-            
-            if (currentImageIndex + 1 <= placeImages.count-1) {
-                self.configure(index: currentImageIndex + 1)
-            }
-            
-        default:
-            break
+            case UISwipeGestureRecognizer.Direction.right:
+                if (currentImageIndex - 1 >= 0) {
+                    self.configure(index: currentImageIndex - 1)
+                }
+            case UISwipeGestureRecognizer.Direction.left:
+                if (currentImageIndex + 1 <= placeImages.count-1) {
+                    self.configure(index: currentImageIndex + 1)
+                }
+            case UISwipeGestureRecognizer.Direction.down:
+                onCloseButtonAction?()
+            default:
+                break
         }
     }
     
@@ -279,5 +304,3 @@ extension FullScreenImageView: UIScrollViewDelegate {
         }
     }
 }
-
-
