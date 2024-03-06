@@ -11,7 +11,8 @@ final class SettingsScreenView: UIView {
     
     // MARK: - Closures
     
-    var onSettingsSectionAction: (() -> Void)?
+    var onThemeSectionAction: (() -> Void)?
+    var onLanguageSectionAction: (() -> Void)?
     
     // MARK: - Constants
     
@@ -91,11 +92,11 @@ extension SettingsScreenView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
             case 0:
-                onSettingsSectionAction?()
+                onThemeSectionAction?()
+            case 1:
+                onLanguageSectionAction?()
             default:
                 return
         }
     }
 }
-
-

@@ -42,7 +42,7 @@ final class RouteDetailsViewController: UIViewController {
         let bottomSheet = PlaceDetailsViewController()
         if let sheet = bottomSheet.sheetPresentationController {
             if #available(iOS 16.0, *) {
-                sheet.detents = [.custom(resolver: {context in 0.43 * context.maximumDetentValue}), .medium(), .large()]
+                sheet.detents = [.custom(resolver: {context in 0.43 * context.maximumDetentValue}), .large()]
             } else {
                 sheet.detents = [.medium(), .large()]
             }

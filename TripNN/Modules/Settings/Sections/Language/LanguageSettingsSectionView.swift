@@ -1,13 +1,13 @@
 //
-//  ThemeSettingsSectionView.swift
+//  LanguageSettingsSectionView.swift
 //  TripNN
 //
-//  Created by Pavel on 02.03.2024.
+//  Created by Pavel on 06.03.2024.
 //
 
 import UIKit
 
-final class ThemeSettingsSectionView: UIView {
+final class LanguageSettingsSectionView: UIView {
     
     // MARK: - Closures
     
@@ -16,9 +16,8 @@ final class ThemeSettingsSectionView: UIView {
     // MARK: - Constants
     
     private let settingsSectionValues = [
-        ThemeSettingsSectionModel(title: "Светлая", value: ThemeTypes.light),
-        ThemeSettingsSectionModel(title: "Темная", value: ThemeTypes.dark),
-        ThemeSettingsSectionModel(title: "Системная", value: ThemeTypes.system)
+        LanguageSettingsSectionModel(title: "Русский", value: LanguageTypes.rus),
+        LanguageSettingsSectionModel(title: "English", value: LanguageTypes.eng),
     ]
     
     // MARK: - View
@@ -27,7 +26,7 @@ final class ThemeSettingsSectionView: UIView {
         let label = UILabel()
         label.font = UIFont(name: "Montserrat-Regular", size: 18)
         label.textColor = .tripnnDark
-        label.text = "Тема"
+        label.text = "Язык"
         return label
     }()
     
@@ -126,7 +125,7 @@ final class ThemeSettingsSectionView: UIView {
     }
 }
 
-extension ThemeSettingsSectionView: UITableViewDataSource {
+extension LanguageSettingsSectionView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         settingsSectionValues.count
     }
@@ -157,13 +156,13 @@ extension ThemeSettingsSectionView: UITableViewDataSource {
     }
 }
 
-extension ThemeSettingsSectionView: UITableViewDelegate {
+extension LanguageSettingsSectionView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         updateSelectedCell(tableView, indexPath)
     }
 }
 
-extension ThemeSettingsSectionView {
+extension LanguageSettingsSectionView {
     private func updateSelectedCell(_ tableView: UITableView, _ indexPath: IndexPath) {
         let cells = tableView.visibleCells as! Array<SettingSectionContentTableViewCell>
         cells.forEach{$0.setUnSelectCellStyle()}

@@ -34,7 +34,8 @@ final class SettingsScreenViewController: UIViewController {
     }
     
     private func setupActions() {
-        settingsScreenView?.onSettingsSectionAction = { [weak self] in self?.openSettingSection() }
+        settingsScreenView?.onThemeSectionAction = { [weak self] in self?.openThemeSettingSection() }
+        settingsScreenView?.onLanguageSectionAction = { [weak self] in self?.openLanguageSettingSection() }
     }
     
     private func setupNavigationController() {
@@ -43,8 +44,18 @@ final class SettingsScreenViewController: UIViewController {
     
     // MARK: - Actions
     
-    @objc private func openSettingSection() {
+    @objc private func openThemeSettingSection() {
         let bottomSheet = ThemeSettingsSectionViewController()
+        if let sheet = bottomSheet.sheetPresentationController {
+            sheet.detents = [.medium()]
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.preferredCornerRadius = 20
+        }
+        present(bottomSheet, animated: true)
+    }
+    
+    @objc private func openLanguageSettingSection() {
+        let bottomSheet = LanguageSettingsSectionViewController()
         if let sheet = bottomSheet.sheetPresentationController {
             sheet.detents = [.medium()]
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
