@@ -146,15 +146,6 @@
 			path = HSCycleGalleryView;
 			sourceTree = "<group>";
 		};
-		E93A329A2B85EE2B00C1BBB7 /* ItemCard */ = {
-			isa = PBXGroup;
-			children = (
-				E96032DA2B8A2E3B00F026B5 /* Cell */,
-				E96032D92B8A2E2D00F026B5 /* View */,
-			);
-			path = ItemCard;
-			sourceTree = "<group>";
-		};
 		E95FA10D2B907A0D007E3E51 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,23 +200,6 @@
 			path = RouteDetails;
 			sourceTree = "<group>";
 		};
-		E96032D92B8A2E2D00F026B5 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E93A329D2B86703D00C1BBB7 /* ItemCardTemplate.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		E96032DA2B8A2E3B00F026B5 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				E93A32982B85EDFA00C1BBB7 /* ItemCardTableViewCell.swift */,
-				E969492A2B7EAAFE00622949 /* ItemCardCollectionViewCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
 		E9681E682B8D18A200D4CE07 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,10 +214,8 @@
 			children = (
 				E96949432B812F2200622949 /* ItemCardModel.swift */,
 				E95FA1122B90A16B007E3E51 /* SettingSectionModel.swift */,
-				E96032CC2B8815DD00F026B5 /* RouteDetailsModel.swift */,
-				E96032CE2B8815FB00F026B5 /* PlaceDetailsModel.swift */,
-				E9231EEA2B98586500907859 /* LanguageSettingsSectionModel.swift */,
-				E9B928C42B94A6B6002885F5 /* ThemeSettingsSectionModel.swift */,
+				E9AC613D2B9C42CB00713EDB /* ItemDetails */,
+				E9AC613C2B9C42B600713EDB /* SettingsSection */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -251,13 +223,10 @@
 		E96949232B7D582A00622949 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				E96032D22B8A161B00F026B5 /* HomeScreen */,
-				E9681E682B8D18A200D4CE07 /* SideMenu */,
-				E96032D42B8A167C00F026B5 /* CreatingRoute */,
+				E9AC613A2B9C409B00713EDB /* Home */,
 				E96032D32B8A163400F026B5 /* AllPreparedRoutes */,
-				E96032D62B8A16AB00F026B5 /* RouteDetails */,
-				E96032D52B8A169600F026B5 /* PlaceDetails */,
-				E9B928C82B9625D3002885F5 /* FullScreenImage */,
+				E9AC613B2B9C40C500713EDB /* NewRoute */,
+				E9AC61392B9C400F00713EDB /* ItemDetails */,
 				E9B928C22B949697002885F5 /* Settings */,
 			);
 			path = Modules;
@@ -266,11 +235,11 @@
 		E96949242B7D5B0500622949 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				E9FE95D02B878552009694EC /* Constants.swift */,
-				E9C73BCB2B6973F900E531AB /* Info.plist */,
-				E9C73BC82B6973F900E531AB /* LaunchScreen.storyboard */,
 				E9C73BBD2B6973F700E531AB /* AppDelegate.swift */,
 				E9C73BBF2B6973F700E531AB /* SceneDelegate.swift */,
+				E9FE95D02B878552009694EC /* Constants.swift */,
+				E9C73BC82B6973F900E531AB /* LaunchScreen.storyboard */,
+				E9C73BCB2B6973F900E531AB /* Info.plist */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -291,13 +260,10 @@
 		E969492C2B7EAB2D00622949 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				E93A329D2B86703D00C1BBB7 /* ItemCardTemplate.swift */,
 				E9B928CD2B972005002885F5 /* ClipboardSavingNotification.swift */,
-				E9B928C62B95576D002885F5 /* PlaceDetailsCollectionViewCell.swift */,
-				E9B928C02B947F27002885F5 /* SettingSectionContentTableViewCell.swift */,
-				E95FA1162B91230D007E3E51 /* SideMenuSectionTableViewCell.swift */,
-				E95FA1142B90A358007E3E51 /* SettingSectionTableViewCell.swift */,
+				E9AC613F2B9C475C00713EDB /* Cell */,
 				E9055A2C2B817F2E006CF2BE /* HSCycleGalleryView */,
-				E93A329A2B85EE2B00C1BBB7 /* ItemCard */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -309,6 +275,80 @@
 				E9AC61362B9859EE00713EDB /* ThemeSettingsSectionViewController.swift */,
 			);
 			path = Theme;
+			sourceTree = "<group>";
+		};
+		E9AC61392B9C400F00713EDB /* ItemDetails */ = {
+			isa = PBXGroup;
+			children = (
+				E96032D52B8A169600F026B5 /* PlaceDetails */,
+				E96032D62B8A16AB00F026B5 /* RouteDetails */,
+				E9B928C82B9625D3002885F5 /* FullScreenImage */,
+			);
+			path = ItemDetails;
+			sourceTree = "<group>";
+		};
+		E9AC613A2B9C409B00713EDB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E96032D22B8A161B00F026B5 /* HomeScreen */,
+				E9681E682B8D18A200D4CE07 /* SideMenu */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		E9AC613B2B9C40C500713EDB /* NewRoute */ = {
+			isa = PBXGroup;
+			children = (
+				E96032D42B8A167C00F026B5 /* CreatingRoute */,
+			);
+			path = NewRoute;
+			sourceTree = "<group>";
+		};
+		E9AC613C2B9C42B600713EDB /* SettingsSection */ = {
+			isa = PBXGroup;
+			children = (
+				E9231EEA2B98586500907859 /* LanguageSettingsSectionModel.swift */,
+				E9B928C42B94A6B6002885F5 /* ThemeSettingsSectionModel.swift */,
+			);
+			path = SettingsSection;
+			sourceTree = "<group>";
+		};
+		E9AC613D2B9C42CB00713EDB /* ItemDetails */ = {
+			isa = PBXGroup;
+			children = (
+				E96032CE2B8815FB00F026B5 /* PlaceDetailsModel.swift */,
+				E96032CC2B8815DD00F026B5 /* RouteDetailsModel.swift */,
+			);
+			path = ItemDetails;
+			sourceTree = "<group>";
+		};
+		E9AC613F2B9C475C00713EDB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E9AC61412B9C477400713EDB /* Collection */,
+				E9AC61402B9C476F00713EDB /* Table */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		E9AC61402B9C476F00713EDB /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				E93A32982B85EDFA00C1BBB7 /* ItemCardTableViewCell.swift */,
+				E95FA1142B90A358007E3E51 /* SettingSectionTableViewCell.swift */,
+				E95FA1162B91230D007E3E51 /* SideMenuSectionTableViewCell.swift */,
+				E9B928C02B947F27002885F5 /* SettingSectionContentTableViewCell.swift */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		E9AC61412B9C477400713EDB /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				E969492A2B7EAAFE00622949 /* ItemCardCollectionViewCell.swift */,
+				E9B928C62B95576D002885F5 /* PlaceDetailsCollectionViewCell.swift */,
+			);
+			path = Collection;
 			sourceTree = "<group>";
 		};
 		E9B928B92B936BA9002885F5 /* Sections */ = {
