@@ -16,9 +16,9 @@ final class ThemeSettingsSectionView: UIView {
     // MARK: - Constants
     
     private let settingsSectionValues = [
-        ThemeSettingsSectionModel(title: "Светлая", value: ThemeTypes.light),
-        ThemeSettingsSectionModel(title: "Темная", value: ThemeTypes.dark),
-        ThemeSettingsSectionModel(title: "Системная", value: ThemeTypes.system)
+        ThemeSettingsSectionModel(title: String(localized: "light_theme"), value: ThemeTypes.light),
+        ThemeSettingsSectionModel(title: String(localized: "dark_theme"), value: ThemeTypes.dark),
+        ThemeSettingsSectionModel(title: String(localized: "system_theme"), value: ThemeTypes.system)
     ]
     
     // MARK: - View
@@ -27,7 +27,7 @@ final class ThemeSettingsSectionView: UIView {
         let label = UILabel()
         label.font = UIFont(name: "Montserrat-Regular", size: 18)
         label.textColor = .tripnnDark
-        label.text = "Тема"
+        label.text = String(localized: "theme")
         return label
     }()
     

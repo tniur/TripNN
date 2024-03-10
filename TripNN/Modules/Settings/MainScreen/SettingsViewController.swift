@@ -39,7 +39,7 @@ final class SettingsScreenViewController: UIViewController {
     }
     
     private func setupNavigationController() {
-        navigationController?.setupNavigationControllerStyles(title: "Настройки", navigationItem: navigationItem, navigationController: navigationController)
+        navigationController?.setupNavigationControllerStyles(title: String(localized: "settings"), navigationItem: navigationItem, navigationController: navigationController)
     }
     
     // MARK: - Actions

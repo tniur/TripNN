@@ -39,7 +39,7 @@ class AllPreparedRoutesViewController: UIViewController {
     
     private func setupNavigationController() {
         navigationItem.searchController = allPreparedRoutesView?.searchController
-        navigationController?.setupNavigationControllerStyles(title: "Готовые маршруты", navigationItem: navigationItem, navigationController: navigationController)
+        navigationController?.setupNavigationControllerStyles(title: String(localized: "prepared_routes"), navigationItem: navigationItem, navigationController: navigationController)
     }
      
     // MARK: Action

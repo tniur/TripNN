@@ -38,7 +38,7 @@ final class CreatingRouteViewController: UIViewController {
     }
     
     private func setupNavigationController() {
-        navigationController?.setupNavigationControllerStyles(title: "Постройте маршрут", navigationItem: navigationItem, navigationController: navigationController)
+        navigationController?.setupNavigationControllerStyles(title: String(localized: "build_new_route"), navigationItem: navigationItem, navigationController: navigationController)
     }
 
 }

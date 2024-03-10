@@ -17,8 +17,8 @@ final class SettingsScreenView: UIView {
     // MARK: - Constants
     
     private let settingSectionTable: [SettingSectionModel] = [
-        SettingSectionModel(title: "Тема", status: "Системная"),
-        SettingSectionModel(title: "Язык", status: "Русский")
+        SettingSectionModel(title: String(localized: "theme"), status: String(localized: "system_theme")),
+        SettingSectionModel(title: String(localized: "language"), status: String(localized: "russian_language"))
     ]
     
     // MARK: - View

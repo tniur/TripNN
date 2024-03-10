@@ -59,7 +59,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     
     private let preparedRoutesLabel: UILabel = {
         let label = UILabel()
-        label.text = "Готовые маршруты"
+        label.text = String(localized: "prepared_routes")
         label.textColor = .tripnnDark
         label.font =  UIFont(name: "Montserrat-Medium", size: 18)
         return label
@@ -67,7 +67,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     
     private let allPreparedRoutesButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Все", for: .normal)
+        button.setTitle(String(localized: "all_prepared_routes"), for: .normal)
         button.titleLabel?.font =  UIFont(name: "Montserrat-Regular", size: 14)
         button.layer.masksToBounds = false
         button.setTitleColor(.tripnnDark, for: .normal)
@@ -94,7 +94,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     private let allPlaceButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "all-place-icon"), for: .normal)
-        button.setTitle("Все места Нижнего Новгорода", for: .normal)
+        button.setTitle(String(localized: "all_place_button"), for: .normal)
         button.titleLabel?.font =  UIFont(name: "Montserrat-Regular", size: 14)
         button.layer.masksToBounds = false
         button.layer.cornerRadius = 6
@@ -144,7 +144,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     
     private let newRouteSublabel: UILabel = {
         let label = UILabel()
-        label.text = "создать"
+        label.text = String(localized: "create")
         label.font =  UIFont(name: "Montserrat-Regular", size: 12)
         label.textColor = .tripnnDark
         return label

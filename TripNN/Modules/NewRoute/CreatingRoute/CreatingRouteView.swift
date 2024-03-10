@@ -14,7 +14,7 @@ class CreatingRouteView: UIView {
     private let addPlaceButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "plus-icon"), for: .normal)
-        button.setTitle("Добавить место", for: .normal)
+        button.setTitle(String(localized: "add_place"), for: .normal)
         button.titleLabel?.font =  UIFont(name: "Montserrat-Medium", size: 16)
         button.layer.masksToBounds = false
         button.layer.cornerRadius = 6

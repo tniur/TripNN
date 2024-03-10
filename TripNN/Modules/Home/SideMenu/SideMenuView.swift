@@ -173,7 +173,7 @@ extension SideMenuView: UITableViewDelegate {
 }
 
 extension SideMenuView {
-    static let sections = ["Аккаунт", "История", "Избранные", "Настройки"]
+    static let sections = [String(localized: "account"), String(localized: "history"), String(localized: "favorites"), String(localized: "settings")]
     
     static private func configureCell(withIndex cellIndex: Int) -> String {
         return sections[cellIndex]
