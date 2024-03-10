@@ -154,6 +154,22 @@
         }
       }
     },
+    "english_language" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Английский"
+          }
+        }
+      }
+    },
     "favorites" : {
       "extractionState" : "manual",
       "localizations" : {

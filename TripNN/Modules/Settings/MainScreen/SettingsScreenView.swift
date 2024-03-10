@@ -16,10 +16,7 @@ final class SettingsScreenView: UIView {
     
     // MARK: - Constants
     
-    private let settingSectionTable: [SettingSectionModel] = [
-        SettingSectionModel(title: String(localized: "theme"), status: String(localized: "system_theme")),
-        SettingSectionModel(title: String(localized: "language"), status: String(localized: "russian_language"))
-    ]
+    private let settingSectionCount = 2
     
     // MARK: - View
     
@@ -72,18 +69,41 @@ final class SettingsScreenView: UIView {
             settingsSectionsTableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
+    
+    // MARK: - Support
+    
+    private func getLanguageStatus() -> String {
+        let locale = Locale.current
+        
+        if locale.languageCode == "ru" {
+            return String(localized: "russian_language")
+        } else {
+            return String(localized: "english_language")
+        }
+    }
 }
 
 extension SettingsScreenView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        settingSectionTable.count
+        settingSectionCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingSectionCell", for: indexPath) as? SettingSectionTableViewCell else { fatalError() }
         
-        let content: SettingSectionModel  = settingSectionTable[indexPath.row]
-        cell.configure(settingSectionModel: content)
+        let content: SettingSectionModel
+        
+        switch indexPath.row {
+        case 0:
+            content = SettingSectionModel(title: String(localized: "theme"), status: String(localized: "system_theme"))
+            cell.configure(settingSectionModel: content)
+        case 1:
+            content = SettingSectionModel(title: String(localized: "language"), status: getLanguageStatus())
+            cell.configure(settingSectionModel: content)
+        default:
+            break
+        }
+        
         cell.selectionStyle = .none
         
         return cell
@@ -91,12 +111,12 @@ extension SettingsScreenView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-            case 0:
-                onThemeSectionAction?()
-            case 1:
-                onLanguageSectionAction?()
-            default:
-                return
+        case 0:
+            onThemeSectionAction?()
+        case 1:
+            onLanguageSectionAction?()
+        default:
+            return
         }
     }
 }

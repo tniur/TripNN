@@ -58,6 +58,10 @@ final class SettingSectionTableViewCell: UITableViewCell {
         statusLabel.text = settingSectionModel.status
     }
     
+    func setStatus(status: String) {
+        statusLabel.text = status
+    }
+    
     // MARK: - Setup
     
     private func setup() {
