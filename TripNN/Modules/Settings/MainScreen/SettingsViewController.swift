@@ -55,12 +55,8 @@ final class SettingsScreenViewController: UIViewController {
     }
     
     @objc private func openLanguageSettingSection() {
-        let bottomSheet = LanguageSettingsSectionViewController()
-        if let sheet = bottomSheet.sheetPresentationController {
-            sheet.detents = [.medium()]
-            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-            sheet.preferredCornerRadius = 20
+        if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(settingsUrl)
         }
-        present(bottomSheet, animated: true)
     }
 }

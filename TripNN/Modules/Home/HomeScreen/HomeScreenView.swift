@@ -128,7 +128,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     
     private let newRouteFirstRowLabel: UILabel = {
         let label = UILabel()
-        label.text = "новый".uppercased()
+        label.text = String(localized: "create_new_route_first_label").uppercased()
         label.font =  UIFont(name: "Montserrat-Black", size: 40)
         label.textColor = .tripnnDark
         return label
@@ -136,7 +136,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     
     private let newRouteSecondRowLabel: UILabel = {
         let label = UILabel()
-        label.text = "маршрут".uppercased()
+        label.text = String(localized: "create_new_route_second_label").uppercased()
         label.font =  UIFont(name: "Montserrat-Black", size: 40)
         label.textColor = .tripnnDark
         return label
