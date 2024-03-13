@@ -20,6 +20,7 @@
 		E95F13332B9EF63F00407C6F /* FindPlaceResultMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F13322B9EF63F00407C6F /* FindPlaceResultMenuView.swift */; };
 		E95F13352B9EF64D00407C6F /* FindPlaceResultMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F13342B9EF64D00407C6F /* FindPlaceResultMenuViewController.swift */; };
 		E95F13372B9F006300407C6F /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F13362B9F006300407C6F /* BigButton.swift */; };
+		E95F13392BA2593900407C6F /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F13382BA2593800407C6F /* SegmentedControl.swift */; };
 		E95FA1062B8D2272007E3E51 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9681E692B8D192300D4CE07 /* SideMenuView.swift */; };
 		E95FA1082B8E904E007E3E51 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FA1072B8E904E007E3E51 /* SideMenuViewController.swift */; };
 		E95FA1102B907EF5007E3E51 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FA10F2B907AFC007E3E51 /* SettingsViewController.swift */; };
@@ -84,6 +85,7 @@
 		E95F13322B9EF63F00407C6F /* FindPlaceResultMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPlaceResultMenuView.swift; sourceTree = "<group>"; };
 		E95F13342B9EF64D00407C6F /* FindPlaceResultMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPlaceResultMenuViewController.swift; sourceTree = "<group>"; };
 		E95F13362B9F006300407C6F /* BigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButton.swift; sourceTree = "<group>"; };
+		E95F13382BA2593800407C6F /* SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		E95FA1072B8E904E007E3E51 /* SideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		E95FA10E2B907AFB007E3E51 /* SettingsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenView.swift; sourceTree = "<group>"; };
 		E95FA10F2B907AFC007E3E51 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				E95F13362B9F006300407C6F /* BigButton.swift */,
+				E95F13382BA2593800407C6F /* SegmentedControl.swift */,
 				E93A329D2B86703D00C1BBB7 /* ItemCardTemplate.swift */,
 				E9B928CD2B972005002885F5 /* ClipboardSavingNotification.swift */,
 				E9AC613F2B9C475C00713EDB /* Cell */,
@@ -553,6 +556,7 @@
 			files = (
 				E969492E2B7EABAF00622949 /* UIView.swift in Sources */,
 				E9FE95CF2B8782E1009694EC /* UINavigationController.swift in Sources */,
+				E95F13392BA2593900407C6F /* SegmentedControl.swift in Sources */,
 				E96949272B7E0D8600622949 /* UIButton.swift in Sources */,
 				E9C73BC22B6973F700E531AB /* HomeScreenViewController.swift in Sources */,
 				E96949442B812F2200622949 /* ItemCardModel.swift in Sources */,

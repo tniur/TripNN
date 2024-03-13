@@ -26,6 +26,14 @@ final class FindPlacesMenuViewController: UIViewController {
         self.view = FindPlacesMenuView(frame: UIScreen.main.bounds)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setupNavigationBarStyle(isHidden: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        setupNavigationBarStyle(isHidden: false)
+    }
+    
     // MARK: - Setup
     
     private func setup() {
@@ -47,5 +55,10 @@ final class FindPlacesMenuViewController: UIViewController {
         let controller = FindPlaceResultMenuViewController()
         navigationController?.pushViewController(controller, animated: true)
         navigationController?.navigationBar.tintColor = .tripnnDark
+    }
+    
+    private func setupNavigationBarStyle(isHidden: Bool) {
+        navigationController?.navigationBar.isHidden = isHidden
+        navigationItem.backButtonTitle = ""
     }
 }

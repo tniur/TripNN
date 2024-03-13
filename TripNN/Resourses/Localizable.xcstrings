@@ -137,6 +137,23 @@
         }
       }
     },
+    "culture" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сulture"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Культура"
+          }
+        }
+      }
+    },
     "dark_theme" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -187,6 +204,23 @@
         }
       }
     },
+    "food" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Food"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поесть"
+          }
+        }
+      }
+    },
     "history" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -217,6 +251,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Язык"
+          }
+        }
+      }
+    },
+    "leisure" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leisure"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Досуг"
           }
         }
       }

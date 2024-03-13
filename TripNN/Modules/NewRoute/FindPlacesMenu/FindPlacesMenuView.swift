@@ -9,6 +9,10 @@ import UIKit
 
 final class FindPlacesMenuView: UIView {
     
+    // MARK: - Properties
+    
+    let segmentedControlItems = [String(localized: "culture"), String(localized: "leisure"), String(localized: "food")]
+    
     // MARK: - Closures
     
     var onNextStepButtonAction: (() -> Void)?
@@ -16,6 +20,9 @@ final class FindPlacesMenuView: UIView {
     // MARK: - View
     
     private let nextStepButton = BigButton(withTitle: String(localized: "next_step"))
+
+    lazy var placesSegmentedControl = SegmentedControl(items: segmentedControlItems)
+    
     
     // MARK: - Init
     
@@ -40,10 +47,12 @@ final class FindPlacesMenuView: UIView {
     
     private func setupView() {
         self.addSubview(nextStepButton)
+        self.addSubview(placesSegmentedControl)
     }
     
     private func setupConstraints() {
         setupNextStepButtonConstraints()
+        setupPlacesSegmentedControlConstraints()
     }
     
     private func addAction() {
@@ -66,4 +75,12 @@ final class FindPlacesMenuView: UIView {
         ])
     }
     
+    private func setupPlacesSegmentedControlConstraints() {
+        placesSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            placesSegmentedControl.topAnchor.constraint(equalTo: topAnchor, constant: 30),
+            placesSegmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            placesSegmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+        ])
+    }
 }
