@@ -26,6 +26,24 @@ final class SettingsScreenViewController: UIViewController {
         self.view = SettingsScreenView(frame: UIScreen.main.bounds)
     }
     
+    // MARK: - Actions
+    
+    @objc private func openThemeSettingSection() {
+        let bottomSheet = ThemeSettingsSectionViewController(settingViewController: self)
+        if let sheet = bottomSheet.sheetPresentationController {
+            sheet.detents = [.medium()]
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.preferredCornerRadius = 20
+        }
+        present(bottomSheet, animated: true)
+    }
+    
+    @objc private func openLanguageSettingSection() {
+        if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(settingsUrl)
+        }
+    }
+    
     // MARK: - Setup
     
     private func setup() {
@@ -40,23 +58,5 @@ final class SettingsScreenViewController: UIViewController {
     
     private func setupNavigationController() {
         navigationController?.setupNavigationControllerStyles(title: String(localized: "settings"), navigationItem: navigationItem, navigationController: navigationController)
-    }
-    
-    // MARK: - Actions
-    
-    @objc private func openThemeSettingSection() {
-        let bottomSheet = ThemeSettingsSectionViewController()
-        if let sheet = bottomSheet.sheetPresentationController {
-            sheet.detents = [.medium()]
-            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-            sheet.preferredCornerRadius = 20
-        }
-        present(bottomSheet, animated: true)
-    }
-    
-    @objc private func openLanguageSettingSection() {
-        if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
-            UIApplication.shared.open(settingsUrl)
-        }
     }
 }

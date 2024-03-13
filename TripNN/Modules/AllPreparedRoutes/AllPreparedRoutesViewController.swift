@@ -40,6 +40,7 @@ class AllPreparedRoutesViewController: UIViewController {
     private func setupNavigationController() {
         navigationItem.searchController = allPreparedRoutesView?.searchController
         navigationController?.setupNavigationControllerStyles(title: String(localized: "prepared_routes"), navigationItem: navigationItem, navigationController: navigationController)
+        navigationController?.navigationBar.tintColor = .tripnnDark
     }
      
     // MARK: Action

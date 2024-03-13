@@ -24,6 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         
+        window.overrideUserInterfaceStyle = UserDefaults.standard.theme.getUserInterfaceStyle()
         self.window = window
     }
     

@@ -41,6 +41,7 @@ final class ThemeSettingsSectionView: UIView {
         let table = UITableView()
         table.addViewShadow()
         table.layer.cornerRadius = 20
+        table.isScrollEnabled = false
         return table
     }()
     
@@ -143,12 +144,18 @@ extension ThemeSettingsSectionView: UITableViewDataSource {
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
         
-        if indexPath.row == 0 {
+        switch indexPath.row {
+        case 0:
             cell.setFirstCellStyle()
-            cell.setSelectCellStyle()
-        } else if indexPath.row == settingsSectionValues.count-1 {
+        case settingsSectionValues.count-1:
             cell.setLastCellStyle()
             cell.separatorInset = lastSeparatorInsetStyle
+        default:
+            break
+        }
+        
+        if indexPath.row == UserDefaults.standard.theme.rawValue {
+            cell.setSelectCellStyle()
         }
         
         cell.configure(title: settingsSectionValues[indexPath.row].title)
@@ -160,6 +167,9 @@ extension ThemeSettingsSectionView: UITableViewDataSource {
 extension ThemeSettingsSectionView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         updateSelectedCell(tableView, indexPath)
+        
+        UserDefaults.standard.theme = Theme(rawValue: indexPath.row) ?? .device
+        self.window?.overrideUserInterfaceStyle = UserDefaults.standard.theme.getUserInterfaceStyle()
     }
 }
 

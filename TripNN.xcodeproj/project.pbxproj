@@ -14,6 +14,12 @@
 		E93A32992B85EDFA00C1BBB7 /* ItemCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A32982B85EDFA00C1BBB7 /* ItemCardTableViewCell.swift */; };
 		E93A329E2B86703D00C1BBB7 /* ItemCardTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A329D2B86703D00C1BBB7 /* ItemCardTemplate.swift */; };
 		E95F13252B9E27FC00407C6F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E95F13242B9E27FC00407C6F /* Localizable.xcstrings */; };
+		E95F132B2B9E722700407C6F /* ThemeUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F132A2B9E722700407C6F /* ThemeUserDefaults.swift */; };
+		E95F132E2B9EE01A00407C6F /* FindPlacesMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F132D2B9EE01A00407C6F /* FindPlacesMenuView.swift */; };
+		E95F13302B9EE0BB00407C6F /* FindPlacesMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F132F2B9EE0BB00407C6F /* FindPlacesMenuViewController.swift */; };
+		E95F13332B9EF63F00407C6F /* FindPlaceResultMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F13322B9EF63F00407C6F /* FindPlaceResultMenuView.swift */; };
+		E95F13352B9EF64D00407C6F /* FindPlaceResultMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F13342B9EF64D00407C6F /* FindPlaceResultMenuViewController.swift */; };
+		E95F13372B9F006300407C6F /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F13362B9F006300407C6F /* BigButton.swift */; };
 		E95FA1062B8D2272007E3E51 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9681E692B8D192300D4CE07 /* SideMenuView.swift */; };
 		E95FA1082B8E904E007E3E51 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FA1072B8E904E007E3E51 /* SideMenuViewController.swift */; };
 		E95FA1102B907EF5007E3E51 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FA10F2B907AFC007E3E51 /* SettingsViewController.swift */; };
@@ -72,6 +78,12 @@
 		E93A329D2B86703D00C1BBB7 /* ItemCardTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardTemplate.swift; sourceTree = "<group>"; };
 		E95F13242B9E27FC00407C6F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		E95F13262B9E28A000407C6F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		E95F132A2B9E722700407C6F /* ThemeUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeUserDefaults.swift; sourceTree = "<group>"; };
+		E95F132D2B9EE01A00407C6F /* FindPlacesMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPlacesMenuView.swift; sourceTree = "<group>"; };
+		E95F132F2B9EE0BB00407C6F /* FindPlacesMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPlacesMenuViewController.swift; sourceTree = "<group>"; };
+		E95F13322B9EF63F00407C6F /* FindPlaceResultMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPlaceResultMenuView.swift; sourceTree = "<group>"; };
+		E95F13342B9EF64D00407C6F /* FindPlaceResultMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPlaceResultMenuViewController.swift; sourceTree = "<group>"; };
+		E95F13362B9F006300407C6F /* BigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButton.swift; sourceTree = "<group>"; };
 		E95FA1072B8E904E007E3E51 /* SideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		E95FA10E2B907AFB007E3E51 /* SettingsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenView.swift; sourceTree = "<group>"; };
 		E95FA10F2B907AFC007E3E51 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +155,32 @@
 			path = HSCycleGalleryView;
 			sourceTree = "<group>";
 		};
+		E95F13292B9E720A00407C6F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E95F132A2B9E722700407C6F /* ThemeUserDefaults.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E95F132C2B9EDE4500407C6F /* FindPlacesMenu */ = {
+			isa = PBXGroup;
+			children = (
+				E95F132D2B9EE01A00407C6F /* FindPlacesMenuView.swift */,
+				E95F132F2B9EE0BB00407C6F /* FindPlacesMenuViewController.swift */,
+			);
+			path = FindPlacesMenu;
+			sourceTree = "<group>";
+		};
+		E95F13312B9EF62700407C6F /* FindPlaceResultMenu */ = {
+			isa = PBXGroup;
+			children = (
+				E95F13322B9EF63F00407C6F /* FindPlaceResultMenuView.swift */,
+				E95F13342B9EF64D00407C6F /* FindPlaceResultMenuViewController.swift */,
+			);
+			path = FindPlaceResultMenu;
+			sourceTree = "<group>";
+		};
 		E95FA10D2B907A0D007E3E51 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,13 +208,13 @@
 			path = AllPreparedRoutes;
 			sourceTree = "<group>";
 		};
-		E96032D42B8A167C00F026B5 /* CreatingRoute */ = {
+		E96032D42B8A167C00F026B5 /* CreatingRouteScreen */ = {
 			isa = PBXGroup;
 			children = (
 				E9ED79D32B83E49C00F4D4EE /* CreatingRouteView.swift */,
 				E9ED79CD2B83DF5200F4D4EE /* CreatingRouteViewController.swift */,
 			);
-			path = CreatingRoute;
+			path = CreatingRouteScreen;
 			sourceTree = "<group>";
 		};
 		E96032D52B8A169600F026B5 /* PlaceDetails */ = {
@@ -257,6 +295,7 @@
 		E969492C2B7EAB2D00622949 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				E95F13362B9F006300407C6F /* BigButton.swift */,
 				E93A329D2B86703D00C1BBB7 /* ItemCardTemplate.swift */,
 				E9B928CD2B972005002885F5 /* ClipboardSavingNotification.swift */,
 				E9AC613F2B9C475C00713EDB /* Cell */,
@@ -277,8 +316,8 @@
 		E9AC61392B9C400F00713EDB /* ItemDetails */ = {
 			isa = PBXGroup;
 			children = (
-				E96032D52B8A169600F026B5 /* PlaceDetails */,
 				E96032D62B8A16AB00F026B5 /* RouteDetails */,
+				E96032D52B8A169600F026B5 /* PlaceDetails */,
 				E9B928C82B9625D3002885F5 /* FullScreenImage */,
 			);
 			path = ItemDetails;
@@ -296,7 +335,9 @@
 		E9AC613B2B9C40C500713EDB /* NewRoute */ = {
 			isa = PBXGroup;
 			children = (
-				E96032D42B8A167C00F026B5 /* CreatingRoute */,
+				E95F13312B9EF62700407C6F /* FindPlaceResultMenu */,
+				E95F132C2B9EDE4500407C6F /* FindPlacesMenu */,
+				E96032D42B8A167C00F026B5 /* CreatingRouteScreen */,
 			);
 			path = NewRoute;
 			sourceTree = "<group>";
@@ -395,6 +436,7 @@
 				E96949252B7E0D6A00622949 /* Extantions */,
 				E96949242B7D5B0500622949 /* Common */,
 				E969492C2B7EAB2D00622949 /* Custom */,
+				E95F13292B9E720A00407C6F /* Services */,
 				E96949202B7D2F2700622949 /* Models */,
 				E96949232B7D582A00622949 /* Modules */,
 				E9C73BD12B69750C00E531AB /* Resourses */,
@@ -516,11 +558,14 @@
 				E96949442B812F2200622949 /* ItemCardModel.swift in Sources */,
 				E9AC61382B9859EE00713EDB /* ThemeSettingsSectionViewController.swift in Sources */,
 				E93A329E2B86703D00C1BBB7 /* ItemCardTemplate.swift in Sources */,
+				E95F132B2B9E722700407C6F /* ThemeUserDefaults.swift in Sources */,
+				E95F13372B9F006300407C6F /* BigButton.swift in Sources */,
 				E9055A312B817F2E006CF2BE /* HSCycleGalleryView.swift in Sources */,
 				E93A32992B85EDFA00C1BBB7 /* ItemCardTableViewCell.swift in Sources */,
 				E9C73BBE2B6973F700E531AB /* AppDelegate.swift in Sources */,
 				E9B928C52B94A6B6002885F5 /* ThemeSettingsSectionModel.swift in Sources */,
 				E9B928CC2B962600002885F5 /* FullScreenImageViewController.swift in Sources */,
+				E95F13302B9EE0BB00407C6F /* FindPlacesMenuViewController.swift in Sources */,
 				E9B928CA2B9625F8002885F5 /* FullScreenImageView.swift in Sources */,
 				E9FE95CD2B877CB6009694EC /* UINavigationBarAppearance.swift in Sources */,
 				E95FA1062B8D2272007E3E51 /* SideMenuView.swift in Sources */,
@@ -541,6 +586,7 @@
 				E9C73BC02B6973F700E531AB /* SceneDelegate.swift in Sources */,
 				E96032CD2B8815DD00F026B5 /* RouteDetailsModel.swift in Sources */,
 				E9FE95CB2B86BB8A009694EC /* UISwipeActionsConfiguration.swift in Sources */,
+				E95F132E2B9EE01A00407C6F /* FindPlacesMenuView.swift in Sources */,
 				E96032CB2B88148800F026B5 /* PlaceDetailsView.swift in Sources */,
 				E9B928C12B947F27002885F5 /* SettingSectionContentTableViewCell.swift in Sources */,
 				E95FA1112B907F1F007E3E51 /* SettingsScreenView.swift in Sources */,
@@ -549,6 +595,8 @@
 				E9ED79D42B83E49C00F4D4EE /* CreatingRouteView.swift in Sources */,
 				E9055A302B817F2E006CF2BE /* HSCycleGalleryViewLayout.swift in Sources */,
 				E9AC61372B9859EE00713EDB /* ThemeSettingsSectionView.swift in Sources */,
+				E95F13332B9EF63F00407C6F /* FindPlaceResultMenuView.swift in Sources */,
+				E95F13352B9EF64D00407C6F /* FindPlaceResultMenuViewController.swift in Sources */,
 				E95FA1082B8E904E007E3E51 /* SideMenuViewController.swift in Sources */,
 				E93A328F2B84A55400C1BBB7 /* AllPreparedRoutesViewController.swift in Sources */,
 			);

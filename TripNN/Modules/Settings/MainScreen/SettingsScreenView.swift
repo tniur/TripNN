@@ -81,6 +81,21 @@ final class SettingsScreenView: UIView {
             return String(localized: "english_language")
         }
     }
+    
+    private func getTheme() -> String {
+        let theme = UserDefaults.standard.integer(forKey: "selectedTheme")
+        
+        switch theme {
+        case Theme.device.rawValue:
+            return String(localized: "system_theme")
+        case Theme.light.rawValue:
+            return String(localized: "light_theme")
+        case Theme.dark.rawValue:
+            return String(localized: "dark_theme")
+        default:
+            return String(localized: "system_theme")
+        }
+    }
 }
 
 extension SettingsScreenView: UITableViewDataSource, UITableViewDelegate {
@@ -95,7 +110,7 @@ extension SettingsScreenView: UITableViewDataSource, UITableViewDelegate {
         
         switch indexPath.row {
         case 0:
-            content = SettingSectionModel(title: String(localized: "theme"), status: String(localized: "system_theme"))
+            content = SettingSectionModel(title: String(localized: "theme"), status: getTheme())
             cell.configure(settingSectionModel: content)
         case 1:
             content = SettingSectionModel(title: String(localized: "language"), status: getLanguageStatus())
