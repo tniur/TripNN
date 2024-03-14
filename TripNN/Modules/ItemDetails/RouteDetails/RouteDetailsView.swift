@@ -29,20 +29,14 @@ final class RouteDetailsView: UIView {
     private let headerView = UIView()
     
     private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Маршрут \"Историческая часть города\""
-        label.font = UIFont(name: "Montserrat-SemiBold", size: 20)
+        let label = Title(text: "Маршрут \"Историческая часть города\"", font: .semiBold, size: 20)
         label.lineBreakMode = .byTruncatingTail
         label.numberOfLines = 3
-        label.textColor = .tripnnDark
         return label
     }()
     
     private let infoLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Рекомендованное время начала не позднее 18:00"
-        label.font = UIFont(name: "Montserrat-Regular", size: 12)
-        label.textColor = .tripnnDarkGray
+        let label = Title(text: "Рекомендованное время начала не позднее 18:00", font: .regular, size: 12)
         label.lineBreakMode = .byTruncatingTail
         label.numberOfLines = 2
         return label

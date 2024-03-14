@@ -48,7 +48,6 @@ final class AllPreparedRoutesView: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setup()
     }
     
     // MARK: - Setup
@@ -61,7 +60,7 @@ final class AllPreparedRoutesView: UIView {
     }
     
     private func setupView() {
-        self.backgroundColor = .white
+        self.backgroundColor = .tripnnWhite
         self.addSubview(allPreparedRoutesTableView)
     }
     

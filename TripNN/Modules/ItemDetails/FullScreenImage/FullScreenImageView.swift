@@ -34,9 +34,7 @@ final class FullScreenImageView: UIView {
     }()
     
     private let imageCounterLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .tripnnWhite
-        label.font = UIFont(name: "Montserrat-SemiBold", size: 16)
+        let label = Title(text: "0", font: .semiBold, size: 16, color: .tripnnWhite)
         label.textAlignment = .center
         return label
     }()
@@ -100,7 +98,6 @@ final class FullScreenImageView: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setup()
     }
     
     // MARK: - Configure

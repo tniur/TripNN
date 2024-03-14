@@ -34,13 +34,7 @@ final class PlaceDetailsView: UIView {
         return collection
     }()
     
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Вспышка"
-        label.font = UIFont(name: "Montserrat-SemiBold", size: 24)
-        label.textColor = .tripNNDark
-        return label
-    }()
+    private let titleLabel = Title(text: "Вспышка", font: .semiBold, size: 24)
     
     private let favouriteButton: UIButton = {
         let button = UIButton()
@@ -121,13 +115,7 @@ final class PlaceDetailsView: UIView {
         return button
     }()
     
-    private let mapLinkLabel: UILabel = {
-        let label = UILabel()
-        label.text = "2GIS"
-        label.font = UIFont(name: "Montserrat-Regular", size: 13)
-        label.textColor = .tripnnDark
-        return label
-    }()
+    private let mapLinkLabel = Title(text: "2GIS", font: .regular, size: 13)
     
     private let mapLinkButton: UIButton = {
         let button = UIButton()
@@ -136,51 +124,18 @@ final class PlaceDetailsView: UIView {
         return button
     }()
     
-    private let typeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Пышечная"
-        label.font = UIFont(name: "Montserrat-Regular", size: 13)
-        label.textColor = .tripNNDark
-        return label
-    }()
+    private let typeLabel = Title(text: "Пышечная", font: .regular, size: 13)
     
-    private let addressLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Алексеевская, 11"
-        label.font = UIFont(name: "Montserrat-Regular", size: 11)
-        label.textColor = .tripNNDark
-        return label
-    }()
+    private let addressLabel = Title(text: "Алексеевская, 11", font: .regular, size: 11)
     
-    private let workingHoursLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Ежедневно с 10:00 до 21:00"
-        label.font = UIFont(name: "Montserrat-Regular", size: 11)
-        label.textColor = .tripNNDark
-        return label
-    }()
+    private let workingHoursLabel = Title(text: "Ежедневно с 10:00 до 21:00", font: .regular, size: 11)
     
-    private let contactsLabel: UILabel = {
-        let label = UILabel()
-        label.text = "+7-963-231-96-17"
-        label.font = UIFont(name: "Montserrat-Regular", size: 11)
-        label.textColor = .tripNNDark
-        return label
-    }()
+    private let contactsLabel = Title(text: "+7-963-231-96-17", font: .regular, size: 11)
     
-    private let averageCheckLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Средний чек 200 ₽"
-        label.font = UIFont(name: "Montserrat-Regular", size: 11)
-        label.textColor = .tripNNDark
-        return label
-    }()
+    private let averageCheckLabel = Title(text: "Средний чек 200 ₽", font: .regular, size: 11)
     
     private let ratingValueLabel: UILabel = {
-        let label = UILabel()
-        label.text = "4.5"
-        label.font = UIFont(name: "Montserrat-Bold", size: 12)
-        label.textColor = .tripNNDark
+        let label = Title(text: "4.5", font: .bold, size: 12)
         
         if let rating = Float(label.text ?? "0") {
             switch rating {
@@ -200,13 +155,7 @@ final class PlaceDetailsView: UIView {
         return label
     }()
     
-    private let numberOfRatingsLabel: UILabel = {
-        let label = UILabel()
-        label.text = "199 оценок"
-        label.font = UIFont(name: "Montserrat-Regular", size: 12)
-        label.textColor = .tripNNDark
-        return label
-    }()
+    private let numberOfRatingsLabel = Title(text: "199 оценок", font: .regular, size: 12)
     
     private let  clipboardSavingNotification: ClipboardSavingNotification = {
         let notification = ClipboardSavingNotification()
@@ -224,9 +173,6 @@ final class PlaceDetailsView: UIView {
         super.init(coder: coder)
         setup()
     }
-    
-    // MARK: - Action
-
     
     // MARK: - Setup
     
