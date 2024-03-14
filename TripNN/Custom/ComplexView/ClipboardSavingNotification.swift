@@ -11,13 +11,6 @@ final class ClipboardSavingNotification: UIView {
     
     // MARK: - View
     
-    private let notificationBackground: UIView = {
-        let view = UIView()
-        view.backgroundColor = .tripnnOrange
-        view.layer.cornerRadius = 8
-        return view
-    }()
-    
     private let notificationLabel: UILabel = {
         let label = UILabel()
         label.text = "Адрес скопирован"
@@ -52,43 +45,36 @@ final class ClipboardSavingNotification: UIView {
     }
     
     private func setupView() {
-        self.addSubview(notificationBackground)
-        self.addSubview(notificationImage)
-        self.addSubview(notificationLabel)
+        backgroundColor = .tripnnOrange
+        layer.cornerRadius = 8
+    
+        addSubview(notificationImage)
+        addSubview(notificationLabel)
     }
     
     private func setupConstraints() {
-        setupNotificationBackgroundConstraints()
+        translatesAutoresizingMaskIntoConstraints = false
+        heightAnchor.constraint(equalToConstant: 44).isActive = true
+        
         setupNotificationImageConstraints()
         setupNotificationLabelConstraints()
     }
     
     // MARK: - Constraints
     
-    private func setupNotificationBackgroundConstraints(){
-        notificationBackground.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            notificationBackground.leadingAnchor.constraint(equalTo: leadingAnchor),
-            notificationBackground.bottomAnchor.constraint(equalTo: bottomAnchor),
-            notificationBackground.trailingAnchor.constraint(equalTo: trailingAnchor),
-            notificationBackground.heightAnchor.constraint(equalToConstant: 44),
-        ])
-    }
-    
-    private func setupNotificationImageConstraints(){
+    private func setupNotificationImageConstraints() {
         notificationImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            notificationImage.centerYAnchor.constraint(equalTo: notificationBackground.centerYAnchor),
-            notificationImage.leadingAnchor.constraint(equalTo: notificationBackground.leadingAnchor, constant: 10),
+            notificationImage.centerYAnchor.constraint(equalTo: centerYAnchor),
+            notificationImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
         ])
     }
     
-    private func setupNotificationLabelConstraints(){
+    private func setupNotificationLabelConstraints() {
         notificationLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            notificationLabel.centerYAnchor.constraint(equalTo: notificationBackground.centerYAnchor),
+            notificationLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             notificationLabel.leadingAnchor.constraint(equalTo: notificationImage.trailingAnchor, constant: 10),
         ])
     }
-    
 }

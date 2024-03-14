@@ -306,6 +306,23 @@
         }
       }
     },
+    "place" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Place"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Место"
+          }
+        }
+      }
+    },
     "prepared_routes" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -319,6 +336,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Готовые маршруты"
+          }
+        }
+      }
+    },
+    "route" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Route"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Маршрут"
           }
         }
       }

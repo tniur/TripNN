@@ -11,10 +11,7 @@ final class SettingSectionTableViewCell: UITableViewCell {
     
     // MARK: - View
     
-    private let containerView: UIView = {
-        let view = UIView()
-        return view
-    }()
+    private let containerView = UIView()
     
     private let labelsContainerStack: UIStackView = {
         let stack = UIStackView()
@@ -45,7 +42,6 @@ final class SettingSectionTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setup()
     }
     

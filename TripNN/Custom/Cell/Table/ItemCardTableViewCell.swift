@@ -11,21 +11,14 @@ final class ItemCardTableViewCell: UITableViewCell {
     
     // MARK: - View
     
-    private let containerView: UIView = {
-        let view = UIView()
-        return view
-    }()
+    private let containerView = UIView()
     
-    private let itemCardView: ItemCardTemplateView = {
-        let view = ItemCardTemplateView()
-        return view
-    }()
+    private let itemCardView = ItemCardTemplateView()
     
     // MARK: - Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setup()
     }
     
@@ -66,5 +59,4 @@ final class ItemCardTableViewCell: UITableViewCell {
     func configure(cardModel: ItemCardModel) { 
         itemCardView.configure(cardModel: cardModel)
     }
-    
 }

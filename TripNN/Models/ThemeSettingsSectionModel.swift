@@ -5,8 +5,6 @@
 //  Created by Pavel on 03.03.2024.
 //
 
-
-
 import UIKit
 
 enum ThemeTypes {

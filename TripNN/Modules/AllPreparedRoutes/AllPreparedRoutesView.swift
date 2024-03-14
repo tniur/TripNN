@@ -26,10 +26,7 @@ final class AllPreparedRoutesView: UIView {
         return searchController.isActive && !searchBarIsEmpty
     }
     
-    let searchController: UISearchController = {
-        let controller = UISearchController(searchResultsController: nil)
-        return controller
-    }()
+    let searchController = UISearchController(searchResultsController: nil)
     
     // MARK: - View
     

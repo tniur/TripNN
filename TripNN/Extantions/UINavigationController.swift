@@ -9,14 +9,15 @@ import UIKit
 
 extension UINavigationController {
     func setupNavigationControllerStyles(title: String, navigationItem: UINavigationItem, navigationController: UINavigationController?) {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.tintColor = .tripnnDark
+        
         navigationItem.backButtonTitle = ""
         navigationItem.title = title
-        if #available(iOS 15, *) {
-            navigationController?.navigationBar.standardAppearance = UINavigationBarAppearance().tripNNScreenTitleAppearance()
-        } else {
-            navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Montserrat-SemiBold", size: 16)!, NSAttributedString.Key.foregroundColor: UIColor.tripnnDark]
-        }
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.tintColor = .tripnnDark
+        
+        navigationController?.navigationBar.standardAppearance = UINavigationBarAppearance().tripNNScreenTitleAppearance()
+        
     }
 }

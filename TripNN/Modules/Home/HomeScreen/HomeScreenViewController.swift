@@ -28,18 +28,10 @@ final class HomeScreenViewController: UIViewController {
         self.view = HomeScreenView(frame: UIScreen.main.bounds)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupNavigationBarStyle(isHidden: true)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        setupNavigationBarStyle(isHidden: false)
-    }
-    
     private func setup() {
         setupActions()
         setupGestures()
+        setupNavigationBarStyle()
     }
     
     private func setupActions() {
@@ -64,9 +56,15 @@ final class HomeScreenViewController: UIViewController {
         return .darkContent
     }
     
-    private func setupNavigationBarStyle(isHidden: Bool) {
-        navigationController?.navigationBar.isHidden = isHidden
+    private func setupNavigationBarStyle() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "side-menu-icon"), style: .done, target: self, action: #selector(sideMenuOpenAction))
         navigationItem.backButtonTitle = ""
+        navigationController?.navigationBar.tintColor = .tripnnDark
+        navigationItem.largeTitleDisplayMode = .never
+        
+        let logoImage = UIImageView(image: UIImage(named: "logo-dark-icon"))
+        logoImage.contentMode = .scaleAspectFit
+        navigationItem.titleView = logoImage
     }
     
     // MARK: - Actions

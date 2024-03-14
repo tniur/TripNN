@@ -20,7 +20,7 @@ class ItemCardTemplateView: UIView {
         return view
     }()
     
-    let cardStack: UIStackView = {
+    private let cardStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.alignment = .center
@@ -37,7 +37,7 @@ class ItemCardTemplateView: UIView {
         return image
     }()
     
-    let infoStack: UIStackView = {
+    private let infoStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.alignment = .leading
@@ -45,23 +45,16 @@ class ItemCardTemplateView: UIView {
         return stack
     }()
     
-    let typeLabel: UILabel = {
-        let label = UILabel()
-        label.font =  UIFont(name: "Montserrat-Regular", size: 10)
-        label.textColor = .tripnnDark
-        return label
-    }()
+    private let typeLabel = Title(text: "none", font: .regular, size: 10)
     
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.font =  UIFont(name: "Montserrat-Regular", size: 16)
+    private let titleLabel: UILabel = {
+        let label = Title(text: "none", font: .regular, size: 16)
         label.lineBreakMode = .byTruncatingTail
         label.numberOfLines = 3
-        label.textColor = .tripnnDark
         return label
     }()
     
-    let costStack: UIStackView = {
+    private let costStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.alignment = .center
@@ -69,17 +62,9 @@ class ItemCardTemplateView: UIView {
         return stack
     }()
     
-    let costIconImage: UIImageView = {
-        let image = UIImageView(image: UIImage(named: "wallet-icon"))
-        return image
-    }()
+    private let costIconImage = UIImageView(image: UIImage(named: "wallet-icon"))
     
-    let costLabel: UILabel = {
-        let label = UILabel()
-        label.font =  UIFont(name: "Montserrat-Medium", size: 9)
-        label.textColor = .tripnnDark
-        return label
-    }()
+    private let costLabel = Title(text: "none", font: .medium, size: 9)
     
     // MARK: - Init
     
@@ -102,11 +87,10 @@ class ItemCardTemplateView: UIView {
         
         switch cardModel.type {
         case .route:
-            typeLabel.text = "Маршрут"
+            typeLabel.text = String(localized: "route")
         case .place:
-            typeLabel.text = "Место"
+            typeLabel.text = String(localized: "place")
         }
-        
     }
     
     // MARK: - Setup

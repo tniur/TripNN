@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
+final class HomeScreenView: UIView {
     
     // MARK: - Closures
     
@@ -29,17 +29,6 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         return view
     }()
     
-    private let logoImage: UIImageView = {
-        let image = UIImageView(image: UIImage(named: "logo-dark-icon"))
-        return image
-    }()
-    
-    private let sideMenuButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "side-menu-icon"), for: .normal)
-        return button
-    }()
-    
     private let infoPartStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
@@ -53,17 +42,10 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         stack.axis = .horizontal
         stack.distribution = .fillProportionally
         stack.alignment = .center
-        
         return stack
     }()
     
-    private let preparedRoutesLabel: UILabel = {
-        let label = UILabel()
-        label.text = String(localized: "prepared_routes")
-        label.textColor = .tripnnDark
-        label.font =  UIFont(name: "Montserrat-Medium", size: 18)
-        return label
-    }()
+    private let preparedRoutesLabel = Title(text: String(localized: "prepared_routes"), font: .medium, size: 18)
     
     private let allPreparedRoutesButton: UIButton = {
         let button = UIButton()
@@ -80,10 +62,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         ItemCardModel(image: UIImage(named: "route_3")!, type: .route, title: "Улица Рождественская", costInfo: "0₽")
     ]
     
-    private let preparedRoutesCarouselView: UIView = {
-        let view = UIView()
-        return view
-    }()
+    private let preparedRoutesCarouselView = UIView()
     
     private let preparedRoutesCarouselCycleGallery: HSCycleGalleryView = {
         let gallery = HSCycleGalleryView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 155))
@@ -105,10 +84,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         return button
     }()
     
-    private let newRouteView: UIView = {
-        let view = UIView()
-        return view
-    }()
+    private let newRouteView = UIView()
     
     private let newRouteBackgroundCircleView: UIView = {
         let view = UIView()
@@ -126,34 +102,13 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         return stack
     }()
     
-    private let newRouteFirstRowLabel: UILabel = {
-        let label = UILabel()
-        label.text = String(localized: "create_new_route_first_label").uppercased()
-        label.font =  UIFont(name: "Montserrat-Black", size: 40)
-        label.textColor = .tripnnDark
-        return label
-    }()
+    private let newRouteFirstRowLabel = Title(text: String(localized: "create_new_route_first_label").uppercased(), font: .black, size: 40)
     
-    private let newRouteSecondRowLabel: UILabel = {
-        let label = UILabel()
-        label.text = String(localized: "create_new_route_second_label").uppercased()
-        label.font =  UIFont(name: "Montserrat-Black", size: 40)
-        label.textColor = .tripnnDark
-        return label
-    }()
+    private let newRouteSecondRowLabel = Title(text: String(localized: "create_new_route_second_label").uppercased(), font: .black, size: 40)
     
-    private let newRouteSublabel: UILabel = {
-        let label = UILabel()
-        label.text = String(localized: "create")
-        label.font =  UIFont(name: "Montserrat-Regular", size: 12)
-        label.textColor = .tripnnDark
-        return label
-    }()
+    private let newRouteSublabel = Title(text: String(localized: "create"), font: .regular, size: 12)
     
-    private let newRouteButton: UIButton = {
-        let button = UIButton()
-        return button
-    }()
+    private let newRouteButton = UIButton()
     
     // MARK: - Init
     
@@ -183,8 +138,6 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         self.addSubview(infoPartView)
         self.addSubview(routePartView)
         
-        infoPartView.addSubview(logoImage)
-        infoPartView.addSubview(sideMenuButton)
         infoPartView.addSubview(infoPartStack)
         
         routePartView.addSubview(newRouteView)
@@ -218,7 +171,6 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     // MARK: - Actions
     
     private func addActions() {
-        sideMenuButton.addTarget(self, action: #selector(openSideMenu), for: .touchUpInside)
         newRouteButton.addTarget(self, action: #selector(createNewRoute), for: .touchUpInside)
         allPreparedRoutesButton.addTarget(self, action: #selector(openAllRecommendations), for: .touchUpInside)
     }
@@ -240,8 +192,6 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
     private func setupConstrains() {
         setupInfoPartViewConstraints()
         setupRoutePartViewConstraints()
-        setupLogoImageConstraints()
-        setupSideMenuButtonConstraints()
         setupInfoPartStackConstraints()
         setupAllPlaceButtonConstraints()
         setupPreparedRoutesHeaderStackConstraints()
@@ -274,29 +224,10 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
         ])
     }
     
-    private func setupLogoImageConstraints() {
-        logoImage.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate ([
-            logoImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            logoImage.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
-            logoImage.heightAnchor.constraint(equalToConstant: 28.6)
-        ])
-    }
-    
-    private func setupSideMenuButtonConstraints() {
-        sideMenuButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate ([
-            sideMenuButton.centerYAnchor.constraint(equalTo: logoImage.centerYAnchor),
-            sideMenuButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 14),
-            sideMenuButton.widthAnchor.constraint(equalToConstant: 44),
-            sideMenuButton.heightAnchor.constraint(equalToConstant: 44)
-        ])
-    }
-    
     private func setupInfoPartStackConstraints() {
         infoPartStack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate ([
-            infoPartStack.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 25),
+            infoPartStack.topAnchor.constraint(equalTo: topAnchor, constant: 100),
             infoPartStack.bottomAnchor.constraint(equalTo: infoPartView.bottomAnchor, constant: -25),
             infoPartStack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             infoPartStack.trailingAnchor.constraint(equalTo: self.trailingAnchor)
@@ -389,7 +320,7 @@ final class HomeScreenView: UIView, HSCycleGalleryViewDelegate {
 
 // MARK: - Cycle Gallery Extensions
 
-extension HomeScreenView {
+extension HomeScreenView: HSCycleGalleryViewDelegate {
     
     func numberOfItemInCycleGalleryView(_ cycleGalleryView: HSCycleGalleryView) -> Int {
         return 3

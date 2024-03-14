@@ -11,10 +11,7 @@ final class ItemCardCollectionViewCell: UICollectionViewCell {
     
     // MARK: - View
     
-    private let itemCardView: ItemCardTemplateView = {
-        let card = ItemCardTemplateView()
-        return card
-    }()
+    private let itemCardView = ItemCardTemplateView()
 
     // MARK: - Init
     
@@ -25,8 +22,9 @@ final class ItemCardCollectionViewCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setup()
     }
+    
+    // MARK: - Сonfigure
     
     func configure(cardModel: ItemCardModel) {
         itemCardView.configure(cardModel: cardModel)
@@ -52,6 +50,4 @@ final class ItemCardCollectionViewCell: UICollectionViewCell {
             itemCardView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
         ])
     }
-    
-    
 }

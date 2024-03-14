@@ -11,17 +11,9 @@ final class SideMenuSectionTableViewCell: UITableViewCell {
     
     // MARK: - View
     
-    private let containerView: UIView = {
-        let view = UIView()
-        return view
-    }()
+    private let containerView = UIView()
     
-    private let sectionLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .tripnnDark
-        label.font = UIFont(name: "Montserrat-Regular", size: 16)
-        return label
-    }()
+    private let sectionLabel = Title(text: "none", font: .regular, size: 16)
     
     // MARK: - Init
     
