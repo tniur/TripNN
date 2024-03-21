@@ -11,7 +11,7 @@ final class PlaceTagCollectionViewCell: UICollectionViewCell {
     
     // MARK: - View
     
-    private let cellLabel = Title(font: .medium, size: 12, color: .tripnnDarkGray)
+    private let cellLabel = Title(font: .medium, size: 14, color: .tripnnSemiDark)
 
     // MARK: - Init
     
@@ -41,10 +41,10 @@ final class PlaceTagCollectionViewCell: UICollectionViewCell {
         
         cellLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            cellLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            cellLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-            cellLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
-            cellLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
+            cellLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 18),
+            cellLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -18),
+            cellLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            cellLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
         ])
     }
 }

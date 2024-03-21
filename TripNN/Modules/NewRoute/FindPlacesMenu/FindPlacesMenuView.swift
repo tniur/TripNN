@@ -21,9 +21,23 @@ final class FindPlacesMenuView: UIView {
 
     // MARK: - View
     
-    lazy var placesSegmentedControl = SegmentedControl(items: segmentedControlItems)
+    private lazy var placesSegmentedControl = SegmentedControl(items: segmentedControlItems)
     
     private lazy var tagCollectionView =  UICollectionView(frame: .zero, collectionViewLayout: makeLeftLayout())
+    
+    // MARK: - Init
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
+    
+    // MARK: - Func
     
     private func makeLeftLayout() -> UICollectionViewLayout {
         UICollectionViewCompositionalLayout { sectionIndex, env in
@@ -40,45 +54,30 @@ final class FindPlacesMenuView: UIView {
         }
     }
     
-    // MARK: - Init
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setup()
-    }
-    
     // MARK: - Setup
     
     private func setup() {
         self.backgroundColor = .white
+        
         setupView()
         setupConstraints()
-        
-        tagCollectionView.register(PlaceTagCollectionViewCell.self, forCellWithReuseIdentifier: "PlaceTagCell")
-        self.addSubview(tagCollectionView)
-        tagCollectionView.delegate = self
-        tagCollectionView.dataSource = self
-        
-        tagCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            tagCollectionView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            tagCollectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            tagCollectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            tagCollectionView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor)
-        ])
+        setupCollectionView()
     }
     
     private func setupView() {
         self.addSubview(placesSegmentedControl)
+        self.addSubview(tagCollectionView)
     }
     
     private func setupConstraints() {
         setupPlacesSegmentedControlConstraints()
+        setupTagCollectionViewConstraints()
+    }
+    
+    private func setupCollectionView() {
+        tagCollectionView.register(PlaceTagCollectionViewCell.self, forCellWithReuseIdentifier: "PlaceTagCell")
+        tagCollectionView.delegate = self
+        tagCollectionView.dataSource = self
     }
     
     // MARK: - Constraints
@@ -91,9 +90,19 @@ final class FindPlacesMenuView: UIView {
             placesSegmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
         ])
     }
+    
+    private func setupTagCollectionViewConstraints() {
+        tagCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tagCollectionView.topAnchor.constraint(equalTo: placesSegmentedControl.bottomAnchor),
+            tagCollectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            tagCollectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            tagCollectionView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
 }
 
-extension FindPlacesMenuView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension FindPlacesMenuView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionViewData.count
     }
