@@ -20,4 +20,5 @@ extension UIColor {
     static var tripnnSemiLightGray: UIColor { UIColor(named: "TripNN SemiLight-gray") ?? UIColor.gray }
     static var tripnnLightGray: UIColor { UIColor(named: "TripNN Light-gray") ?? UIColor.gray }
     static var tripnnGray: UIColor { UIColor(named: "TripNN Gray") ?? UIColor.gray }
+    static var tripnnSemiDark: UIColor { UIColor(named: "TripNN SemiDark") ?? UIColor.black }
 }

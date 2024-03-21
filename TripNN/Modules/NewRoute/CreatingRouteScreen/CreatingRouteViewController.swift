@@ -38,6 +38,7 @@ final class CreatingRouteViewController: UIViewController {
             sheet.prefersGrabberVisible = true
             sheet.preferredCornerRadius = 20
         }
+        
         present(bottomSheet, animated: true)
     }
     

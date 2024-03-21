@@ -48,6 +48,7 @@
 		E96949442B812F2200622949 /* ItemCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96949432B812F2200622949 /* ItemCardModel.swift */; };
 		E9AC61372B9859EE00713EDB /* ThemeSettingsSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AC61352B9859EE00713EDB /* ThemeSettingsSectionView.swift */; };
 		E9AC61382B9859EE00713EDB /* ThemeSettingsSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AC61362B9859EE00713EDB /* ThemeSettingsSectionViewController.swift */; };
+		E9B1818F2BA5BF8300660F2E /* PlaceTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1818E2BA5BF8300660F2E /* PlaceTagCollectionViewCell.swift */; };
 		E9B928C12B947F27002885F5 /* SettingSectionContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B928C02B947F27002885F5 /* SettingSectionContentTableViewCell.swift */; };
 		E9B928C52B94A6B6002885F5 /* ThemeSettingsSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B928C42B94A6B6002885F5 /* ThemeSettingsSectionModel.swift */; };
 		E9B928C72B95576D002885F5 /* PlaceDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B928C62B95576D002885F5 /* PlaceDetailsCollectionViewCell.swift */; };
@@ -111,6 +112,7 @@
 		E96949432B812F2200622949 /* ItemCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardModel.swift; sourceTree = "<group>"; };
 		E9AC61352B9859EE00713EDB /* ThemeSettingsSectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeSettingsSectionView.swift; sourceTree = "<group>"; };
 		E9AC61362B9859EE00713EDB /* ThemeSettingsSectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeSettingsSectionViewController.swift; sourceTree = "<group>"; };
+		E9B1818E2BA5BF8300660F2E /* PlaceTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		E9B928C02B947F27002885F5 /* SettingSectionContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionContentTableViewCell.swift; sourceTree = "<group>"; };
 		E9B928C42B94A6B6002885F5 /* ThemeSettingsSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsSectionModel.swift; sourceTree = "<group>"; };
 		E9B928C62B95576D002885F5 /* PlaceDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 		E9AC61412B9C477400713EDB /* Collection */ = {
 			isa = PBXGroup;
 			children = (
+				E9B1818E2BA5BF8300660F2E /* PlaceTagCollectionViewCell.swift */,
 				E969492A2B7EAAFE00622949 /* ItemCardCollectionViewCell.swift */,
 				E9B928C62B95576D002885F5 /* PlaceDetailsCollectionViewCell.swift */,
 			);
@@ -554,6 +557,7 @@
 				E96949272B7E0D8600622949 /* UIButton.swift in Sources */,
 				E9C73BC22B6973F700E531AB /* HomeScreenViewController.swift in Sources */,
 				E96949442B812F2200622949 /* ItemCardModel.swift in Sources */,
+				E9B1818F2BA5BF8300660F2E /* PlaceTagCollectionViewCell.swift in Sources */,
 				E9AC61382B9859EE00713EDB /* ThemeSettingsSectionViewController.swift in Sources */,
 				E93A329E2B86703D00C1BBB7 /* ItemCardTemplate.swift in Sources */,
 				E95F132B2B9E722700407C6F /* ThemeUserDefaults.swift in Sources */,

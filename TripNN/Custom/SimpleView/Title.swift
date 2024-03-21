@@ -20,7 +20,7 @@ class Title: UILabel {
 
     // MARK: - Init
     
-    init(text: String, font: FontStyle, size: CGFloat, color: UIColor? = .tripnnDark) {
+    init(text: String? = "text", font: FontStyle, size: CGFloat, color: UIColor? = .tripnnDark) {
         super.init(frame: .zero)
         
         setup(text: text, font: font, size: size, color: color)
@@ -32,7 +32,7 @@ class Title: UILabel {
     
     // MARK: - Setup
     
-    private func setup(text: String, font: FontStyle, size: CGFloat, color: UIColor?) {
+    private func setup(text: String?, font: FontStyle, size: CGFloat, color: UIColor?) {
         self.text = text
         textColor = color
         
