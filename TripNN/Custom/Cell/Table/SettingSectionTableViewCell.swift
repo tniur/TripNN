@@ -20,19 +20,9 @@ final class SettingSectionTableViewCell: UITableViewCell {
         return stack
     }()
     
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.font =  UIFont(name: "Montserrat-Regular", size: 16)
-        label.textColor = .tripnnDark
-        return label
-    }()
+    private let titleLabel = Title(font: .regular, size: 16, color: .tripnnDark)
     
-    private let statusLabel: UILabel = {
-        let label = UILabel()
-        label.font =  UIFont(name: "Montserrat-Regular", size: 10)
-        label.textColor = .tripnnDarkGray
-        return label
-    }()
+    private let statusLabel = Title(font: .regular, size: 10, color: .tripnnDarkGray)
     
     func changeColor() {
         titleLabel.textColor = .red

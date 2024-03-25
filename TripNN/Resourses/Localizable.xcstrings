@@ -86,6 +86,23 @@
         }
       }
     },
+    "copy_address" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The address was copied"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Адрес скопирован"
+          }
+        }
+      }
+    },
     "create" : {
       "extractionState" : "manual",
       "localizations" : {

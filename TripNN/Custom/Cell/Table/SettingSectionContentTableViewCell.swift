@@ -13,7 +13,7 @@ final class SettingSectionContentTableViewCell: UITableViewCell {
     
     private let containerView = UIView()
     
-    private let cellLabel = Title(text: "none", font: .regular, size: 18)
+    private let cellLabel = Title(font: .regular, size: 18)
     
     // MARK: - Init
     

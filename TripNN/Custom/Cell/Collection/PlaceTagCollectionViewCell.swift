@@ -7,7 +7,14 @@
 
 import UIKit
 
+enum PlaceTagCornerRadius: CGFloat {
+    case light = 16
+    case strong = 25
+}
+
 final class PlaceTagCollectionViewCell: UICollectionViewCell {
+    
+    static let cellName = "PlaceTagCell"
     
     // MARK: - View
     
@@ -26,25 +33,41 @@ final class PlaceTagCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Configure
 
-    func configure(title: String) {
+    func configure(title: String, cornerRadius: PlaceTagCornerRadius) {
         cellLabel.text = title
         cellLabel.sizeToFit()
+        
+        switch cornerRadius {
+        case .light:
+            layer.cornerRadius = PlaceTagCornerRadius.light.rawValue
+        case .strong:
+            layer.cornerRadius = PlaceTagCornerRadius.strong.rawValue
+        }
+    }
+    
+    func setSelectCellStyle() {
+        backgroundColor = .tripnnOrange
+        cellLabel.textColor = .tripnnWhite
+    }
+    
+    func setUnSelectCellStyle() {
+        backgroundColor = .tripnnLightGray
+        cellLabel.textColor = .tripnnSemiDark
     }
     
     // MARK: - Setup
 
     private func setup() {
         backgroundColor = .tripnnLightGray
-        layer.cornerRadius = 25
-
+    
         contentView.addSubview(cellLabel)
         
         cellLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             cellLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 18),
             cellLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -18),
-            cellLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            cellLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            cellLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            cellLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
         ])
     }
 }
