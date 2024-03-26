@@ -14,7 +14,7 @@ enum PlaceTagCornerRadius: CGFloat {
 
 final class PlaceTagCollectionViewCell: UICollectionViewCell {
     
-    static let cellName = "PlaceTagCell"
+    static let reuseId = "PlaceTagCell"
     
     // MARK: - View
     
