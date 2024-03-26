@@ -58,7 +58,6 @@ final class FindPlacesMenuView: UIView {
         TagsCollectionViewSectionModel(type: .rating, title: String(localized: TagsCollectionViewSectionType.rating.rawValue), items: ratingCollectionViewItems),
         TagsCollectionViewSectionModel(type: .distance, title: String(localized: TagsCollectionViewSectionType.distance.rawValue), items: distanceCollectionViewItems),
         TagsCollectionViewSectionModel(type: .category, title: String(localized: TagsCollectionViewSectionType.category.rawValue), items: categoryCollectionViewItems)
-        
     ]
     
     // MARK: - View
@@ -91,8 +90,7 @@ final class FindPlacesMenuView: UIView {
     }()
     
     private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
-        let layoutSectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                                             heightDimension: .estimated(1))
+        let layoutSectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
         let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: layoutSectionHeaderSize,
                                                                               elementKind: UICollectionView.elementKindSectionHeader,
                                                                               alignment: .top)
@@ -164,13 +162,14 @@ final class FindPlacesMenuView: UIView {
     
     private func setupCollectionView() {
         tagsCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        tagsCollectionView.register(PlaceTagCollectionViewCell.self, forCellWithReuseIdentifier: PlaceTagCollectionViewCell.reuseId)
+        
+        tagsCollectionView.allowsMultipleSelection = true
+        tagsCollectionView.showsVerticalScrollIndicator = false
         
         tagsCollectionView.delegate = self
         
+        tagsCollectionView.register(PlaceTagCollectionViewCell.self, forCellWithReuseIdentifier: PlaceTagCollectionViewCell.reuseId)
         tagsCollectionView.register(TagCollectionSectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TagCollectionSectionHeader.reuseId)
-        
-        tagsCollectionView.allowsMultipleSelection = true
     }
     
     private func setupCollectionData() {
@@ -222,8 +221,8 @@ extension FindPlacesMenuView: UICollectionViewDelegate {
         let cell = collectionView.cellForItem(at: indexPath) as! PlaceTagCollectionViewCell
         cell.setSelectCellStyle()
         
-        //        guard var currentCell = collectionViewDataSource.itemIdentifier(for: indexPath) else { return }
-        //        print(currentCell.title)
+        // guard var currentCell = collectionViewDataSource.itemIdentifier(for: indexPath) else { return }
+        // print(currentCell.title)
         
     }
     
@@ -246,5 +245,4 @@ extension FindPlacesMenuView: UICollectionViewDelegate {
         
         return cellsInSection
     }
-    
 }
