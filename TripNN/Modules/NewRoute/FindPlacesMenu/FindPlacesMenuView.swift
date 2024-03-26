@@ -17,12 +17,32 @@ final class FindPlacesMenuView: UIView {
     
     private let segmentedControlItems = [String(localized: "culture"), String(localized: "leisure"), String(localized: "food")]
     
-    private let categoryCollectionViewItems = [TagsCollectionViewItemModel(title: "Кафе"), TagsCollectionViewItemModel(title: "Рестораны"), TagsCollectionViewItemModel(title: "Бары"), TagsCollectionViewItemModel(title: "Пиццерии"), TagsCollectionViewItemModel(title: "Быстрое питание"), TagsCollectionViewItemModel(title: "Кофейни"), TagsCollectionViewItemModel(title: "Столовые"), TagsCollectionViewItemModel(title: "Суши-бары"), TagsCollectionViewItemModel(title: "Рюмочные"), TagsCollectionViewItemModel(title: "Кондитерские изделия"), TagsCollectionViewItemModel(title: "Кондитерские")]
+    private let categoryCollectionViewItems = [
+        TagsCollectionViewItemModel(title: "Кафе"), 
+        TagsCollectionViewItemModel(title: "Рестораны"),
+        TagsCollectionViewItemModel(title: "Бары"),
+        TagsCollectionViewItemModel(title: "Пиццерии"),
+        TagsCollectionViewItemModel(title: "Быстрое питание"),
+        TagsCollectionViewItemModel(title: "Кофейни"),
+        TagsCollectionViewItemModel(title: "Столовые"),
+        TagsCollectionViewItemModel(title: "Суши-бары"),
+        TagsCollectionViewItemModel(title: "Рюмочные"),
+        TagsCollectionViewItemModel(title: "Кондитерские изделия"),
+        TagsCollectionViewItemModel(title: "Кондитерские"),
+        TagsCollectionViewItemModel(title: "Бургурные"),
+        TagsCollectionViewItemModel(title: "Пельменные")
+    ]
     
-    private let ratingCollectionViewItems = [TagsCollectionViewItemModel(title: "Низкий"), TagsCollectionViewItemModel(title: "Средний"), TagsCollectionViewItemModel(title: "Высокий")]
+    private let ratingCollectionViewItems = [
+        TagsCollectionViewItemModel(title: "Низкий"),
+        TagsCollectionViewItemModel(title: "Средний"),
+        TagsCollectionViewItemModel(title: "Высокий")
+    ]
     
-    private lazy var collectionViewSections = [TagsCollectionViewSectionModel(type: .category, title: String(localized: TagsCollectionViewSectionType.category.rawValue), items: categoryCollectionViewItems),
-                                               TagsCollectionViewSectionModel(type: .rating, title: String(localized: TagsCollectionViewSectionType.rating.rawValue), items: ratingCollectionViewItems)]
+    private lazy var collectionViewSections = [
+        TagsCollectionViewSectionModel(type: .category, title: String(localized: TagsCollectionViewSectionType.category.rawValue), items: categoryCollectionViewItems),
+        TagsCollectionViewSectionModel(type: .rating, title: String(localized: TagsCollectionViewSectionType.rating.rawValue), items: ratingCollectionViewItems)
+    ]
     
     // MARK: - View
     
@@ -32,8 +52,9 @@ final class FindPlacesMenuView: UIView {
     
     private lazy var tagsCollectionView =  UICollectionView(frame: .zero, collectionViewLayout: collectionViewLeftLayout)
     
-    private let collectionViewLeftLayout: UICollectionViewLayout = {
+    private lazy var collectionViewLeftLayout: UICollectionViewLayout = {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, env in
+            
             let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(80), heightDimension: .fractionalHeight(1.0))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             
@@ -43,10 +64,23 @@ final class FindPlacesMenuView: UIView {
             group.interItemSpacing = .fixed(12)
             
             let section = NSCollectionLayoutSection(group: group)
+            
+            let header = self.createSectionHeader()
+            section.boundarySupplementaryItems = [header]
+            
             return section
         }
         return layout
     }()
+    
+    private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+        let layoutSectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                             heightDimension: .estimated(1))
+        let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: layoutSectionHeaderSize,
+                                                                              elementKind: UICollectionView.elementKindSectionHeader,
+                                                                              alignment: .top)
+        return layoutSectionHeader
+    }
     
     private lazy var collectionViewDataSource: UICollectionViewDiffableDataSource<TagsCollectionViewSectionModel, TagsCollectionViewItemModel> = {
         let dataSource = UICollectionViewDiffableDataSource<TagsCollectionViewSectionModel, TagsCollectionViewItemModel>(collectionView: tagsCollectionView, cellProvider: { (collectionView, indexPath, tag) -> UICollectionViewCell? in
@@ -61,6 +95,19 @@ final class FindPlacesMenuView: UIView {
                 return cell
             }
         })
+        
+        dataSource.supplementaryViewProvider = {
+            tagsCollectionView, kind, indexPath in
+            guard let sectionHeader = tagsCollectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: TagCollectionSectionHeader.reuseId, for: indexPath) as? TagCollectionSectionHeader else { return nil }
+            
+            guard let currentCell = dataSource.itemIdentifier(for: indexPath) else { return nil }
+            guard let section = dataSource.snapshot().sectionIdentifier(containingItem: currentCell) else { return nil }
+            if section.title.isEmpty { return nil }
+            
+            sectionHeader.configure(text: section.title)
+            return sectionHeader
+        }
+        
         return dataSource
     }()
     
@@ -89,8 +136,8 @@ final class FindPlacesMenuView: UIView {
     }
     
     private func setupView() {
-        self.addSubview(placesSegmentedControl)
         self.addSubview(tagsCollectionView)
+        self.addSubview(placesSegmentedControl)
     }
     
     private func setupConstraints() {
@@ -101,6 +148,12 @@ final class FindPlacesMenuView: UIView {
     private func setupCollectionView() {
         tagsCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tagsCollectionView.register(PlaceTagCollectionViewCell.self, forCellWithReuseIdentifier: PlaceTagCollectionViewCell.reuseId)
+        
+        tagsCollectionView.delegate = self
+        
+        tagsCollectionView.register(TagCollectionSectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TagCollectionSectionHeader.reuseId)
+        
+        tagsCollectionView.allowsMultipleSelection = true
     }
     
     private func setupCollectionData() {
@@ -128,10 +181,53 @@ final class FindPlacesMenuView: UIView {
     private func setupTagsCollectionViewConstraints() {
         tagsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tagsCollectionView.topAnchor.constraint(equalTo: placesSegmentedControl.bottomAnchor, constant: 10),
+            tagsCollectionView.topAnchor.constraint(equalTo: placesSegmentedControl.bottomAnchor, constant: -10),
             tagsCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             tagsCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             tagsCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
+}
+
+// MARK: - Extension UICollectionView
+
+extension FindPlacesMenuView: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let section = collectionViewDataSource.sectionIdentifier(for: indexPath.section) else { return }
+        
+        if (section.type == .rating) {
+            let cells = getCellsInSection(collectionView, indexPath.section)
+            cells.forEach{$0.setUnSelectCellStyle()}
+            collectionView.deselectItem(at: indexPath, animated: false)
+        }
+        
+        let cell = collectionView.cellForItem(at: indexPath) as! PlaceTagCollectionViewCell
+        cell.setSelectCellStyle()
+        
+        //        guard var currentCell = collectionViewDataSource.itemIdentifier(for: indexPath) else { return }
+        //        print(currentCell.title)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! PlaceTagCollectionViewCell
+        cell.setUnSelectCellStyle()
+    }
+    
+    private func getCellsInSection(_ collectionView: UICollectionView, _ section: Int) -> [PlaceTagCollectionViewCell] {
+        var cellsInSection = [PlaceTagCollectionViewCell]()
+        
+        let numberOfItemsInSection = collectionView.numberOfItems(inSection: section)
+        
+        for itemIndex in 0..<numberOfItemsInSection {
+            let indexPath = IndexPath(item: itemIndex, section: section)
+            if let cell = collectionView.cellForItem(at: indexPath) {
+                cellsInSection.append(cell as! PlaceTagCollectionViewCell)
+            }
+        }
+        
+        return cellsInSection
+    }
+    
 }

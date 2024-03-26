@@ -9,7 +9,7 @@ import UIKit
 
 enum PlaceTagCornerRadius: CGFloat {
     case light = 16
-    case strong = 25
+    case strong = 20
 }
 
 final class PlaceTagCollectionViewCell: UICollectionViewCell {

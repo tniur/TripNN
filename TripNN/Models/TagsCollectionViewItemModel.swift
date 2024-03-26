@@ -8,5 +8,5 @@
 import Foundation
 
 struct TagsCollectionViewItemModel: Hashable {
-    let title: String
+    var title: String
 }
