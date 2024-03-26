@@ -10,6 +10,8 @@ import Foundation
 enum TagsCollectionViewSectionType: String.LocalizationValue {
     case category = "сategories"
     case rating = "rating"
+    case prices = "prices"
+    case distance = "distance"
 }
 
 struct TagsCollectionViewSectionModel: Hashable {

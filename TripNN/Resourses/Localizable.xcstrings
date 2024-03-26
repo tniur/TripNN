@@ -188,6 +188,23 @@
         }
       }
     },
+    "distance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distance"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удаленность"
+          }
+        }
+      }
+    },
     "english_language" : {
       "localizations" : {
         "en" : {
@@ -353,6 +370,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Готовые маршруты"
+          }
+        }
+      }
+    },
+    "prices" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prices"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цены"
           }
         }
       }

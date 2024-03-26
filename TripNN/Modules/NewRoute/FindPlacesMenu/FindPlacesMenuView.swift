@@ -17,31 +17,48 @@ final class FindPlacesMenuView: UIView {
     
     private let segmentedControlItems = [String(localized: "culture"), String(localized: "leisure"), String(localized: "food")]
     
-    private let categoryCollectionViewItems = [
-        TagsCollectionViewItemModel(title: "Кафе"), 
-        TagsCollectionViewItemModel(title: "Рестораны"),
-        TagsCollectionViewItemModel(title: "Бары"),
-        TagsCollectionViewItemModel(title: "Пиццерии"),
-        TagsCollectionViewItemModel(title: "Быстрое питание"),
-        TagsCollectionViewItemModel(title: "Кофейни"),
-        TagsCollectionViewItemModel(title: "Столовые"),
-        TagsCollectionViewItemModel(title: "Суши-бары"),
-        TagsCollectionViewItemModel(title: "Рюмочные"),
-        TagsCollectionViewItemModel(title: "Кондитерские изделия"),
-        TagsCollectionViewItemModel(title: "Кондитерские"),
-        TagsCollectionViewItemModel(title: "Бургурные"),
-        TagsCollectionViewItemModel(title: "Пельменные")
+    private let pricesCollectionViewItems = [
+        TagsCollectionViewItemModel(title: "₽"),
+        TagsCollectionViewItemModel(title: "₽₽"),
+        TagsCollectionViewItemModel(title: "₽₽₽"),
+        TagsCollectionViewItemModel(title: "₽₽₽₽")
     ]
     
     private let ratingCollectionViewItems = [
-        TagsCollectionViewItemModel(title: "Низкий"),
-        TagsCollectionViewItemModel(title: "Средний"),
-        TagsCollectionViewItemModel(title: "Высокий")
+        TagsCollectionViewItemModel(title: "от 3"),
+        TagsCollectionViewItemModel(title: "от 3,5"),
+        TagsCollectionViewItemModel(title: "от 4"),
+        TagsCollectionViewItemModel(title: "от 4,5")
+    ]
+    
+    private let distanceCollectionViewItems = [
+        TagsCollectionViewItemModel(title: "до 1 км"),
+        TagsCollectionViewItemModel(title: "до 2 км"),
+        TagsCollectionViewItemModel(title: "до 5 км"),
+        TagsCollectionViewItemModel(title: "до 10 км")
+    ]
+    
+    private let categoryCollectionViewItems = [
+        TagsCollectionViewItemModel(title: "Кафе"),
+        TagsCollectionViewItemModel(title: "Рестораны"),
+        TagsCollectionViewItemModel(title: "Бары"),
+        TagsCollectionViewItemModel(title: "Кофейни"),
+        TagsCollectionViewItemModel(title: "Столовые"),
+        TagsCollectionViewItemModel(title: "Быстрое питание"),
+        TagsCollectionViewItemModel(title: "Суши-бары"),
+        TagsCollectionViewItemModel(title: "Пиццерии"),
+        TagsCollectionViewItemModel(title: "Кафе-кондитерские"),
+        TagsCollectionViewItemModel(title: "Рюмочные"),
+        TagsCollectionViewItemModel(title: "Кондитерские изделия"),
+        TagsCollectionViewItemModel(title: "Пекарни"),
     ]
     
     private lazy var collectionViewSections = [
-        TagsCollectionViewSectionModel(type: .category, title: String(localized: TagsCollectionViewSectionType.category.rawValue), items: categoryCollectionViewItems),
-        TagsCollectionViewSectionModel(type: .rating, title: String(localized: TagsCollectionViewSectionType.rating.rawValue), items: ratingCollectionViewItems)
+        TagsCollectionViewSectionModel(type: .prices, title: String(localized: TagsCollectionViewSectionType.prices.rawValue), items: pricesCollectionViewItems),
+        TagsCollectionViewSectionModel(type: .rating, title: String(localized: TagsCollectionViewSectionType.rating.rawValue), items: ratingCollectionViewItems),
+        TagsCollectionViewSectionModel(type: .distance, title: String(localized: TagsCollectionViewSectionType.distance.rawValue), items: distanceCollectionViewItems),
+        TagsCollectionViewSectionModel(type: .category, title: String(localized: TagsCollectionViewSectionType.category.rawValue), items: categoryCollectionViewItems)
+        
     ]
     
     // MARK: - View
@@ -85,13 +102,13 @@ final class FindPlacesMenuView: UIView {
     private lazy var collectionViewDataSource: UICollectionViewDiffableDataSource<TagsCollectionViewSectionModel, TagsCollectionViewItemModel> = {
         let dataSource = UICollectionViewDiffableDataSource<TagsCollectionViewSectionModel, TagsCollectionViewItemModel>(collectionView: tagsCollectionView, cellProvider: { (collectionView, indexPath, tag) -> UICollectionViewCell? in
             switch self.collectionViewSections[indexPath.section].type {
-            case .category:
+            case .rating, .distance:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceTagCollectionViewCell.reuseId, for: indexPath) as? PlaceTagCollectionViewCell
-                cell?.configure(title: tag.title, cornerRadius: .light)
+                cell?.configure(title: tag.title, cornerRadius: .strong)
                 return cell
             default:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceTagCollectionViewCell.reuseId, for: indexPath) as? PlaceTagCollectionViewCell
-                cell?.configure(title: tag.title, cornerRadius: .strong)
+                cell?.configure(title: tag.title, cornerRadius: .light)
                 return cell
             }
         })
@@ -196,7 +213,7 @@ extension FindPlacesMenuView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let section = collectionViewDataSource.sectionIdentifier(for: indexPath.section) else { return }
         
-        if (section.type == .rating) {
+        if (section.type == .rating || section.type == .distance) {
             let cells = getCellsInSection(collectionView, indexPath.section)
             cells.forEach{$0.setUnSelectCellStyle()}
             collectionView.deselectItem(at: indexPath, animated: false)

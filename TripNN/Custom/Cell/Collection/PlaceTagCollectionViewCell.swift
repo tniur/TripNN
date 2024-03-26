@@ -8,7 +8,7 @@
 import UIKit
 
 enum PlaceTagCornerRadius: CGFloat {
-    case light = 16
+    case light = 8
     case strong = 20
 }
 
