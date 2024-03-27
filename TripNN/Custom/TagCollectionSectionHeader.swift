@@ -37,12 +37,15 @@ final class TagCollectionSectionHeader: UICollectionReusableView {
     private func setup() {
         addSubview(headerTitle)
         
+        let bottomConstraint = headerTitle.bottomAnchor.constraint(equalTo: bottomAnchor)
+        bottomConstraint.priority = UILayoutPriority(999)
+        
         headerTitle.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             headerTitle.trailingAnchor.constraint(equalTo: trailingAnchor),
-            headerTitle.bottomAnchor.constraint(equalTo: bottomAnchor),
             headerTitle.leadingAnchor.constraint(equalTo: leadingAnchor),
-            headerTitle.topAnchor.constraint(equalTo: topAnchor, constant: 24)
+            headerTitle.topAnchor.constraint(equalTo: topAnchor, constant: 24),
+            bottomConstraint
         ])
     }
 }

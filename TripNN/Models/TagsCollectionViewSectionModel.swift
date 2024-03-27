@@ -12,6 +12,7 @@ enum TagsCollectionViewSectionType: String.LocalizationValue {
     case rating = "rating"
     case prices = "prices"
     case distance = "distance"
+    case last = " "
 }
 
 struct TagsCollectionViewSectionModel: Hashable {

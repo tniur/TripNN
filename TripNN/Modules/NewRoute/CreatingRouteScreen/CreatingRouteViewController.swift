@@ -29,7 +29,7 @@ final class CreatingRouteViewController: UIViewController {
     // MARK: - Action
     
     private func openFindPlaceMenuAction() {
-        let rootController = FindPlacesMenuViewController()
+        let rootController = PlaceFiltersMenuViewController()
         let navigationController = UINavigationController(rootViewController: rootController)
         
         let bottomSheet = navigationController

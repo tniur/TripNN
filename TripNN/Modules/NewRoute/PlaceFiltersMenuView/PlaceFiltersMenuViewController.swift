@@ -1,5 +1,5 @@
 //
-//  FindPlacesMenuViewController.swift
+//  PlaceFiltersMenuViewController.swift
 //  TripNN
 //
 //  Created by Pavel on 11.03.2024.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-final class FindPlacesMenuViewController: UIViewController {
+final class PlaceFiltersMenuViewController: UIViewController {
     
     // MARK: - View
     
-    weak var findPlacesMenuView: FindPlacesMenuView? {
-        return self.view as? FindPlacesMenuView
+    weak var placeFiltersMenuView: PlaceFiltersMenuView? {
+        return self.view as? PlaceFiltersMenuView
     }
     
     // MARK: - Lifecycle
@@ -23,7 +23,7 @@ final class FindPlacesMenuViewController: UIViewController {
     }
     
     override func loadView() {
-        self.view = FindPlacesMenuView(frame: UIScreen.main.bounds)
+        self.view = PlaceFiltersMenuView(frame: UIScreen.main.bounds)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,7 +42,7 @@ final class FindPlacesMenuViewController: UIViewController {
     }
     
     private func setupAction() {
-        findPlacesMenuView?.onNextStepButtonAction = { [weak self] in self?.goToNextStepAction() }
+        placeFiltersMenuView?.onNextStepButtonAction = { [weak self] in self?.goToNextStepAction() }
     }
     
     private func setupNavigationBarStyle() {

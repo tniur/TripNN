@@ -8,5 +8,6 @@
 import Foundation
 
 struct TagsCollectionViewItemModel: Hashable {
-    var title: String
+    let title: String
+    let id: Int
 }

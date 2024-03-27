@@ -19,8 +19,8 @@
 		E93A329E2B86703D00C1BBB7 /* ItemCardTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A329D2B86703D00C1BBB7 /* ItemCardTemplate.swift */; };
 		E95F13252B9E27FC00407C6F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E95F13242B9E27FC00407C6F /* Localizable.xcstrings */; };
 		E95F132B2B9E722700407C6F /* ThemeUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F132A2B9E722700407C6F /* ThemeUserDefaults.swift */; };
-		E95F132E2B9EE01A00407C6F /* FindPlacesMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F132D2B9EE01A00407C6F /* FindPlacesMenuView.swift */; };
-		E95F13302B9EE0BB00407C6F /* FindPlacesMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F132F2B9EE0BB00407C6F /* FindPlacesMenuViewController.swift */; };
+		E95F132E2B9EE01A00407C6F /* PlaceFiltersMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F132D2B9EE01A00407C6F /* PlaceFiltersMenuView.swift */; };
+		E95F13302B9EE0BB00407C6F /* PlaceFiltersMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F132F2B9EE0BB00407C6F /* PlaceFiltersMenuViewController.swift */; };
 		E95F13332B9EF63F00407C6F /* FindPlaceResultMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F13322B9EF63F00407C6F /* FindPlaceResultMenuView.swift */; };
 		E95F13352B9EF64D00407C6F /* FindPlaceResultMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F13342B9EF64D00407C6F /* FindPlaceResultMenuViewController.swift */; };
 		E95F13372B9F006300407C6F /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F13362B9F006300407C6F /* BigButton.swift */; };
@@ -59,6 +59,7 @@
 		E9B928CA2B9625F8002885F5 /* FullScreenImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B928C92B9625F8002885F5 /* FullScreenImageView.swift */; };
 		E9B928CC2B962600002885F5 /* FullScreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B928CB2B962600002885F5 /* FullScreenImageViewController.swift */; };
 		E9B928CE2B972005002885F5 /* ClipboardSavingNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B928CD2B972005002885F5 /* ClipboardSavingNotification.swift */; };
+		E9B994D82BB4ACA800BF5773 /* FilterDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B994D72BB4ACA800BF5773 /* FilterDataModel.swift */; };
 		E9C73BBE2B6973F700E531AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BBD2B6973F700E531AB /* AppDelegate.swift */; };
 		E9C73BC02B6973F700E531AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BBF2B6973F700E531AB /* SceneDelegate.swift */; };
 		E9C73BC22B6973F700E531AB /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BC12B6973F700E531AB /* HomeScreenViewController.swift */; };
@@ -86,8 +87,8 @@
 		E95F13242B9E27FC00407C6F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		E95F13262B9E28A000407C6F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		E95F132A2B9E722700407C6F /* ThemeUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeUserDefaults.swift; sourceTree = "<group>"; };
-		E95F132D2B9EE01A00407C6F /* FindPlacesMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPlacesMenuView.swift; sourceTree = "<group>"; };
-		E95F132F2B9EE0BB00407C6F /* FindPlacesMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPlacesMenuViewController.swift; sourceTree = "<group>"; };
+		E95F132D2B9EE01A00407C6F /* PlaceFiltersMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceFiltersMenuView.swift; sourceTree = "<group>"; };
+		E95F132F2B9EE0BB00407C6F /* PlaceFiltersMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceFiltersMenuViewController.swift; sourceTree = "<group>"; };
 		E95F13322B9EF63F00407C6F /* FindPlaceResultMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPlaceResultMenuView.swift; sourceTree = "<group>"; };
 		E95F13342B9EF64D00407C6F /* FindPlaceResultMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPlaceResultMenuViewController.swift; sourceTree = "<group>"; };
 		E95F13362B9F006300407C6F /* BigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButton.swift; sourceTree = "<group>"; };
@@ -126,6 +127,7 @@
 		E9B928C92B9625F8002885F5 /* FullScreenImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageView.swift; sourceTree = "<group>"; };
 		E9B928CB2B962600002885F5 /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
 		E9B928CD2B972005002885F5 /* ClipboardSavingNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardSavingNotification.swift; sourceTree = "<group>"; };
+		E9B994D72BB4ACA800BF5773 /* FilterDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDataModel.swift; sourceTree = "<group>"; };
 		E9C73BBA2B6973F700E531AB /* TripNN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripNN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9C73BBD2B6973F700E531AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9C73BBF2B6973F700E531AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,13 +171,13 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		E95F132C2B9EDE4500407C6F /* FindPlacesMenu */ = {
+		E95F132C2B9EDE4500407C6F /* PlaceFiltersMenuView */ = {
 			isa = PBXGroup;
 			children = (
-				E95F132D2B9EE01A00407C6F /* FindPlacesMenuView.swift */,
-				E95F132F2B9EE0BB00407C6F /* FindPlacesMenuViewController.swift */,
+				E95F132D2B9EE01A00407C6F /* PlaceFiltersMenuView.swift */,
+				E95F132F2B9EE0BB00407C6F /* PlaceFiltersMenuViewController.swift */,
 			);
-			path = FindPlacesMenu;
+			path = PlaceFiltersMenuView;
 			sourceTree = "<group>";
 		};
 		E95F13312B9EF62700407C6F /* FindPlaceResultMenu */ = {
@@ -258,6 +260,7 @@
 				E9B928C42B94A6B6002885F5 /* ThemeSettingsSectionModel.swift */,
 				E92C001E2BB2F90E003C76F3 /* TagsCollectionViewSectionModel.swift */,
 				E92C00202BB2F923003C76F3 /* TagsCollectionViewItemModel.swift */,
+				E9B994D72BB4ACA800BF5773 /* FilterDataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -342,7 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				E95F13312B9EF62700407C6F /* FindPlaceResultMenu */,
-				E95F132C2B9EDE4500407C6F /* FindPlacesMenu */,
+				E95F132C2B9EDE4500407C6F /* PlaceFiltersMenuView */,
 				E96032D42B8A167C00F026B5 /* CreatingRouteScreen */,
 			);
 			path = NewRoute;
@@ -577,7 +580,8 @@
 				E9C73BBE2B6973F700E531AB /* AppDelegate.swift in Sources */,
 				E9B928C52B94A6B6002885F5 /* ThemeSettingsSectionModel.swift in Sources */,
 				E9B928CC2B962600002885F5 /* FullScreenImageViewController.swift in Sources */,
-				E95F13302B9EE0BB00407C6F /* FindPlacesMenuViewController.swift in Sources */,
+				E9B994D82BB4ACA800BF5773 /* FilterDataModel.swift in Sources */,
+				E95F13302B9EE0BB00407C6F /* PlaceFiltersMenuViewController.swift in Sources */,
 				E9B928CA2B9625F8002885F5 /* FullScreenImageView.swift in Sources */,
 				E95FA1062B8D2272007E3E51 /* SideMenuView.swift in Sources */,
 				E9FE95D32B87BFC2009694EC /* RouteDetailsViewController.swift in Sources */,
@@ -594,7 +598,7 @@
 				E95FA1102B907EF5007E3E51 /* SettingsViewController.swift in Sources */,
 				E9C73BC02B6973F700E531AB /* SceneDelegate.swift in Sources */,
 				E9FE95CB2B86BB8A009694EC /* UISwipeActionsConfiguration.swift in Sources */,
-				E95F132E2B9EE01A00407C6F /* FindPlacesMenuView.swift in Sources */,
+				E95F132E2B9EE01A00407C6F /* PlaceFiltersMenuView.swift in Sources */,
 				E96032CB2B88148800F026B5 /* PlaceDetailsView.swift in Sources */,
 				E9B928C12B947F27002885F5 /* SettingSectionContentTableViewCell.swift in Sources */,
 				E95FA1112B907F1F007E3E51 /* SettingsScreenView.swift in Sources */,

@@ -55,6 +55,11 @@ final class PlaceTagCollectionViewCell: UICollectionViewCell {
         cellLabel.textColor = .tripnnSemiDark
     }
     
+    func hideCell() {
+        cellLabel.textColor = UIColor(white: 0, alpha: 0)
+        backgroundColor = UIColor(white: 0, alpha: 0)
+    }
+    
     // MARK: - Setup
 
     private func setup() {

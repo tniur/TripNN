@@ -44,7 +44,7 @@ final class FindPlaceResultMenuViewController: UIViewController {
     // MARK: - Action
     
     @objc private func goToNextStepAction() {
-        let controller = FindPlacesMenuViewController()
+        let controller = PlaceFiltersMenuViewController()
         navigationController?.pushViewController(controller, animated: true)
     }
 }
