@@ -61,6 +61,8 @@ final class PlaceFiltersMenuView: UIView {
     private var cultureFiltersData = FiltersDataModel()
     private var leisureFiltersData = FiltersDataModel()
     
+    let searchController = UISearchController(searchResultsController: nil)
+    
     private let showResultButton = BigButton(withTitle: String(localized: "show_results"))
         
     // MARK: - Data
