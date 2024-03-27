@@ -15,7 +15,46 @@ final class FindPlacesMenuView: UIView {
     
     // MARK: - Properties
     
-    private let segmentedControlItems = [String(localized: "culture"), String(localized: "leisure"), String(localized: "food")]
+    private var foodCollectionViewDataSource: UICollectionViewDiffableDataSource<TagsCollectionViewSectionModel, TagsCollectionViewItemModel>?
+    
+    private var leisureCollectionViewDataSource: UICollectionViewDiffableDataSource<TagsCollectionViewSectionModel, TagsCollectionViewItemModel>?
+    
+    private var cultureCollectionViewDataSource: UICollectionViewDiffableDataSource<TagsCollectionViewSectionModel, TagsCollectionViewItemModel>?
+    
+    private lazy var foodTagsCollectionView =  UICollectionView(frame: .zero, collectionViewLayout: getCollectionViewLeftLayout())
+    
+    private lazy var leisureTagsCollectionView =  UICollectionView(frame: .zero, collectionViewLayout: getCollectionViewLeftLayout())
+    
+    private lazy var cultureTagsCollectionView =  UICollectionView(frame: .zero, collectionViewLayout: getCollectionViewLeftLayout())
+    
+    private lazy var foodCollectionViewSections = [
+        TagsCollectionViewSectionModel(type: .prices, title: String(localized: TagsCollectionViewSectionType.prices.rawValue), items: pricesCollectionViewItems),
+        TagsCollectionViewSectionModel(type: .rating, title: String(localized: TagsCollectionViewSectionType.rating.rawValue), items: ratingCollectionViewItems),
+        TagsCollectionViewSectionModel(type: .distance, title: String(localized: TagsCollectionViewSectionType.distance.rawValue), items: distanceCollectionViewItems),
+        TagsCollectionViewSectionModel(type: .category, title: String(localized: TagsCollectionViewSectionType.category.rawValue), items: foodCategoryCollectionViewItems)
+    ]
+    
+    private lazy var leisureCollectionViewSections = [
+        TagsCollectionViewSectionModel(type: .rating, title: String(localized: TagsCollectionViewSectionType.rating.rawValue), items: ratingCollectionViewItems),
+        TagsCollectionViewSectionModel(type: .distance, title: String(localized: TagsCollectionViewSectionType.distance.rawValue), items: distanceCollectionViewItems),
+        TagsCollectionViewSectionModel(type: .category, title: String(localized: TagsCollectionViewSectionType.category.rawValue), items: leisureCategoryCollectionViewItems)
+    ]
+    
+    private lazy var cultureCollectionViewSections = [
+        TagsCollectionViewSectionModel(type: .rating, title: String(localized: TagsCollectionViewSectionType.rating.rawValue), items: ratingCollectionViewItems),
+        TagsCollectionViewSectionModel(type: .distance, title: String(localized: TagsCollectionViewSectionType.distance.rawValue), items: distanceCollectionViewItems),
+        TagsCollectionViewSectionModel(type: .category, title: String(localized: TagsCollectionViewSectionType.category.rawValue), items: cultureCategoryCollectionViewItems)
+    ]
+    
+    private lazy var catalogTypeSegmentedControl: SegmentedControl = {
+        let segmentControl = SegmentedControl(items: getSegmentControlItems())
+        
+        segmentControl.addTarget(self, action: #selector(catalogTypeChanged), for: .valueChanged)
+        
+        return segmentControl
+    }()
+    
+    // MARK: - Data
     
     private let pricesCollectionViewItems = [
         TagsCollectionViewItemModel(title: "₽"),
@@ -25,10 +64,10 @@ final class FindPlacesMenuView: UIView {
     ]
     
     private let ratingCollectionViewItems = [
-        TagsCollectionViewItemModel(title: "от 3"),
-        TagsCollectionViewItemModel(title: "от 3,5"),
-        TagsCollectionViewItemModel(title: "от 4"),
-        TagsCollectionViewItemModel(title: "от 4,5")
+        TagsCollectionViewItemModel(title: "от 3 ★"),
+        TagsCollectionViewItemModel(title: "от 3,5 ★"),
+        TagsCollectionViewItemModel(title: "от 4 ★"),
+        TagsCollectionViewItemModel(title: "от 4,5 ★")
     ]
     
     private let distanceCollectionViewItems = [
@@ -38,7 +77,7 @@ final class FindPlacesMenuView: UIView {
         TagsCollectionViewItemModel(title: "до 10 км")
     ]
     
-    private let categoryCollectionViewItems = [
+    private let foodCategoryCollectionViewItems = [
         TagsCollectionViewItemModel(title: "Кафе"),
         TagsCollectionViewItemModel(title: "Рестораны"),
         TagsCollectionViewItemModel(title: "Бары"),
@@ -53,22 +92,160 @@ final class FindPlacesMenuView: UIView {
         TagsCollectionViewItemModel(title: "Пекарни"),
     ]
     
-    private lazy var collectionViewSections = [
-        TagsCollectionViewSectionModel(type: .prices, title: String(localized: TagsCollectionViewSectionType.prices.rawValue), items: pricesCollectionViewItems),
-        TagsCollectionViewSectionModel(type: .rating, title: String(localized: TagsCollectionViewSectionType.rating.rawValue), items: ratingCollectionViewItems),
-        TagsCollectionViewSectionModel(type: .distance, title: String(localized: TagsCollectionViewSectionType.distance.rawValue), items: distanceCollectionViewItems),
-        TagsCollectionViewSectionModel(type: .category, title: String(localized: TagsCollectionViewSectionType.category.rawValue), items: categoryCollectionViewItems)
+    private let cultureCategoryCollectionViewItems = [
+        TagsCollectionViewItemModel(title: "Музеи"),
+        TagsCollectionViewItemModel(title: "Парки культуры и отдыха"),
+        TagsCollectionViewItemModel(title: "Дома / дворцы культуры"),
+        TagsCollectionViewItemModel(title: "Интересные здания"),
+        TagsCollectionViewItemModel(title: "Природные достопримечательности"),
+        TagsCollectionViewItemModel(title: "Фонтаны")
     ]
     
-    // MARK: - View
+    private let leisureCategoryCollectionViewItems = [
+        TagsCollectionViewItemModel(title: "Кинотеатры"),
+        TagsCollectionViewItemModel(title: "Боулинг"),
+        TagsCollectionViewItemModel(title: "Ночные клубы"),
+        TagsCollectionViewItemModel(title: "Бильярдные залы"),
+        TagsCollectionViewItemModel(title: "Караоке-залы"),
+        TagsCollectionViewItemModel(title: "Стрелковые клубы"),
+        TagsCollectionViewItemModel(title: "Гольф-клубы"),
+        TagsCollectionViewItemModel(title: "Картинг"),
+        TagsCollectionViewItemModel(title: "Цирк"),
+        TagsCollectionViewItemModel(title: "Уличные катки"),
+        TagsCollectionViewItemModel(title: "Бары"),
+        TagsCollectionViewItemModel(title: "Зоопарк"),
+        TagsCollectionViewItemModel(title: "Дельфинарий"),
+        TagsCollectionViewItemModel(title: "Антикафе"),
+        TagsCollectionViewItemModel(title: "Научно-развлекательные центры"),
+        TagsCollectionViewItemModel(title: "Аквапарки / Водные аттракционы"),
+        TagsCollectionViewItemModel(title: "Батутные центры"),
+        TagsCollectionViewItemModel(title: "Аттракционы"),
+        TagsCollectionViewItemModel(title: "Ледовые дворцы / Катки"),
+        TagsCollectionViewItemModel(title: "Смотровые площадки"),
+        TagsCollectionViewItemModel(title: "Пляжи / Зоны пляжного отдыха"),
+    ]
     
-    private lazy var placesSegmentedControl = SegmentedControl(items: segmentedControlItems)
+    // MARK: - Init
     
-    // MARK: - CollectionView Settings
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
     
-    private lazy var tagsCollectionView =  UICollectionView(frame: .zero, collectionViewLayout: collectionViewLeftLayout)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
     
-    private lazy var collectionViewLeftLayout: UICollectionViewLayout = {
+    // MARK: - Setup
+    
+    private func setup() {
+        self.backgroundColor = .white
+        
+        setupView()
+        setupConstraints()
+        
+        setupCollectionView(collectionView: foodTagsCollectionView)
+        setupCollectionView(collectionView: leisureTagsCollectionView)
+        setupCollectionView(collectionView: cultureTagsCollectionView)
+        
+        foodCollectionViewDataSource = setupCollectionViewDataSource(collection: foodTagsCollectionView, collectionSections: foodCollectionViewSections)
+        leisureCollectionViewDataSource = setupCollectionViewDataSource(collection: leisureTagsCollectionView, collectionSections: leisureCollectionViewSections)
+        cultureCollectionViewDataSource = setupCollectionViewDataSource(collection: cultureTagsCollectionView, collectionSections: cultureCollectionViewSections)
+        
+        setupCollectionViewCollectionData(dataSource: foodCollectionViewDataSource, collectionViewSections: foodCollectionViewSections)
+        setupCollectionViewCollectionData(dataSource: leisureCollectionViewDataSource, collectionViewSections: leisureCollectionViewSections)
+        setupCollectionViewCollectionData(dataSource: cultureCollectionViewDataSource, collectionViewSections: cultureCollectionViewSections)
+        
+        showCollectionView(withIndex: 0)
+    }
+    
+    private func setupView() {
+        self.addSubview(foodTagsCollectionView)
+        self.addSubview(leisureTagsCollectionView)
+        self.addSubview(cultureTagsCollectionView)
+        self.addSubview(catalogTypeSegmentedControl)
+    }
+    
+    private func setupConstraints() {
+        setupPlacesSegmentedControlConstraints()
+        setupTagsCollectionViewConstraints(collectionView: leisureTagsCollectionView)
+        setupTagsCollectionViewConstraints(collectionView: foodTagsCollectionView)
+        setupTagsCollectionViewConstraints(collectionView: cultureTagsCollectionView)
+    }
+    
+    private func setupCollectionView(collectionView: UICollectionView) {
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        collectionView.allowsMultipleSelection = true
+        collectionView.showsVerticalScrollIndicator = false
+        
+        collectionView.delegate = self
+        
+        collectionView.register(PlaceTagCollectionViewCell.self, forCellWithReuseIdentifier: PlaceTagCollectionViewCell.reuseId)
+        collectionView.register(TagCollectionSectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TagCollectionSectionHeader.reuseId)
+    }
+    
+    // MARK: - Constraints
+    
+    private func setupPlacesSegmentedControlConstraints() {
+        catalogTypeSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            catalogTypeSegmentedControl.topAnchor.constraint(equalTo: topAnchor, constant: 30),
+            catalogTypeSegmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            catalogTypeSegmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+        ])
+    }
+    
+    private func setupTagsCollectionViewConstraints(collectionView: UICollectionView) {
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: catalogTypeSegmentedControl.bottomAnchor, constant: -10),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+    }
+}
+
+// MARK: - SegmentControl Configure
+
+private extension FindPlacesMenuView {
+    func getSegmentControlItems() -> [String] {
+        [String(localized: "culture"), String(localized: "leisure"), String(localized: "food")]
+    }
+    
+    @objc func catalogTypeChanged() {
+        let index = catalogTypeSegmentedControl.selectedSegmentIndex
+        
+        showCollectionView(withIndex: index)
+    }
+    
+    func showCollectionView(withIndex segmentIndex: Int) {
+        foodTagsCollectionView.isHidden = true
+        leisureTagsCollectionView.isHidden = true
+        cultureTagsCollectionView.isHidden = true
+        
+        switch segmentIndex {
+            
+        case 0:
+            cultureTagsCollectionView.isHidden = false
+        case 1:
+            leisureTagsCollectionView.isHidden = false
+        case 2:
+            foodTagsCollectionView.isHidden = false
+        default:
+            foodTagsCollectionView.isHidden = true
+            leisureTagsCollectionView.isHidden = true
+            cultureTagsCollectionView.isHidden = true
+        }
+    }
+}
+
+// MARK: - CollectionView Configure
+
+private extension FindPlacesMenuView {
+    
+    func getCollectionViewLeftLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, env in
             
             let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(80), heightDimension: .fractionalHeight(1.0))
@@ -87,9 +264,9 @@ final class FindPlacesMenuView: UIView {
             return section
         }
         return layout
-    }()
+    }
     
-    private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+    func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
         let layoutSectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
         let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: layoutSectionHeaderSize,
                                                                               elementKind: UICollectionView.elementKindSectionHeader,
@@ -97,9 +274,9 @@ final class FindPlacesMenuView: UIView {
         return layoutSectionHeader
     }
     
-    private lazy var collectionViewDataSource: UICollectionViewDiffableDataSource<TagsCollectionViewSectionModel, TagsCollectionViewItemModel> = {
-        let dataSource = UICollectionViewDiffableDataSource<TagsCollectionViewSectionModel, TagsCollectionViewItemModel>(collectionView: tagsCollectionView, cellProvider: { (collectionView, indexPath, tag) -> UICollectionViewCell? in
-            switch self.collectionViewSections[indexPath.section].type {
+    func setupCollectionViewDataSource(collection: UICollectionView, collectionSections: [TagsCollectionViewSectionModel]) -> UICollectionViewDiffableDataSource<TagsCollectionViewSectionModel, TagsCollectionViewItemModel> {
+        let dataSource = UICollectionViewDiffableDataSource<TagsCollectionViewSectionModel, TagsCollectionViewItemModel>(collectionView: collection, cellProvider: { (collectionView, indexPath, tag) -> UICollectionViewCell? in
+            switch collectionSections[indexPath.section].type {
             case .rating, .distance:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceTagCollectionViewCell.reuseId, for: indexPath) as? PlaceTagCollectionViewCell
                 cell?.configure(title: tag.title, cornerRadius: .strong)
@@ -124,93 +301,35 @@ final class FindPlacesMenuView: UIView {
         }
         
         return dataSource
-    }()
-    
-    // MARK: - Init
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
     }
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setup()
-    }
-    
-    // MARK: - Setup
-    
-    private func setup() {
-        self.backgroundColor = .white
-        
-        setupView()
-        setupConstraints()
-        
-        setupCollectionView()
-        setupCollectionData()
-    }
-    
-    private func setupView() {
-        self.addSubview(tagsCollectionView)
-        self.addSubview(placesSegmentedControl)
-    }
-    
-    private func setupConstraints() {
-        setupPlacesSegmentedControlConstraints()
-        setupTagsCollectionViewConstraints()
-    }
-    
-    private func setupCollectionView() {
-        tagsCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
-        tagsCollectionView.allowsMultipleSelection = true
-        tagsCollectionView.showsVerticalScrollIndicator = false
-        
-        tagsCollectionView.delegate = self
-        
-        tagsCollectionView.register(PlaceTagCollectionViewCell.self, forCellWithReuseIdentifier: PlaceTagCollectionViewCell.reuseId)
-        tagsCollectionView.register(TagCollectionSectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TagCollectionSectionHeader.reuseId)
-    }
-    
-    private func setupCollectionData() {
+    func setupCollectionViewCollectionData(dataSource: UICollectionViewDiffableDataSource<TagsCollectionViewSectionModel, TagsCollectionViewItemModel>?, collectionViewSections: [TagsCollectionViewSectionModel]) {
         var snapshot = NSDiffableDataSourceSnapshot<TagsCollectionViewSectionModel, TagsCollectionViewItemModel>()
         snapshot.appendSections(collectionViewSections)
         
-        for section in collectionViewSections {
-            snapshot.appendItems(section.items, toSection: section)
-        }
+        collectionViewSections.forEach{ snapshot.appendItems($0.items, toSection: $0) }
         
-        collectionViewDataSource.apply(snapshot)
-    }
-    
-    // MARK: - Constraints
-    
-    private func setupPlacesSegmentedControlConstraints() {
-        placesSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            placesSegmentedControl.topAnchor.constraint(equalTo: topAnchor, constant: 30),
-            placesSegmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            placesSegmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-        ])
-    }
-    
-    private func setupTagsCollectionViewConstraints() {
-        tagsCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            tagsCollectionView.topAnchor.constraint(equalTo: placesSegmentedControl.bottomAnchor, constant: -10),
-            tagsCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            tagsCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            tagsCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+        dataSource?.apply(snapshot)
     }
 }
 
-// MARK: - Extension UICollectionView
+// MARK: - CollectionView Delegate
 
 extension FindPlacesMenuView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let section = collectionViewDataSource.sectionIdentifier(for: indexPath.section) else { return }
+        
+        var sectionDataSource: UICollectionViewDiffableDataSource<TagsCollectionViewSectionModel, TagsCollectionViewItemModel>?
+        
+        if collectionView == foodTagsCollectionView {
+            sectionDataSource = foodCollectionViewDataSource
+        } else if collectionView == leisureTagsCollectionView {
+            sectionDataSource = leisureCollectionViewDataSource
+        } else if collectionView == cultureTagsCollectionView {
+            sectionDataSource = cultureCollectionViewDataSource
+        }
+        
+        guard let section = sectionDataSource?.sectionIdentifier(for: indexPath.section) else { return }
         
         if (section.type == .rating || section.type == .distance) {
             let cells = getCellsInSection(collectionView, indexPath.section)
@@ -223,7 +342,6 @@ extension FindPlacesMenuView: UICollectionViewDelegate {
         
         // guard var currentCell = collectionViewDataSource.itemIdentifier(for: indexPath) else { return }
         // print(currentCell.title)
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

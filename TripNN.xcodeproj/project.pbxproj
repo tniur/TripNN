@@ -12,6 +12,7 @@
 		E92C001F2BB2F90E003C76F3 /* TagsCollectionViewSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92C001E2BB2F90E003C76F3 /* TagsCollectionViewSectionModel.swift */; };
 		E92C00212BB2F923003C76F3 /* TagsCollectionViewItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92C00202BB2F923003C76F3 /* TagsCollectionViewItemModel.swift */; };
 		E92C00232BB30621003C76F3 /* TagCollectionSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92C00222BB30621003C76F3 /* TagCollectionSectionHeader.swift */; };
+		E92C00252BB38FA8003C76F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E92C00242BB38FA8003C76F3 /* Assets.xcassets */; };
 		E93A328F2B84A55400C1BBB7 /* AllPreparedRoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A328E2B84A55400C1BBB7 /* AllPreparedRoutesViewController.swift */; };
 		E93A32932B84A5B800C1BBB7 /* AllPreparedRoutesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A32922B84A5B800C1BBB7 /* AllPreparedRoutesView.swift */; };
 		E93A32992B85EDFA00C1BBB7 /* ItemCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A32982B85EDFA00C1BBB7 /* ItemCardTableViewCell.swift */; };
@@ -61,7 +62,6 @@
 		E9C73BBE2B6973F700E531AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BBD2B6973F700E531AB /* AppDelegate.swift */; };
 		E9C73BC02B6973F700E531AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BBF2B6973F700E531AB /* SceneDelegate.swift */; };
 		E9C73BC22B6973F700E531AB /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BC12B6973F700E531AB /* HomeScreenViewController.swift */; };
-		E9C73BC72B6973F900E531AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9C73BC62B6973F900E531AB /* Assets.xcassets */; };
 		E9C73BCA2B6973F900E531AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C73BC82B6973F900E531AB /* LaunchScreen.storyboard */; };
 		E9C73BD82B69802F00E531AB /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73BD72B69802E00E531AB /* UIColor.swift */; };
 		E9ED79CE2B83DF5200F4D4EE /* CreatingRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ED79CD2B83DF5200F4D4EE /* CreatingRouteViewController.swift */; };
@@ -78,6 +78,7 @@
 		E92C001E2BB2F90E003C76F3 /* TagsCollectionViewSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsCollectionViewSectionModel.swift; sourceTree = "<group>"; };
 		E92C00202BB2F923003C76F3 /* TagsCollectionViewItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsCollectionViewItemModel.swift; sourceTree = "<group>"; };
 		E92C00222BB30621003C76F3 /* TagCollectionSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionSectionHeader.swift; sourceTree = "<group>"; };
+		E92C00242BB38FA8003C76F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E93A328E2B84A55400C1BBB7 /* AllPreparedRoutesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPreparedRoutesViewController.swift; sourceTree = "<group>"; };
 		E93A32922B84A5B800C1BBB7 /* AllPreparedRoutesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPreparedRoutesView.swift; sourceTree = "<group>"; };
 		E93A32982B85EDFA00C1BBB7 /* ItemCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardTableViewCell.swift; sourceTree = "<group>"; };
@@ -129,7 +130,6 @@
 		E9C73BBD2B6973F700E531AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9C73BBF2B6973F700E531AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E9C73BC12B6973F700E531AB /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
-		E9C73BC62B6973F900E531AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9C73BC92B6973F900E531AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9C73BCB2B6973F900E531AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9C73BD72B69802E00E531AB /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -456,9 +456,9 @@
 		E9C73BD12B69750C00E531AB /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				E92C00242BB38FA8003C76F3 /* Assets.xcassets */,
 				E9C73BD62B69780100E531AB /* Fonts */,
 				E95F13242B9E27FC00407C6F /* Localizable.xcstrings */,
-				E9C73BC62B6973F900E531AB /* Assets.xcassets */,
 			);
 			path = Resourses;
 			sourceTree = "<group>";
@@ -546,9 +546,9 @@
 				E969493F2B80AA3800622949 /* Montserrat-Light.ttf in Resources */,
 				E969493D2B80AA3800622949 /* Montserrat-ExtraLight.ttf in Resources */,
 				E96949422B80AA3800622949 /* Montserrat-SemiBold.ttf in Resources */,
-				E9C73BC72B6973F900E531AB /* Assets.xcassets in Resources */,
 				E96949412B80AA3800622949 /* Montserrat-ExtraBold.ttf in Resources */,
 				E969493E2B80AA3800622949 /* Montserrat-Thin.ttf in Resources */,
+				E92C00252BB38FA8003C76F3 /* Assets.xcassets in Resources */,
 				E96949342B7ED27C00622949 /* Montserrat-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

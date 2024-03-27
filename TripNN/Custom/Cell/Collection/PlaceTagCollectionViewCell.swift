@@ -60,8 +60,19 @@ final class PlaceTagCollectionViewCell: UICollectionViewCell {
     private func setup() {
         backgroundColor = .tripnnLightGray
     
+        setupView()
+        setupConstraints()
+    }
+    
+    private func setupView() {
         contentView.addSubview(cellLabel)
-        
+    }
+    
+    private func setupConstraints() {
+        setupCellLabelConstraints()
+    }
+    
+    private func setupCellLabelConstraints() {
         cellLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             cellLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 18),
